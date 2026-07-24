@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "newsletter": "Newsletter"
+  },
+  "hero": {
+    "eyebrow": "Your AI Growth Partner",
+    "title": "Essoria",
+    "tagline": "The AI that launches SME growth.",
+    "subtitle": "Growth Marketing, Automation, CRM and AI WhatsApp Agents combined into one complete system to acquire, qualify and convert your prospects.",
+    "ctaPrimary": "Book a call",
+    "ctaSecondary": "See our services"
+  },
+  "services": {
+    "eyebrow": "Our services",
+    "title": "A complete system, not simple gigs",
+    "subtitle": "Four pillars working together to turn your visitors into customers.",
+    "growth": {
+      "title": "Growth Marketing",
+      "desc": "Qualified traffic acquisition through online advertising, SEO and conversion-focused content strategies."
+    },
+    "automation": {
+      "title": "Marketing Automation",
+      "desc": "Email/SMS sequences, lead scoring and automated journeys that work for you around the clock."
+    },
+    "crm": {
+      "title": "Tailored CRM",
+      "desc": "CRM setup tailored to your sales process, so you never lose track of a prospect again."
+    },
+    "ai": {
+      "title": "WhatsApp AI Agents",
+      "desc": "A conversational agent that answers, qualifies and hands off your hot prospects to your sales team."
+    }
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Plans aligned with the market",
+    "subtitle": "Based on a benchmark of the Moroccan market for growth marketing and AI services for SMEs.",
+    "perMonth": "/month",
+    "mostPopular": "Most popular",
+    "cta": "Choose this plan",
+    "starter": {
+      "title": "Starter",
+      "f1": "Basic CRM setup",
+      "f2": "Simple WhatsApp automation (FAQ)",
+      "f3": "1 monthly performance report",
+      "f4": "Email support"
+    },
+    "growth": {
+      "title": "Growth",
+      "f1": "Advanced CRM + multi-channel automations",
+      "f2": "WhatsApp AI qualification agent",
+      "f3": "Bi-monthly reporting",
+      "f4": "1 strategy call per month"
+    },
+    "scale": {
+      "title": "Scale",
+      "f1": "Full-funnel multilingual WhatsApp AI",
+      "f2": "Custom CRM",
+      "f3": "Real-time reporting dashboard",
+      "f4": "Dedicated strategic support"
+    }
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Your growth, engineered as a system",
+    "text": "Essoria was born from a simple observation: most Moroccan SMEs endure their customer acquisition instead of steering it. Too many leads lost in spreadsheets, too many campaigns launched without tracking, too many WhatsApp messages left unanswered after 6pm.",
+    "text2": "We build a system for you where growth marketing, automation, CRM and artificial intelligence work together — not as separate services, but as a single machine designed to convert your visitors into customers, day and night.",
+    "process": {
+      "title": "Our 4-step method",
+      "s1": {
+        "title": "Free audit",
+        "desc": "30 minutes to assess your current acquisition and identify the leaks."
+      },
+      "s2": {
+        "title": "Fast deployment",
+        "desc": "CRM, automations and AI agent set up within one to two weeks."
+      },
+      "s3": {
+        "title": "Continuous qualification",
+        "desc": "Your prospects are automatically qualified, day and night, without any effort on your part."
+      },
+      "s4": {
+        "title": "Monthly optimization",
+        "desc": "Clear reporting and adjustments based on data, not guesswork."
+      }
+    }
+  },
+  "values": {
+    "title": "Our 5 non-negotiable values",
+    "v1": {
+      "title": "Measurable impact",
+      "desc": "Every action translates into measurable results: leads, sales, ROI."
+    },
+    "v2": {
+      "title": "Speed of execution",
+      "desc": "Fast deployment, without drawn-out project cycles."
+    },
+    "v3": {
+      "title": "Augmented intelligence",
+      "desc": "AI in service of human decisions, never as a replacement."
+    },
+    "v4": {
+      "title": "Total transparency",
+      "desc": "Clear reporting, no black box."
+    },
+    "v5": {
+      "title": "Long-term partnership",
+      "desc": "We commit to your growth, not to a one-off assignment."
+    },
+    "hint": "Click on a value to learn more"
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Resources & insights",
+    "subtitle": "Our thoughts on growth marketing, automation and AI for SMEs.",
+    "readMore": "Read article",
+    "back": "Back to blog",
+    "empty": "No articles available yet."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's talk about your growth",
+    "subtitle": "Fill out the form or book a video call directly.",
+    "name": "Full name",
+    "email": "Business email",
+    "phone": "Phone (optional)",
+    "message": "Your message",
+    "submit": "Send",
+    "success": "Thank you! Your message has been sent, we'll get back to you shortly.",
+    "error": "Something went wrong. Please check the fields and try again.",
+    "calendlyCta": "Book a video call (Google Meet)",
+    "calendlySoon": "Direct booking link coming soon. In the meantime, contact us on WhatsApp to schedule a call.",
+    "whatsappCta": "Message us on WhatsApp",
+    "noCommitment": "No commitment. Reply within 24h."
+  },
+  "footer": {
+    "tagline": "The AI that launches SME growth.",
+    "rights": "All rights reserved.",
+    "linksTitle": "Navigation",
+    "contactTitle": "Contact",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "legalTitle": "Legal"
+  },
+  "finalCta": {
+    "eyebrow": "Take action",
+    "title": "Ready to turn your SME into a growth machine?",
+    "subtitle": "A first 30-minute call is all it takes to assess your growth potential.",
+    "button": "Book my free audit"
+  },
+  "floatingWhatsapp": {
+    "label": "Chat on WhatsApp"
+  },
+  "newsletter": {
+    "eyebrow": "Newsletter",
+    "title": "Get our growth & AI insights",
+    "subtitle": "One email a month, zero spam: growth marketing, automation and AI tips for your SME.",
+    "name": "Name (optional)",
+    "email": "Business email",
+    "submit": "Subscribe to the newsletter",
+    "disclaimer": "Unsubscribe anytime. See our Privacy Policy.",
+    "success": "Thank you! You're now subscribed to the Essoria newsletter.",
+    "errorGeneric": "Something went wrong. Please check your email and try again.",
+    "errorExists": "This email is already subscribed to the newsletter."
+  },
+  "legal": {
+    "languageNote": "This legal document is written in French, the reference language for any interpretation. Contact us with any questions.",
+    "backHome": "Back to home"
+  }
+}

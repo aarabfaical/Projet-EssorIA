@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "pricing": "Tarifs",
+    "about": "À propos",
+    "blog": "Blog",
+    "contact": "Contact",
+    "newsletter": "Newsletter"
+  },
+  "hero": {
+    "eyebrow": "Votre partenaire de croissance IA",
+    "title": "Essoria",
+    "tagline": "L'IA qui fait décoller la croissance des PME.",
+    "subtitle": "Growth Marketing, Automatisation, CRM et Agents IA WhatsApp réunis dans un système complet d'acquisition, de qualification et de conversion de vos prospects.",
+    "ctaPrimary": "Réserver un appel",
+    "ctaSecondary": "Voir nos services"
+  },
+  "services": {
+    "eyebrow": "Nos services",
+    "title": "Un système complet, pas de simples prestations",
+    "subtitle": "Quatre piliers qui fonctionnent ensemble pour transformer vos visiteurs en clients.",
+    "growth": {
+      "title": "Growth Marketing",
+      "desc": "Acquisition de trafic qualifié via publicité en ligne, SEO et stratégies de contenu orientées conversion."
+    },
+    "automation": {
+      "title": "Marketing Automation",
+      "desc": "Séquences email/SMS, scoring de leads et parcours automatisés qui travaillent pour vous 24h/24."
+    },
+    "crm": {
+      "title": "CRM sur mesure",
+      "desc": "Configuration d'un CRM adapté à votre process de vente, pour ne plus jamais perdre un prospect."
+    },
+    "ai": {
+      "title": "Agents IA WhatsApp",
+      "desc": "Un agent conversationnel qui répond, qualifie et transmet vos prospects chauds à votre équipe commerciale."
+    }
+  },
+  "pricing": {
+    "eyebrow": "Tarifs",
+    "title": "Des formules alignées sur le marché",
+    "subtitle": "Basés sur un benchmark du marché marocain des services growth marketing et IA pour PME.",
+    "perMonth": "/mois",
+    "mostPopular": "Le plus choisi",
+    "cta": "Choisir cette formule",
+    "starter": {
+      "title": "Starter",
+      "f1": "CRM de base configuré",
+      "f2": "Automatisation WhatsApp simple (FAQ)",
+      "f3": "1 rapport mensuel de performance",
+      "f4": "Support par email"
+    },
+    "growth": {
+      "title": "Growth",
+      "f1": "CRM avancé + automatisations multi-canal",
+      "f2": "Agent IA WhatsApp de qualification",
+      "f3": "Reporting bi-mensuel",
+      "f4": "1 appel stratégique par mois"
+    },
+    "scale": {
+      "title": "Scale",
+      "f1": "IA WhatsApp multilingue full-funnel",
+      "f2": "CRM sur mesure",
+      "f3": "Dashboard de reporting temps réel",
+      "f4": "Accompagnement stratégique dédié"
+    }
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "title": "Votre croissance, pensée comme un système",
+    "text": "Essoria est né d'un constat simple : la plupart des PME marocaines subissent leur acquisition client au lieu de la piloter. Trop de leads perdus dans des tableurs, trop de campagnes lancées sans suivi, trop de messages WhatsApp laissés sans réponse après 18h.",
+    "text2": "Nous construisons pour vous un système où growth marketing, automatisation, CRM et intelligence artificielle travaillent ensemble — pas comme des prestations séparées, mais comme une machine unique conçue pour convertir vos visiteurs en clients, jour et nuit.",
+    "process": {
+      "title": "Notre méthode en 4 étapes",
+      "s1": {
+        "title": "Audit gratuit",
+        "desc": "30 minutes pour évaluer votre acquisition actuelle et identifier les points de fuite."
+      },
+      "s2": {
+        "title": "Déploiement rapide",
+        "desc": "CRM, automatisations et agent IA configurés en une à deux semaines."
+      },
+      "s3": {
+        "title": "Qualification continue",
+        "desc": "Vos prospects sont qualifiés automatiquement, jour et nuit, sans effort de votre part."
+      },
+      "s4": {
+        "title": "Optimisation mensuelle",
+        "desc": "Reporting clair et ajustements basés sur la donnée, pas sur l'intuition."
+      }
+    }
+  },
+  "values": {
+    "title": "Nos 5 valeurs non négociables",
+    "v1": {
+      "title": "Impact mesurable",
+      "desc": "Chaque action se traduit en résultats chiffrés : leads, ventes, ROI."
+    },
+    "v2": {
+      "title": "Vitesse d'exécution",
+      "desc": "Déploiement rapide, sans cycles de prestation à rallonge."
+    },
+    "v3": {
+      "title": "Intelligence augmentée",
+      "desc": "L'IA au service de la décision humaine, jamais en remplacement."
+    },
+    "v4": {
+      "title": "Transparence totale",
+      "desc": "Un reporting clair, sans boîte noire."
+    },
+    "v5": {
+      "title": "Partenariat long terme",
+      "desc": "On s'engage sur votre croissance, pas sur une mission ponctuelle."
+    },
+    "hint": "Cliquez sur une valeur pour en savoir plus"
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Ressources & analyses",
+    "subtitle": "Nos réflexions sur le growth marketing, l'automatisation et l'IA pour les PME.",
+    "readMore": "Lire l'article",
+    "back": "Retour au blog",
+    "empty": "Aucun article disponible pour le moment."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Discutons de votre croissance",
+    "subtitle": "Remplissez le formulaire ou réservez directement un appel visio.",
+    "name": "Nom complet",
+    "email": "Email professionnel",
+    "phone": "Téléphone (optionnel)",
+    "message": "Votre message",
+    "submit": "Envoyer",
+    "success": "Merci ! Votre message a bien été envoyé, nous revenons vers vous rapidement.",
+    "error": "Une erreur est survenue. Vérifiez les champs et réessayez.",
+    "calendlyCta": "Réserver un appel visio (Google Meet)",
+    "calendlySoon": "Le lien de réservation directe arrive bientôt. En attendant, contactez-nous sur WhatsApp pour fixer un appel.",
+    "whatsappCta": "Nous écrire sur WhatsApp",
+    "noCommitment": "Sans engagement. Réponse sous 24h."
+  },
+  "footer": {
+    "tagline": "L'IA qui fait décoller la croissance des PME.",
+    "rights": "Tous droits réservés.",
+    "linksTitle": "Navigation",
+    "contactTitle": "Contact",
+    "terms": "Conditions Générales d'Utilisation",
+    "privacy": "Politique de Confidentialité",
+    "legalTitle": "Légal"
+  },
+  "finalCta": {
+    "eyebrow": "Passez à l'action",
+    "title": "Prêt à transformer votre PME en machine à croissance ?",
+    "subtitle": "Un premier appel de 30 minutes suffit pour évaluer votre potentiel de croissance.",
+    "button": "Réserver mon audit gratuit"
+  },
+  "floatingWhatsapp": {
+    "label": "Discuter sur WhatsApp"
+  },
+  "newsletter": {
+    "eyebrow": "Newsletter",
+    "title": "Recevez nos analyses growth & IA",
+    "subtitle": "Un email par mois, zéro spam : conseils growth marketing, automatisation et IA pour votre PME.",
+    "name": "Nom (optionnel)",
+    "email": "Email professionnel",
+    "submit": "M'inscrire à la newsletter",
+    "disclaimer": "Désabonnement possible à tout moment. Voir notre Politique de Confidentialité.",
+    "success": "Merci ! Vous êtes inscrit(e) à la newsletter Essoria.",
+    "errorGeneric": "Une erreur est survenue. Vérifiez votre email et réessayez.",
+    "errorExists": "Cet email est déjà inscrit à la newsletter."
+  },
+  "legal": {
+    "languageNote": "Ce document juridique est rédigé en français, langue de référence pour toute question d'interprétation. Pour toute question, contactez-nous.",
+    "backHome": "Retour à l'accueil"
+  }
+}
