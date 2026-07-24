@@ -6,12 +6,12 @@
   --surface-border: #26263a;
   --text: #eef0fa;
   --text-muted: #9a9ab3;
-  --accent: #7c5cff;
-  --accent-2: #22e6c8;
-  --accent-gradient: linear-gradient(135deg, #7c5cff 0%, #22e6c8 100%);
+  --accent: #3E7BFA;
+  --accent-2: #F5B93E;
+  --accent-gradient: linear-gradient(135deg, #3E7BFA 0%, #F5B93E 100%);
   --radius: 14px;
   --max-width: 1160px;
-  --shadow-glow: 0 0 40px rgba(124, 92, 255, 0.25);
+  --shadow-glow: 0 0 40px rgba(62, 123, 250, 0.25);
 }
 
 * { box-sizing: border-box; }
@@ -195,7 +195,7 @@ h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
   transform: translateX(-50%);
   width: 900px;
   height: 900px;
-  background: radial-gradient(circle, rgba(124,92,255,0.25) 0%, rgba(34,230,200,0.08) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(62,123,250,0.25) 0%, rgba(245,185,62,0.08) 40%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
@@ -223,6 +223,7 @@ h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
 .card p { color: var(--text-muted); margin: 0; font-size: 0.95rem; }
 
 /* ===== Pricing ===== */
+#pricing h2 { margin-bottom: 40px; }
 .pricing-grid { align-items: stretch; }
 .pricing-card { display: flex; flex-direction: column; position: relative; }
 .price { font-size: 2rem; font-weight: 800; margin: 8px 0 24px; }
@@ -344,10 +345,10 @@ html[dir="rtl"] .values-list { border-right: none; border-left: 1px solid var(--
 
 html[dir="rtl"] .value-tab { text-align: right; border-left: none; border-right: 3px solid transparent; }
 
-.value-tab:hover { background: rgba(124, 92, 255, 0.06); color: var(--text); }
+.value-tab:hover { background: rgba(62, 123, 250, 0.06); color: var(--text); }
 
 .value-tab.active {
-  background: rgba(124, 92, 255, 0.1);
+  background: rgba(62, 123, 250, 0.1);
   color: var(--text);
   border-left-color: var(--accent);
 }
@@ -380,7 +381,7 @@ html[dir="rtl"] .value-tab.active { border-left-color: transparent; border-right
 .final-cta {
   padding: 80px 0;
   text-align: center;
-  background: radial-gradient(ellipse at center, rgba(124,92,255,0.14) 0%, rgba(10,10,18,0) 70%), var(--bg-alt);
+  background: radial-gradient(ellipse at center, rgba(62,123,250,0.14) 0%, rgba(10,10,18,0) 70%), var(--bg-alt);
   border-top: 1px solid var(--surface-border);
   border-bottom: 1px solid var(--surface-border);
 }
@@ -390,6 +391,17 @@ html[dir="rtl"] .value-tab.active { border-left-color: transparent; border-right
 .final-cta .section-subtitle { margin: 0 auto 32px; }
 
 .btn-lg { padding: 16px 36px; font-size: 1.05rem; }
+
+/* ===== Illustration de separation (entre CTA final et Contact) ===== */
+.brand-divider { padding: 72px 0; }
+.brand-divider-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 960px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
 
 /* ===== Reassurance formulaire ===== */
 .form-note { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin: -6px 0 0; }
@@ -416,18 +428,18 @@ html[dir="rtl"] .value-tab.active { border-left-color: transparent; border-right
 
 html[dir="rtl"] .floating-whatsapp { right: auto; left: 24px; }
 
-/* ===== Contact / signup ===== */
-.contact-layout, .newsletter-layout {
+/* ===== Contact / newsletter ===== */
+.contact-centered { max-width: 600px; margin: 0 auto; text-align: center; }
+.contact-centered .section-subtitle { margin-left: auto; margin-right: auto; }
+.calendly-btn { margin-top: 16px; }
+
+.newsletter-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
 }
 
-.cta-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
-.calendly-btn { margin-top: 0; }
-.whatsapp-btn { border-color: #25D366; color: #25D366; }
-.whatsapp-btn:hover { background: rgba(37, 211, 102, 0.1); }
 .muted-note { color: var(--text-muted); font-size: 0.9rem; margin-top: 12px; }
 
 .form-card { display: flex; flex-direction: column; gap: 18px; }
@@ -453,11 +465,11 @@ html[dir="rtl"] .floating-whatsapp { right: auto; left: 24px; }
   font-size: 0.9rem;
   padding: 10px 14px;
   border-radius: 8px;
-  background: rgba(124, 92, 255, 0.12);
+  background: rgba(62, 123, 250, 0.12);
 }
 
 .form-feedback.error { background: rgba(255, 92, 92, 0.15); color: #ff8080; }
-.form-feedback.success { background: rgba(34, 230, 200, 0.15); color: var(--accent-2); }
+.form-feedback.success { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
 
 /* ===== Blog ===== */
 .blog-grid { margin-top: 32px; }
@@ -475,7 +487,7 @@ html[dir="rtl"] .floating-whatsapp { right: auto; left: 24px; }
 .legal-container { max-width: 760px; margin: 0 auto; }
 .legal-page h1 { margin-top: 24px; font-size: clamp(1.8rem, 4vw, 2.4rem); }
 .legal-note {
-  background: rgba(124, 92, 255, 0.1);
+  background: rgba(62, 123, 250, 0.1);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius);
   padding: 14px 18px;
@@ -518,7 +530,7 @@ html[dir="rtl"] .legal-list { padding-left: 0; padding-right: 20px; }
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .grid-4, .grid-5, .grid-3 { grid-template-columns: repeat(2, 1fr); }
-  .contact-layout, .newsletter-layout { grid-template-columns: 1fr; }
+  .newsletter-layout { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .values-menu { grid-template-columns: 1fr; }

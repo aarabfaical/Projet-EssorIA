@@ -11,7 +11,7 @@
   "hero": {
     "eyebrow": "Votre partenaire de croissance IA",
     "title": "Essoria",
-    "tagline": "L'IA qui fait décoller la croissance des PME.",
+    "tagline": "Le système IA complet qui fait décoller la croissance des PME.",
     "subtitle": "Growth Marketing, Automatisation, CRM et Agents IA WhatsApp réunis dans un système complet d'acquisition, de qualification et de conversion de vos prospects.",
     "ctaPrimary": "Réserver un appel",
     "ctaSecondary": "Voir nos services"
@@ -40,7 +40,6 @@
   "pricing": {
     "eyebrow": "Tarifs",
     "title": "Des formules alignées sur le marché",
-    "subtitle": "Basés sur un benchmark du marché marocain des services growth marketing et IA pour PME.",
     "perMonth": "/mois",
     "mostPopular": "Le plus choisi",
     "cta": "Choisir cette formule",
@@ -126,21 +125,11 @@
   "contact": {
     "eyebrow": "Contact",
     "title": "Discutons de votre croissance",
-    "subtitle": "Remplissez le formulaire ou réservez directement un appel visio.",
-    "name": "Nom complet",
-    "email": "Email professionnel",
-    "phone": "Téléphone (optionnel)",
-    "message": "Votre message",
-    "submit": "Envoyer",
-    "success": "Merci ! Votre message a bien été envoyé, nous revenons vers vous rapidement.",
-    "error": "Une erreur est survenue. Vérifiez les champs et réessayez.",
-    "calendlyCta": "Réserver un appel visio (Google Meet)",
-    "calendlySoon": "Le lien de réservation directe arrive bientôt. En attendant, contactez-nous sur WhatsApp pour fixer un appel.",
-    "whatsappCta": "Nous écrire sur WhatsApp",
-    "noCommitment": "Sans engagement. Réponse sous 24h."
+    "subtitle": "Réservez directement un appel visio de 30 minutes avec notre équipe.",
+    "calendlyCta": "Réserver un appel visio (Google Meet)"
   },
   "footer": {
-    "tagline": "L'IA qui fait décoller la croissance des PME.",
+    "tagline": "Le système IA complet qui fait décoller la croissance des PME.",
     "rights": "Tous droits réservés.",
     "linksTitle": "Navigation",
     "contactTitle": "Contact",

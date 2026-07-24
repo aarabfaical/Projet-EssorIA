@@ -11,7 +11,7 @@
   "hero": {
     "eyebrow": "Su socio de crecimiento con IA",
     "title": "Essoria",
-    "tagline": "La IA que impulsa el crecimiento de las PYMES.",
+    "tagline": "El sistema de IA completo que impulsa el crecimiento de las PYMES.",
     "subtitle": "Growth Marketing, Automatización, CRM y Agentes de IA en WhatsApp reunidos en un sistema completo de captación, calificación y conversión de sus prospectos.",
     "ctaPrimary": "Reservar una llamada",
     "ctaSecondary": "Ver nuestros servicios"
@@ -40,7 +40,6 @@
   "pricing": {
     "eyebrow": "Precios",
     "title": "Planes alineados con el mercado",
-    "subtitle": "Basados en un análisis del mercado marroquí de servicios de growth marketing e IA para PYMES.",
     "perMonth": "/mes",
     "mostPopular": "El más elegido",
     "cta": "Elegir este plan",
@@ -126,21 +125,11 @@
   "contact": {
     "eyebrow": "Contacto",
     "title": "Hablemos de su crecimiento",
-    "subtitle": "Complete el formulario o reserve directamente una videollamada.",
-    "name": "Nombre completo",
-    "email": "Email profesional",
-    "phone": "Teléfono (opcional)",
-    "message": "Su mensaje",
-    "submit": "Enviar",
-    "success": "¡Gracias! Su mensaje ha sido enviado, nos pondremos en contacto pronto.",
-    "error": "Ocurrió un error. Verifique los campos e intente de nuevo.",
-    "calendlyCta": "Reservar una videollamada (Google Meet)",
-    "calendlySoon": "El enlace de reserva directa llega pronto. Mientras tanto, contáctenos por WhatsApp para agendar una llamada.",
-    "whatsappCta": "Escríbanos por WhatsApp",
-    "noCommitment": "Sin compromiso. Respuesta en 24h."
+    "subtitle": "Reserve directamente una videollamada de 30 minutos con nuestro equipo.",
+    "calendlyCta": "Reservar una videollamada (Google Meet)"
   },
   "footer": {
-    "tagline": "La IA que impulsa el crecimiento de las PYMES.",
+    "tagline": "El sistema de IA completo que impulsa el crecimiento de las PYMES.",
     "rights": "Todos los derechos reservados.",
     "linksTitle": "Navegación",
     "contactTitle": "Contacto",

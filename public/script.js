@@ -81,19 +81,14 @@ async function initConfig() {
       : '#';
 
     const calendlyBtn = document.getElementById('calendlyBtn');
-    const calendlySoonNote = document.getElementById('calendlySoonNote');
-
-    if (calendlyBtn) {
-      if (config.calendlyUrl) {
-        calendlyBtn.href = config.calendlyUrl;
-      } else {
-        calendlyBtn.href = waLink;
-        if (calendlySoonNote) calendlySoonNote.hidden = false;
-      }
+    if (calendlyBtn && config.calendlyUrl) {
+      calendlyBtn.href = config.calendlyUrl;
     }
 
-    const whatsappBtn = document.getElementById('whatsappBtn');
-    if (whatsappBtn) whatsappBtn.href = waLink;
+    const finalCtaBtn = document.getElementById('finalCtaBtn');
+    if (finalCtaBtn && config.calendlyUrl) {
+      finalCtaBtn.href = config.calendlyUrl;
+    }
 
     const footerWhatsapp = document.getElementById('footerWhatsapp');
     if (footerWhatsapp) footerWhatsapp.href = waLink;
@@ -126,55 +121,6 @@ function initValuesMenu() {
         p.classList.toggle('active', p.getAttribute('data-value-panel') === target);
       });
     });
-  });
-}
-
-// ---------- Formulaire de contact ----------
-
-function initContactForm() {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-
-  const feedback = document.getElementById('contactFeedback');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    feedback.hidden = true;
-
-    const payload = {
-      name: document.getElementById('contactName').value.trim(),
-      email: document.getElementById('contactEmail').value.trim(),
-      phone: document.getElementById('contactPhone').value.trim(),
-      message: document.getElementById('contactMessage').value.trim(),
-    };
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json();
-
-      const dict = await loadLang(getSavedLang());
-      if (data.ok) {
-        feedback.textContent = getNested(dict, 'contact.success');
-        feedback.className = 'form-feedback success';
-        form.reset();
-      } else {
-        feedback.textContent = data.error || getNested(dict, 'contact.error');
-        feedback.className = 'form-feedback error';
-      }
-    } catch (err) {
-      feedback.textContent = 'Erreur réseau. Réessayez.';
-      feedback.className = 'form-feedback error';
-    } finally {
-      feedback.hidden = false;
-      submitBtn.disabled = false;
-    }
   });
 }
 
@@ -236,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initFooterYear();
   initConfig();
-  initContactForm();
   initNewsletterForm();
   initValuesMenu();
   setLanguage(getSavedLang());

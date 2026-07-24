@@ -10,7 +10,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const DATA_DIR = path.join(__dirname, 'data');
-const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
 const NEWSLETTER_FILE = path.join(DATA_DIR, 'newsletter.json');
 const BLOG_DIR = path.join(__dirname, 'content', 'blog');
 
@@ -79,33 +78,6 @@ async function sendNotificationEmail(subject, text) {
 function isValidEmail(email) {
   return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
-
-// ---------- Route : formulaire de contact ----------
-
-app.post('/api/contact', async (req, res) => {
-  const { name, email, phone, message } = req.body || {};
-
-  if (!name || !isValidEmail(email) || !message) {
-    return res.status(400).json({ ok: false, error: 'Nom, email valide et message sont requis.' });
-  }
-
-  const lead = {
-    name: String(name).slice(0, 200),
-    email: String(email).slice(0, 200),
-    phone: phone ? String(phone).slice(0, 50) : '',
-    message: String(message).slice(0, 2000),
-    createdAt: new Date().toISOString(),
-  };
-
-  appendToJsonArray(LEADS_FILE, lead);
-
-  await sendNotificationEmail(
-    `Nouveau lead Essoria - ${lead.name}`,
-    `Nom: ${lead.name}\nEmail: ${lead.email}\nTelephone: ${lead.phone || 'non fourni'}\n\nMessage:\n${lead.message}`
-  );
-
-  res.json({ ok: true });
-});
 
 // ---------- Route : inscription newsletter (collecte d'emails professionnels) ----------
 

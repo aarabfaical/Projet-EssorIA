@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Essoria — L'IA qui fait décoller la croissance des PME</title>
+<title>Essoria — Le système IA complet qui fait décoller la croissance des PME</title>
 <meta name="description" content="Essoria accompagne les PME avec Growth Marketing, Automation, CRM et Agents IA WhatsApp.">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -42,7 +42,7 @@
     <div class="container hero-inner">
       <p class="eyebrow" data-i18n="hero.eyebrow">Votre partenaire de croissance IA</p>
       <h1 class="hero-title">Essoria</h1>
-      <p class="hero-tagline" data-i18n="hero.tagline">L'IA qui fait décoller la croissance des PME.</p>
+      <p class="hero-tagline" data-i18n="hero.tagline">Le système IA complet qui fait décoller la croissance des PME.</p>
       <p class="hero-subtitle" data-i18n="hero.subtitle">Growth Marketing, Automatisation, CRM et Agents IA WhatsApp réunis dans un système complet.</p>
       <div class="hero-cta-group">
         <a href="#contact" class="btn btn-primary" data-i18n="hero.ctaPrimary">Réserver un appel</a>
@@ -87,7 +87,6 @@
     <div class="container">
       <p class="eyebrow" data-i18n="pricing.eyebrow">Tarifs</p>
       <h2 data-i18n="pricing.title">Des formules alignées sur le marché</h2>
-      <p class="section-subtitle" data-i18n="pricing.subtitle">Basé sur un benchmark du marché marocain.</p>
 
       <div class="grid grid-3 pricing-grid">
         <div class="card pricing-card">
@@ -217,51 +216,57 @@
       <p class="eyebrow" data-i18n="finalCta.eyebrow">Passez à l'action</p>
       <h2 data-i18n="finalCta.title">Prêt à transformer votre PME en machine à croissance ?</h2>
       <p class="section-subtitle" data-i18n="finalCta.subtitle">Un premier appel de 30 minutes suffit.</p>
-      <a href="#contact" class="btn btn-primary btn-lg" data-i18n="finalCta.button">Réserver mon audit gratuit</a>
+      <a id="finalCtaBtn" href="https://calendly.com/consultation-gratuite-marketing-digital/diagnostic-ia-croissance-30-min" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-i18n="finalCta.button">Réserver mon audit gratuit</a>
+    </div>
+  </section>
+
+  <section class="brand-divider" aria-hidden="true">
+    <div class="container">
+      <svg class="brand-divider-svg" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="dividerLine" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#3E7BFA"/>
+            <stop offset="100%" stop-color="#F5B93E"/>
+          </linearGradient>
+          <radialGradient id="dividerNode" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#F5B93E"/>
+            <stop offset="100%" stop-color="#3E7BFA"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Connexions secondaires (esprit reseau IA) -->
+        <line x1="180" y1="150" x2="380" y2="70" stroke="#3E7BFA" stroke-width="1" opacity="0.25" stroke-dasharray="4 6"/>
+        <line x1="620" y1="95" x2="820" y2="150" stroke="#F5B93E" stroke-width="1" opacity="0.25" stroke-dasharray="4 6"/>
+        <line x1="380" y1="70" x2="620" y2="95" stroke="#7c93fa" stroke-width="1" opacity="0.2" stroke-dasharray="4 6"/>
+
+        <!-- Courbe de croissance -->
+        <path d="M 100 170 C 260 170, 300 110, 380 70 S 540 40, 620 95 S 760 150, 820 150 S 980 40, 1100 30"
+              fill="none" stroke="url(#dividerLine)" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+
+        <!-- Noeuds -->
+        <circle cx="100" cy="170" r="6" fill="url(#dividerNode)"/>
+        <circle cx="380" cy="70" r="5" fill="url(#dividerNode)"/>
+        <circle cx="620" cy="95" r="5" fill="url(#dividerNode)"/>
+        <circle cx="820" cy="150" r="5" fill="url(#dividerNode)"/>
+        <circle cx="1100" cy="30" r="7" fill="url(#dividerNode)"/>
+
+        <!-- Etincelles decoratives -->
+        <circle cx="220" cy="60" r="2" fill="#F5B93E" opacity="0.5"/>
+        <circle cx="500" cy="150" r="2" fill="#3E7BFA" opacity="0.5"/>
+        <circle cx="950" cy="90" r="2" fill="#F5B93E" opacity="0.5"/>
+      </svg>
     </div>
   </section>
 
   <section id="contact" class="section section-alt">
-    <div class="container contact-layout">
-      <div class="contact-intro">
-        <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
-        <h2 data-i18n="contact.title">Discutons de votre croissance</h2>
-        <p class="section-subtitle" data-i18n="contact.subtitle">Remplissez le formulaire ou réservez un appel.</p>
+    <div class="container contact-centered">
+      <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+      <h2 data-i18n="contact.title">Discutons de votre croissance</h2>
+      <p class="section-subtitle" data-i18n="contact.subtitle">Réservez directement un appel visio de 30 minutes avec notre équipe.</p>
 
-        <div class="cta-row">
-          <a id="calendlyBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary calendly-btn">
-            <span data-i18n="contact.calendlyCta">Réserver un appel visio (Google Meet)</span>
-          </a>
-          <a id="whatsappBtn" href="#" target="_blank" rel="noopener" class="btn btn-ghost whatsapp-btn">
-            <span data-i18n="contact.whatsappCta">Nous écrire sur WhatsApp</span>
-          </a>
-        </div>
-        <p id="calendlySoonNote" class="muted-note" data-i18n="contact.calendlySoon" hidden>
-          Le lien de réservation directe arrive bientôt.
-        </p>
-      </div>
-
-      <form id="contactForm" class="card form-card" novalidate>
-        <div class="form-field">
-          <label for="contactName" data-i18n="contact.name">Nom complet</label>
-          <input type="text" id="contactName" name="name" required maxlength="200">
-        </div>
-        <div class="form-field">
-          <label for="contactEmail" data-i18n="contact.email">Email professionnel</label>
-          <input type="email" id="contactEmail" name="email" required maxlength="200">
-        </div>
-        <div class="form-field">
-          <label for="contactPhone" data-i18n="contact.phone">Téléphone (optionnel)</label>
-          <input type="tel" id="contactPhone" name="phone" maxlength="50">
-        </div>
-        <div class="form-field">
-          <label for="contactMessage" data-i18n="contact.message">Votre message</label>
-          <textarea id="contactMessage" name="message" rows="4" required maxlength="2000"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block" data-i18n="contact.submit">Envoyer</button>
-        <p class="form-note" data-i18n="contact.noCommitment">Sans engagement. Réponse sous 24h.</p>
-        <p class="form-feedback" id="contactFeedback" hidden></p>
-      </form>
+      <a id="calendlyBtn" href="https://calendly.com/consultation-gratuite-marketing-digital/diagnostic-ia-croissance-30-min" target="_blank" rel="noopener" class="btn btn-primary btn-lg calendly-btn">
+        <span data-i18n="contact.calendlyCta">Réserver un appel visio (Google Meet)</span>
+      </a>
     </div>
   </section>
 
@@ -295,7 +300,7 @@
   <div class="container footer-inner">
     <div>
       <p class="logo">Essoria</p>
-      <p class="muted-note" data-i18n="footer.tagline">L'IA qui fait décoller la croissance des PME.</p>
+      <p class="muted-note" data-i18n="footer.tagline">Le système IA complet qui fait décoller la croissance des PME.</p>
     </div>
     <div>
       <p class="footer-title" data-i18n="footer.linksTitle">Navigation</p>
@@ -305,7 +310,7 @@
     </div>
     <div>
       <p class="footer-title" data-i18n="footer.contactTitle">Contact</p>
-      <a href="mailto:contact@dupa-media.com">contact@dupa-media.com</a>
+      <a href="mailto:support@essor-ia.com">support@essor-ia.com</a>
       <a id="footerWhatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
     </div>
     <div>

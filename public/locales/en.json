@@ -11,7 +11,7 @@
   "hero": {
     "eyebrow": "Your AI Growth Partner",
     "title": "Essoria",
-    "tagline": "The AI that launches SME growth.",
+    "tagline": "The complete AI system that launches SME growth.",
     "subtitle": "Growth Marketing, Automation, CRM and AI WhatsApp Agents combined into one complete system to acquire, qualify and convert your prospects.",
     "ctaPrimary": "Book a call",
     "ctaSecondary": "See our services"
@@ -40,7 +40,6 @@
   "pricing": {
     "eyebrow": "Pricing",
     "title": "Plans aligned with the market",
-    "subtitle": "Based on a benchmark of the Moroccan market for growth marketing and AI services for SMEs.",
     "perMonth": "/month",
     "mostPopular": "Most popular",
     "cta": "Choose this plan",
@@ -126,21 +125,11 @@
   "contact": {
     "eyebrow": "Contact",
     "title": "Let's talk about your growth",
-    "subtitle": "Fill out the form or book a video call directly.",
-    "name": "Full name",
-    "email": "Business email",
-    "phone": "Phone (optional)",
-    "message": "Your message",
-    "submit": "Send",
-    "success": "Thank you! Your message has been sent, we'll get back to you shortly.",
-    "error": "Something went wrong. Please check the fields and try again.",
-    "calendlyCta": "Book a video call (Google Meet)",
-    "calendlySoon": "Direct booking link coming soon. In the meantime, contact us on WhatsApp to schedule a call.",
-    "whatsappCta": "Message us on WhatsApp",
-    "noCommitment": "No commitment. Reply within 24h."
+    "subtitle": "Book a 30-minute video call with our team directly.",
+    "calendlyCta": "Book a video call (Google Meet)"
   },
   "footer": {
-    "tagline": "The AI that launches SME growth.",
+    "tagline": "The complete AI system that launches SME growth.",
     "rights": "All rights reserved.",
     "linksTitle": "Navigation",
     "contactTitle": "Contact",

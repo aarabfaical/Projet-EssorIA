@@ -9,7 +9,7 @@
   const ctx = canvas.getContext('2d');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const COLORS = ['#7c5cff', '#22e6c8'];
+  const COLORS = ['#3E7BFA', '#F5B93E'];
   const LINK_DISTANCE = 130;
   const MOUSE_RADIUS = 160;
 
@@ -70,7 +70,7 @@
         const dy = a.y - b.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < LINK_DISTANCE) {
-          ctx.strokeStyle = `rgba(124, 92, 255, ${0.12 * (1 - dist / LINK_DISTANCE)})`;
+          ctx.strokeStyle = `rgba(62, 123, 250, ${0.12 * (1 - dist / LINK_DISTANCE)})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -84,7 +84,7 @@
       const dym = particles[i].y - mouse.y;
       const distm = Math.sqrt(dxm * dxm + dym * dym);
       if (distm < MOUSE_RADIUS) {
-        ctx.strokeStyle = `rgba(34, 230, 200, ${0.25 * (1 - distm / MOUSE_RADIUS)})`;
+        ctx.strokeStyle = `rgba(245, 185, 62, ${0.25 * (1 - distm / MOUSE_RADIUS)})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);

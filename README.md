@@ -7,9 +7,9 @@ Site vitrine multilingue (FR/EN/ES/AR) pour présenter et commercialiser les ser
 - Pages Accueil / Services / Tarifs / À propos / Contact / Newsletter, en 4 langues (avec support RTL en arabe)
 - Blog statique (articles en Markdown)
 - Arrière-plan animé (particules connectées, réactif à la souris) sur toutes les pages
-- Formulaire de contact : sauvegarde le lead + envoie un email de notification
+- Contact : bouton de réservation directe d'un appel visio via Calendly (pas de formulaire)
 - Formulaire newsletter : collecte les emails professionnels (+ nom optionnel) pour vos campagnes emailing
-- Bouton "Réserver un appel" qui pointe vers Calendly, bouton WhatsApp (flottant + dédié)
+- Bouton WhatsApp flottant sur toutes les pages
 - Pages CGU et Politique de Confidentialité (droit marocain)
 
 ## Installation locale
@@ -28,8 +28,8 @@ Le site est alors accessible sur http://localhost:3000
 Pour Gmail : activez la validation en 2 étapes sur le compte, puis créez un "mot de passe d'application"
 (myaccount.google.com/apppasswords) à utiliser comme `SMTP_PASS`.
 
-Sans configuration SMTP, le site fonctionne quand même : les leads et inscrits à la newsletter sont sauvegardés dans
-`data/leads.json` et `data/newsletter.json`, mais aucun email n'est envoyé (un avertissement s'affiche dans les logs).
+Sans configuration SMTP, le site fonctionne quand même : les inscrits à la newsletter sont sauvegardés dans
+`data/newsletter.json`, mais aucun email n'est envoyé (un avertissement s'affiche dans les logs).
 
 ## Ajouter un article de blog
 
@@ -60,7 +60,7 @@ Si une traduction manque pour une langue, le site affiche automatiquement la ver
 
 ## Limites connues de ce MVP
 
-- Les leads/inscrits newsletter sont stockés en JSON local : adapté à un volume faible/moyen. Si le volume
+- Les inscrits newsletter sont stockés en JSON local : adapté à un volume faible/moyen. Si le volume
   augmente, migrer vers une vraie base de données (PostgreSQL, MongoDB...) ou un outil emailing dédié
   (Mailchimp, Brevo...).
 - Les traductions EN/ES/AR sont un premier jet généré automatiquement : à faire relire par un locuteur natif
@@ -68,5 +68,5 @@ Si une traduction manque pour une langue, le site affiche automatiquement la ver
 - Les pages CGU et Politique de Confidentialité sont un modèle de départ rédigé pour le contexte marocain :
   faites-les valider par un professionnel du droit avant publication, et complétez les informations légales
   de votre entreprise (ICE, RC...) marquées comme "à compléter".
-- Le lien Calendly doit être ajouté dans `.env` (`CALENDLY_URL`) dès qu'il existe ; en attendant, le bouton
-  redirige vers WhatsApp.
+- Le lien Calendly est configuré en dur dans `index.html` et via `.env` (`CALENDLY_URL`) ; mettez à jour
+  les deux si vous changez de lien.
