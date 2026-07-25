@@ -171,7 +171,8 @@
     "success": "Payment confirmed! We'll be in touch within 24h to get started.",
     "error": "Payment could not be completed. Please try again or contact us.",
     "perMonthShort": "/mo",
-    "perOnceShort": " (one-time)"
+    "perOnceShort": " (one-time)",
+    "currencyNote": "Charged {amount} {currency} via PayPal: your local currency isn't directly supported by PayPal."
   },
   "sitePage": {
     "hero": {

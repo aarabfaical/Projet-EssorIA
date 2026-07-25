@@ -171,7 +171,8 @@
     "success": "¡Pago confirmado! Nos pondremos en contacto en 24h para empezar.",
     "error": "No se pudo completar el pago. Inténtalo de nuevo o contáctanos.",
     "perMonthShort": "/mes",
-    "perOnceShort": " (pago único)"
+    "perOnceShort": " (pago único)",
+    "currencyNote": "Cobrado {amount} {currency} a través de PayPal: tu moneda local no es compatible directamente con PayPal."
   },
   "sitePage": {
     "hero": {

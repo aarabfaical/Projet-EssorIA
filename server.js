@@ -293,6 +293,16 @@ app.post('/api/paypal/create-order', async (req, res) => {
 
   const amount = entry[plan];
 
+  // PayPal ne traite pas toutes les devises locales (ex: MAD n'est pas supporte par
+  // l'API PayPal). Quand un "override" est defini pour le pays, la commande PayPal
+  // reelle est creee dans cette devise/montant, meme si le prix affiche au visiteur
+  // reste dans sa devise locale.
+  const paypalOverride = entry.paypal && entry.paypal.amounts && typeof entry.paypal.amounts[plan] === 'number'
+    ? entry.paypal
+    : null;
+  const chargeCurrency = paypalOverride ? paypalOverride.currency : entry.currency;
+  const chargeAmount = paypalOverride ? paypalOverride.amounts[plan] : amount;
+
   try {
     const accessToken = await getPayPalAccessToken();
 
@@ -308,8 +318,8 @@ app.post('/api/paypal/create-order', async (req, res) => {
           {
             description: productConfig.describe(plan, entry),
             amount: {
-              currency_code: entry.currency,
-              value: amount.toFixed(2),
+              currency_code: chargeCurrency,
+              value: chargeAmount.toFixed(2),
             },
           },
         ],

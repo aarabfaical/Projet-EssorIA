@@ -14,6 +14,11 @@ function getNested(obj, path) {
   return path.split('.').reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : null), obj);
 }
 
+function formatTemplate(str, vars) {
+  if (!str) return str;
+  return str.replace(/\{(\w+)\}/g, (match, key) => (vars[key] !== undefined ? vars[key] : match));
+}
+
 async function loadLang(lang) {
   const res = await fetch(`locales/${lang}.json`);
   if (!res.ok) throw new Error(`Impossible de charger la langue ${lang}`);
@@ -112,8 +117,8 @@ async function initConfig() {
 
 // ---------- Pays / devise / tarifs dynamiques ----------
 
-const SUPPORTED_COUNTRIES = ['MA', 'FR', 'BE', 'CH', 'CA'];
-const DEFAULT_COUNTRY = 'MA';
+const SUPPORTED_COUNTRIES = ['FR', 'BE', 'CH', 'CA'];
+const DEFAULT_COUNTRY = 'FR';
 const pricingFileCache = {};
 
 function getSavedCountry() {
@@ -247,6 +252,7 @@ async function openCheckout(planId) {
   const modal = document.getElementById('checkoutModal');
   const feedback = document.getElementById('checkoutFeedback');
   const unavailable = document.getElementById('checkoutUnavailable');
+  const currencyNote = document.getElementById('checkoutCurrencyNote');
   const buttonContainer = document.getElementById('paypalButtonContainer');
   if (!modal || !buttonContainer || !productConfig) return;
 
@@ -257,9 +263,28 @@ async function openCheckout(planId) {
   const amount = entry[planId];
   const perUnitKey = productConfig.billing === 'once' ? 'checkout.perOnceShort' : 'checkout.perMonthShort';
 
+  // PayPal ne traite pas toutes les devises locales (ex: MAD). Si un "override" existe
+  // pour ce pays, la commande PayPal reelle se fait dans cette devise/montant.
+  const paypalOverride = entry.paypal && typeof entry.paypal.amounts[planId] === 'number'
+    ? entry.paypal
+    : null;
+  const sdkCurrency = paypalOverride ? paypalOverride.currency : entry.currency;
+
   document.getElementById('checkoutModalTitle').textContent = getNested(dict, productConfig.labelKey) || planId;
   document.getElementById('checkoutModalPrice').textContent =
     `${formatPrice(amount, entry)}${getNested(dict, perUnitKey) || ''}`;
+
+  if (currencyNote) {
+    if (paypalOverride) {
+      currencyNote.textContent = formatTemplate(getNested(dict, 'checkout.currencyNote'), {
+        amount: paypalOverride.amounts[planId],
+        currency: paypalOverride.currency,
+      });
+      currencyNote.hidden = false;
+    } else {
+      currencyNote.hidden = true;
+    }
+  }
 
   feedback.hidden = true;
   unavailable.hidden = true;
@@ -275,7 +300,7 @@ async function openCheckout(planId) {
       return;
     }
 
-    await loadPayPalSdk(config.paypalClientId, entry.currency);
+    await loadPayPalSdk(config.paypalClientId, sdkCurrency);
 
     if (!window.paypal) {
       unavailable.hidden = false;

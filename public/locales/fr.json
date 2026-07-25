@@ -171,7 +171,8 @@
     "success": "Paiement confirmé ! Nous revenons vers vous sous 24h pour démarrer.",
     "error": "Le paiement n'a pas pu être finalisé. Réessayez ou contactez-nous.",
     "perMonthShort": "/mois",
-    "perOnceShort": " (paiement unique)"
+    "perOnceShort": " (paiement unique)",
+    "currencyNote": "Facturé {amount} {currency} via PayPal : votre devise locale n'est pas prise en charge directement par PayPal."
   },
   "sitePage": {
     "hero": {

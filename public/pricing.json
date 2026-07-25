@@ -1,5 +1,4 @@
 {
-  "MA": { "label": "Maroc", "currency": "MAD", "symbol": "DH", "symbolPosition": "after", "starter": 3900, "growth": 8900, "scale": 16900 },
   "FR": { "label": "France", "currency": "EUR", "symbol": "€", "symbolPosition": "after", "starter": 490, "growth": 990, "scale": 1990 },
   "BE": { "label": "Belgique", "currency": "EUR", "symbol": "€", "symbolPosition": "after", "starter": 450, "growth": 890, "scale": 1790 },
   "CH": { "label": "Suisse", "currency": "CHF", "symbol": "CHF", "symbolPosition": "before", "starter": 650, "growth": 1290, "scale": 2490 },
