@@ -100,9 +100,14 @@ async function initConfig() {
       siteCtaBtn.href = config.calendlyUrl;
     }
 
+    // Le bouton "Demander un devis" (offre Sur-mesure) ouvre une discussion WhatsApp
+    // avec un message pré-rempli, plutôt que Calendly, pour un premier contact plus direct.
     const quoteBtn = document.getElementById('surmesureQuoteBtn');
-    if (quoteBtn && config.calendlyUrl) {
-      quoteBtn.href = config.calendlyUrl;
+    if (quoteBtn && config.whatsappNumber) {
+      const quoteMessage = encodeURIComponent('Je veux demander un devis pour mon site');
+      quoteBtn.href = `https://wa.me/${config.whatsappNumber}?text=${quoteMessage}`;
+      quoteBtn.target = '_blank';
+      quoteBtn.rel = 'noopener';
     }
 
     const footerWhatsapp = document.getElementById('footerWhatsapp');
@@ -183,16 +188,17 @@ async function renderPricing(country) {
   }
 }
 
-async function renderSitePricing(country) {
+async function renderSitePricing() {
+  // "Votre site" affiche un prix fixe en USD pour tout le monde (pas de zone tarifaire),
+  // pour eviter d'avoir plusieurs offres differentes selon le pays sur cette rubrique.
   if (!document.getElementById('priceSiteEssentiel')) return;
   try {
-    const pricing = await loadPricingFile('site-pricing.json');
-    const entry = pricing[country] || pricing[DEFAULT_COUNTRY];
+    const entry = await loadPricingFile('site-pricing.json');
     setPriceText('priceSiteEssentiel', entry.essentiel, entry);
     setPriceText('priceSitePro', entry.pro, entry);
     // "surmesure" est affiché "Sur devis" (texte statique traduit), pas de montant a injecter.
   } catch (err) {
-    console.error('Impossible d\'afficher les tarifs "Votre site" localisés:', err);
+    console.error('Impossible d\'afficher les tarifs "Votre site":', err);
   }
 }
 
@@ -203,7 +209,7 @@ async function setCountry(country) {
   const switcher = document.getElementById('countrySwitcher');
   if (switcher) switcher.value = country;
 
-  await Promise.all([renderPricing(country), renderSitePricing(country)]);
+  await Promise.all([renderPricing(country), renderSitePricing()]);
   document.dispatchEvent(new CustomEvent('essoria:countrychange', { detail: { country } }));
 }
 
@@ -231,8 +237,9 @@ const CHECKOUT_PRODUCTS = {
   starter: { product: 'main', file: 'pricing.json', labelKey: 'pricing.starter.title', billing: 'monthly' },
   growth: { product: 'main', file: 'pricing.json', labelKey: 'pricing.growth.title', billing: 'monthly' },
   scale: { product: 'main', file: 'pricing.json', labelKey: 'pricing.scale.title', billing: 'monthly' },
-  essentiel: { product: 'site', file: 'site-pricing.json', labelKey: 'sitePage.pricing.essentiel.title', billing: 'once' },
-  pro: { product: 'site', file: 'site-pricing.json', labelKey: 'sitePage.pricing.pro.title', billing: 'once' },
+  // "flat: true" = prix unique en USD, sans variation par pays/zone.
+  essentiel: { product: 'site', file: 'site-pricing.json', labelKey: 'sitePage.pricing.essentiel.title', billing: 'once', flat: true },
+  pro: { product: 'site', file: 'site-pricing.json', labelKey: 'sitePage.pricing.pro.title', billing: 'once', flat: true },
   // "surmesure" n'a pas de prix fixe (sur devis) : pas de checkout, bouton "Demander un devis" -> Calendly.
 };
 
@@ -271,7 +278,7 @@ async function openCheckout(planId) {
   const dict = await loadLang(getSavedLang());
   const country = getSavedCountry() || DEFAULT_COUNTRY;
   const pricing = await loadPricingFile(productConfig.file);
-  const entry = pricing[country] || pricing[DEFAULT_COUNTRY];
+  const entry = productConfig.flat ? pricing : (pricing[country] || pricing[DEFAULT_COUNTRY]);
   const amount = entry[planId];
   const perUnitKey = productConfig.billing === 'once' ? 'checkout.perOnceShort' : 'checkout.perMonthShort';
 
