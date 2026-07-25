@@ -251,7 +251,9 @@ const CHECKOUT_PRODUCTS = {
     file: SITE_PRICING_FILE,
     // "surmesure" est une formule sur devis (pas de prix fixe) : volontairement exclue du checkout.
     plans: ['essentiel', 'pro'],
-    describe: (plan, entry) => `Essoria - Site vitrine, formule ${plan} (${entry.label})`,
+    // Prix unique en USD pour tout le monde (pas de zone tarifaire par pays).
+    flat: true,
+    describe: (plan) => `Essoria - Site vitrine, formule ${plan}`,
   },
 };
 
@@ -285,7 +287,7 @@ app.post('/api/paypal/create-order', async (req, res) => {
   const { plan, country, product } = req.body || {};
   const productConfig = CHECKOUT_PRODUCTS[product] || CHECKOUT_PRODUCTS.main;
   const pricing = loadPricingTable(productConfig.file);
-  const entry = pricing[country];
+  const entry = productConfig.flat ? pricing : pricing[country];
 
   if (!entry || !productConfig.plans.includes(plan) || typeof entry[plan] !== 'number') {
     return res.status(400).json({ ok: false, error: 'Formule ou pays invalide.' });
