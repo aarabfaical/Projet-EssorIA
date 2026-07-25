@@ -110,6 +110,14 @@ async function initConfig() {
       quoteBtn.rel = 'noopener';
     }
 
+    // Le lien "Des questions avant de vous engager ?" sous la grille de tarifs
+    // ouvre aussi une discussion WhatsApp avec un message pré-rempli.
+    const pricingWhatsappBtn = document.getElementById('pricingWhatsappBtn');
+    if (pricingWhatsappBtn && config.whatsappNumber) {
+      const pricingMessage = encodeURIComponent("Bonjour, j'ai une question avant de m'engager sur une offre Essoria.");
+      pricingWhatsappBtn.href = `https://wa.me/${config.whatsappNumber}?text=${pricingMessage}`;
+    }
+
     const footerWhatsapp = document.getElementById('footerWhatsapp');
     if (footerWhatsapp) footerWhatsapp.href = waLink;
 
