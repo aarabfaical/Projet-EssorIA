@@ -117,8 +117,16 @@ async function initConfig() {
 
 // ---------- Pays / devise / tarifs dynamiques ----------
 
-const SUPPORTED_COUNTRIES = ['FR', 'BE', 'CH', 'CA'];
-const DEFAULT_COUNTRY = 'FR';
+// Le site n'affiche que 2 devises (USD/EUR) + un tarif dédié Maroc.
+// "country" désigne ici une zone tarifaire : 'MA' (Maroc, dédié), 'EUR' (zone euro),
+// 'USD' (reste du monde + repli par défaut si l'IP n'est pas détectée).
+const SUPPORTED_COUNTRIES = ['MA', 'EUR', 'USD'];
+const DEFAULT_COUNTRY = 'USD';
+const EUROZONE_COUNTRIES = [
+  'AT', 'BE', 'HR', 'CY', 'EE', 'FI', 'FR', 'DE', 'GR', 'IE',
+  'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PT', 'SK', 'SI', 'ES',
+  'CH', 'AD', 'MC', 'SM', 'VA', 'ME', 'XK',
+];
 const pricingFileCache = {};
 
 function getSavedCountry() {
@@ -151,8 +159,12 @@ async function detectCountryByIP() {
     if (!res.ok) throw new Error('geo-IP indisponible');
     const data = await res.json();
     const code = (data.country_code || '').toUpperCase();
-    return SUPPORTED_COUNTRIES.includes(code) ? code : DEFAULT_COUNTRY;
+    if (code === 'MA') return 'MA';
+    if (EUROZONE_COUNTRIES.includes(code)) return 'EUR';
+    // Pays non reconnu comme zone euro (ou tout le reste du monde) : prix moyen en USD.
+    return 'USD';
   } catch (err) {
+    // IP non détectée : prix moyen en USD par défaut.
     console.warn('Détection pays par IP échouée, repli sur', DEFAULT_COUNTRY, err);
     return DEFAULT_COUNTRY;
   }
