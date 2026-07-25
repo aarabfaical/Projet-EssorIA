@@ -6,7 +6,8 @@
     "about": "À propos",
     "blog": "Blog",
     "contact": "Contact",
-    "newsletter": "Newsletter"
+    "newsletter": "Newsletter",
+    "site": "Votre site"
   },
   "hero": {
     "eyebrow": "Votre partenaire de croissance IA",
@@ -42,7 +43,7 @@
     "title": "Des formules alignées sur le marché",
     "perMonth": "/mois",
     "mostPopular": "Le plus choisi",
-    "cta": "Choisir cette formule",
+    "cta": "Payer maintenant",
     "starter": {
       "title": "Starter",
       "f1": "CRM de base configuré",
@@ -63,7 +64,8 @@
       "f2": "CRM sur mesure",
       "f3": "Dashboard de reporting temps réel",
       "f4": "Accompagnement stratégique dédié"
-    }
+    },
+    "callFirst": "Des questions avant de vous engager ? Réservez un appel gratuit."
   },
   "about": {
     "eyebrow": "À propos",
@@ -161,5 +163,113 @@
   "legal": {
     "languageNote": "Ce document juridique est rédigé en français, langue de référence pour toute question d'interprétation. Pour toute question, contactez-nous.",
     "backHome": "Retour à l'accueil"
+  },
+  "checkout": {
+    "eyebrow": "Paiement sécurisé",
+    "secureNote": "Paiement traité par PayPal. Vos données bancaires ne transitent jamais par nos serveurs.",
+    "unavailable": "Le paiement en ligne n'est pas encore configuré pour votre région. Contactez-nous pour finaliser votre commande.",
+    "success": "Paiement confirmé ! Nous revenons vers vous sous 24h pour démarrer.",
+    "error": "Le paiement n'a pas pu être finalisé. Réessayez ou contactez-nous.",
+    "perMonthShort": "/mois",
+    "perOnceShort": " (paiement unique)"
+  },
+  "sitePage": {
+    "hero": {
+      "eyebrow": "Votre site vitrine",
+      "title": "Votre entreprise existe. Sur Google, elle est invisible.",
+      "subtitle": "Un site vitrine professionnel, livré en 48 heures, qui donne à vos prospects une raison de vous faire confiance avant même le premier appel.",
+      "cta": "Explorer nos offres",
+      "badge": "Livré en 48 heures. Pas de retard."
+    },
+    "agitation": {
+      "eyebrow": "Le problème",
+      "title": "Chaque semaine sans site, c'est un client de moins",
+      "text": "Un client potentiel cherche votre nom sur Google avant de vous appeler. S'il ne trouve rien, ou tombe sur un site qui date de plusieurs années, il passe au concurrent suivant — celui qui, lui, a un site à jour. Vous perdez ce client sans même savoir qu'il a existé. Pendant ce temps, vous continuez à dépendre du bouche-à-oreille, un canal que vous ne contrôlez pas et qui ne suffit plus à remplir votre carnet de commandes."
+    },
+    "solution": {
+      "eyebrow": "Notre réponse",
+      "title": "Un site livré, pas un projet qui traîne",
+      "text": "Nous concevons et livrons votre site vitrine professionnel en 48 heures : présentation claire de votre activité, preuve de sérieux, coordonnées visibles, et une structure pensée pour convertir un visiteur en appel ou en message. Vous validez le contenu, nous livrons le site, il est en ligne."
+    },
+    "benefits": {
+      "eyebrow": "Pourquoi Essoria",
+      "title": "Trois raisons de nous confier votre site",
+      "b1": {
+        "title": "Un site prêt en 48 heures, pas en 3 mois",
+        "desc": "Vous passez commande, vous validez trois maquettes, votre site est en ligne — sans les allers-retours interminables qui font traîner un projet web pendant des semaines."
+      },
+      "b2": {
+        "title": "Un prix fixe, annoncé avant de commencer",
+        "desc": "Vous savez exactement ce que vous payez dès le premier échange ; aucune facture surprise en cours de projet, aucune ligne cachée à la livraison."
+      },
+      "b3": {
+        "title": "Assistance incluse pour vos modifications",
+        "desc": "L'assistance pour changer vos horaires, vos photos ou vos tarifs est incluse : vous nous contactez, nous nous en occupons."
+      }
+    },
+    "pricing": {
+      "eyebrow": "Formules",
+      "title": "Trois formules, un prix fixe annoncé avant de commencer",
+      "perOnce": "paiement unique",
+      "mostPopular": "Le plus choisi",
+      "cta": "Payer maintenant",
+      "essentiel": {
+        "title": "Essentiel",
+        "desc": "Pour exister en ligne rapidement, avec l'essentiel bien fait.",
+        "f1": "Jusqu'à 4 pages (accueil, services, à propos, contact)",
+        "f2": "Design adapté à votre activité",
+        "f3": "Formulaire de contact",
+        "f4": "Livraison en 48 heures"
+      },
+      "pro": {
+        "title": "Professionnel",
+        "desc": "Pour un site structuré qui transforme un visiteur en client.",
+        "f1": "5 à 8 pages, textes rédigés inclus",
+        "f2": "Référencement de base (SEO)",
+        "f3": "Intégration Google Maps et réseaux sociaux",
+        "f4": "Livraison en 72 heures"
+      },
+      "surmesure": {
+        "title": "Sur-mesure",
+        "desc": "Pour un site plus complet, avec des besoins spécifiques à votre activité. Prix et délai définis après étude de votre projet.",
+        "f1": "Pages illimitées selon vos besoins",
+        "f2": "Design entièrement personnalisé",
+        "f3": "Blog intégré et SEO avancé",
+        "f4": "Prix et délai communiqués avec le devis"
+      },
+      "quoteLabel": "Sur devis",
+      "quoteCta": "Demander un devis"
+    },
+    "faq": {
+      "eyebrow": "Questions fréquentes",
+      "title": "Ce que nos clients nous demandent le plus",
+      "q1": {
+        "q": "Combien de temps faut-il pour avoir mon site en ligne ?",
+        "a": "48 heures pour la formule Essentiel, 72 heures pour la formule Professionnelle, à partir du moment où vous nous transmettez vos contenus (textes, photos, logo). Le délai de la formule Sur-mesure vous est communiqué avec le devis, selon la complexité du projet."
+      },
+      "q2": {
+        "q": "Je n'ai ni textes ni photos professionnelles, est-ce un problème ?",
+        "a": "Non. La rédaction des textes est incluse dans les formules Professionnel et Sur-mesure, à partir d'un court entretien avec vous. Nous pouvons aussi intégrer des visuels professionnels si vous n'en avez pas."
+      },
+      "q3": {
+        "q": "Comment faire une modification sur mon site après la livraison ?",
+        "a": "Contactez-nous simplement : les modifications mineures (horaires, photos, tarifs) sont incluses dans votre formule et prises en charge par notre équipe, sans compétence technique requise de votre part."
+      },
+      "q4": {
+        "q": "Mon site apparaîtra-t-il sur Google ?",
+        "a": "Les formules Professionnel et Sur-mesure incluent un référencement de base (structure, vitesse, mots-clés de votre activité), ce qui vous donne une bonne base. Un bon positionnement sur des recherches précises demande ensuite un travail de référencement dans la durée, que nous pouvons également prendre en charge."
+      },
+      "q5": {
+        "q": "Que se passe-t-il si je veux changer quelque chose après la livraison ?",
+        "a": "Les ajustements mineurs des 15 jours suivant la livraison sont inclus. Au-delà, vous pouvez modifier le site vous-même ou nous confier une intervention ponctuelle."
+      }
+    },
+    "cta": {
+      "eyebrow": "Dernière étape",
+      "title": "Chaque semaine sans site est une semaine de clients qui vous trouvent chez le concurrent.",
+      "subtitle": "Nous prenons un nombre limité de nouveaux projets chaque mois pour garantir le délai de livraison à chaque client. Les places du mois sont attribuées par ordre d'inscription.",
+      "button": "Réserver mon créneau — appel gratuit de 20 minutes",
+      "note": "Aucun engagement. Nous évaluons votre projet et vous confirmons la formule adaptée avant toute décision de votre part."
+    }
   }
 }

@@ -17,6 +17,7 @@
     <nav class="main-nav" id="mainNav">
       <a href="#hero" data-i18n="nav.home">Accueil</a>
       <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="site-vitrine.html" data-i18n="nav.site">Votre site</a>
       <a href="#pricing" data-i18n="nav.pricing">Tarifs</a>
       <a href="#about" data-i18n="nav.about">À propos</a>
       <a href="blog.html" data-i18n="nav.blog">Blog</a>
@@ -30,6 +31,13 @@
         <option value="en">EN</option>
         <option value="es">ES</option>
         <option value="ar">AR</option>
+      </select>
+      <select id="countrySwitcher" class="lang-switcher country-switcher" aria-label="Choisir le pays">
+        <option value="MA">🇲🇦 MAD</option>
+        <option value="FR">🇫🇷 EUR</option>
+        <option value="BE">🇧🇪 EUR</option>
+        <option value="CH">🇨🇭 CHF</option>
+        <option value="CA">🇨🇦 CAD</option>
       </select>
       <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
@@ -91,43 +99,57 @@
       <div class="grid grid-3 pricing-grid">
         <div class="card pricing-card">
           <h3 data-i18n="pricing.starter.title">Starter</h3>
-          <p class="price">3 900 DH<span data-i18n="pricing.perMonth">/mois</span></p>
+          <p class="price"><span class="price-amount" id="priceStarter">3 900 DH</span><span data-i18n="pricing.perMonth">/mois</span></p>
           <ul class="feature-list">
             <li data-i18n="pricing.starter.f1">CRM de base configuré</li>
             <li data-i18n="pricing.starter.f2">Automatisation WhatsApp simple</li>
             <li data-i18n="pricing.starter.f3">1 rapport mensuel</li>
             <li data-i18n="pricing.starter.f4">Support par email</li>
           </ul>
-          <a href="#contact" class="btn btn-ghost" data-i18n="pricing.cta">Choisir cette formule</a>
+          <button type="button" class="btn btn-ghost btn-block checkout-btn" data-plan="starter" data-i18n="pricing.cta">Payer maintenant</button>
         </div>
 
         <div class="card pricing-card pricing-featured">
           <span class="badge" data-i18n="pricing.mostPopular">Le plus choisi</span>
           <h3 data-i18n="pricing.growth.title">Growth</h3>
-          <p class="price">8 900 DH<span data-i18n="pricing.perMonth">/mois</span></p>
+          <p class="price"><span class="price-amount" id="priceGrowth">8 900 DH</span><span data-i18n="pricing.perMonth">/mois</span></p>
           <ul class="feature-list">
             <li data-i18n="pricing.growth.f1">CRM avancé + automatisations</li>
             <li data-i18n="pricing.growth.f2">Agent IA WhatsApp de qualification</li>
             <li data-i18n="pricing.growth.f3">Reporting bi-mensuel</li>
             <li data-i18n="pricing.growth.f4">1 appel stratégique / mois</li>
           </ul>
-          <a href="#contact" class="btn btn-primary" data-i18n="pricing.cta">Choisir cette formule</a>
+          <button type="button" class="btn btn-primary btn-block checkout-btn" data-plan="growth" data-i18n="pricing.cta">Payer maintenant</button>
         </div>
 
         <div class="card pricing-card">
           <h3 data-i18n="pricing.scale.title">Scale</h3>
-          <p class="price">16 900 DH<span data-i18n="pricing.perMonth">/mois</span></p>
+          <p class="price"><span class="price-amount" id="priceScale">16 900 DH</span><span data-i18n="pricing.perMonth">/mois</span></p>
           <ul class="feature-list">
             <li data-i18n="pricing.scale.f1">IA WhatsApp multilingue full-funnel</li>
             <li data-i18n="pricing.scale.f2">CRM sur mesure</li>
             <li data-i18n="pricing.scale.f3">Dashboard temps réel</li>
             <li data-i18n="pricing.scale.f4">Accompagnement dédié</li>
           </ul>
-          <a href="#contact" class="btn btn-ghost" data-i18n="pricing.cta">Choisir cette formule</a>
+          <button type="button" class="btn btn-ghost btn-block checkout-btn" data-plan="scale" data-i18n="pricing.cta">Payer maintenant</button>
         </div>
       </div>
+      <p class="pricing-note"><a href="#contact" data-i18n="pricing.callFirst">Des questions avant de vous engager ? Réservez un appel gratuit.</a></p>
     </div>
   </section>
+
+  <div id="checkoutModal" class="modal-overlay" hidden>
+    <div class="modal-box card" role="dialog" aria-modal="true" aria-labelledby="checkoutModalTitle">
+      <button type="button" class="modal-close" id="checkoutModalClose" aria-label="Fermer">✕</button>
+      <p class="eyebrow" data-i18n="checkout.eyebrow">Paiement sécurisé</p>
+      <h3 id="checkoutModalTitle"></h3>
+      <p class="checkout-price" id="checkoutModalPrice"></p>
+      <p class="muted-note" data-i18n="checkout.secureNote">Paiement traité par PayPal. Vos données bancaires ne transitent jamais par nos serveurs.</p>
+      <div id="paypalButtonContainer"></div>
+      <p class="form-feedback" id="checkoutFeedback" hidden></p>
+      <p class="checkout-unavailable muted-note" id="checkoutUnavailable" data-i18n="checkout.unavailable" hidden>Le paiement en ligne n'est pas encore configuré. Contactez-nous pour finaliser votre commande.</p>
+    </div>
+  </div>
 
   <section id="about" class="section">
     <div class="container">
@@ -305,6 +327,7 @@
     <div>
       <p class="footer-title" data-i18n="footer.linksTitle">Navigation</p>
       <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="site-vitrine.html" data-i18n="nav.site">Votre site</a>
       <a href="#pricing" data-i18n="nav.pricing">Tarifs</a>
       <a href="blog.html" data-i18n="nav.blog">Blog</a>
     </div>

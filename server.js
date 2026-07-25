@@ -11,10 +11,21 @@ const PORT = process.env.PORT || 3000;
 
 const DATA_DIR = path.join(__dirname, 'data');
 const NEWSLETTER_FILE = path.join(DATA_DIR, 'newsletter.json');
+const ORDERS_FILE = path.join(DATA_DIR, 'orders.json');
 const BLOG_DIR = path.join(__dirname, 'content', 'blog');
+const PRICING_FILE = path.join(__dirname, 'public', 'pricing.json');
+const SITE_PRICING_FILE = path.join(__dirname, 'public', 'site-pricing.json');
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+// Pas de cache navigateur sur les fichiers statiques : evite qu'un visiteur (ou vous-meme
+// en test) voie une ancienne version des prix/textes apres une mise a jour du site.
+app.use(express.static(path.join(__dirname, 'public'), {
+  etag: false,
+  lastModified: false,
+  setHeaders: (res) => {
+    res.setHeader('Cache-Control', 'no-store, must-revalidate');
+  },
+}));
 
 // ---------- Helpers stockage JSON ----------
 
@@ -199,18 +210,190 @@ app.get('/api/blog/:slug', (req, res) => {
   });
 });
 
-// ---------- Config publique (pour le bouton Calendly) ----------
+// ---------- Config publique (pour le bouton Calendly + le SDK PayPal) ----------
 
 app.get('/api/config', (req, res) => {
   res.json({
     calendlyUrl: process.env.CALENDLY_URL || '',
     whatsappNumber: '212669069127',
+    paypalClientId: paypalEnabled ? process.env.PAYPAL_CLIENT_ID : '',
   });
+});
+
+// ---------- Paiement PayPal (cartes bancaires + compte PayPal) ----------
+
+const paypalEnabled = !!(process.env.PAYPAL_CLIENT_ID && process.env.PAYPAL_CLIENT_SECRET);
+const PAYPAL_MODE = process.env.PAYPAL_MODE === 'live' ? 'live' : 'sandbox';
+const PAYPAL_API_BASE = PAYPAL_MODE === 'live'
+  ? 'https://api-m.paypal.com'
+  : 'https://api-m.sandbox.paypal.com';
+
+function loadPricingTable(filePath) {
+  try {
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(raw);
+  } catch (err) {
+    console.error(`Erreur de lecture ${path.basename(filePath)}:`, err.message);
+    return {};
+  }
+}
+
+// Chaque produit vendable sur le site a son propre fichier de tarifs et ses
+// propres identifiants de formule, pour pouvoir ajouter d'autres offres sans
+// toucher a la logique de paiement existante.
+const CHECKOUT_PRODUCTS = {
+  main: {
+    file: PRICING_FILE,
+    plans: ['starter', 'growth', 'scale'],
+    describe: (plan, entry) => `Essoria - Formule ${plan} (${entry.label})`,
+  },
+  site: {
+    file: SITE_PRICING_FILE,
+    // "surmesure" est une formule sur devis (pas de prix fixe) : volontairement exclue du checkout.
+    plans: ['essentiel', 'pro'],
+    describe: (plan, entry) => `Essoria - Site vitrine, formule ${plan} (${entry.label})`,
+  },
+};
+
+async function getPayPalAccessToken() {
+  const credentials = Buffer.from(
+    `${process.env.PAYPAL_CLIENT_ID}:${process.env.PAYPAL_CLIENT_SECRET}`
+  ).toString('base64');
+
+  const res = await fetch(`${PAYPAL_API_BASE}/v1/oauth2/token`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${credentials}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'grant_type=client_credentials',
+  });
+
+  if (!res.ok) {
+    throw new Error(`Echec authentification PayPal (${res.status})`);
+  }
+
+  const data = await res.json();
+  return data.access_token;
+}
+
+app.post('/api/paypal/create-order', async (req, res) => {
+  if (!paypalEnabled) {
+    return res.status(503).json({ ok: false, error: 'Paiement en ligne non configure.' });
+  }
+
+  const { plan, country, product } = req.body || {};
+  const productConfig = CHECKOUT_PRODUCTS[product] || CHECKOUT_PRODUCTS.main;
+  const pricing = loadPricingTable(productConfig.file);
+  const entry = pricing[country];
+
+  if (!entry || !productConfig.plans.includes(plan) || typeof entry[plan] !== 'number') {
+    return res.status(400).json({ ok: false, error: 'Formule ou pays invalide.' });
+  }
+
+  const amount = entry[plan];
+
+  try {
+    const accessToken = await getPayPalAccessToken();
+
+    const orderRes = await fetch(`${PAYPAL_API_BASE}/v2/checkout/orders`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        intent: 'CAPTURE',
+        purchase_units: [
+          {
+            description: productConfig.describe(plan, entry),
+            amount: {
+              currency_code: entry.currency,
+              value: amount.toFixed(2),
+            },
+          },
+        ],
+      }),
+    });
+
+    const order = await orderRes.json();
+    if (!orderRes.ok || !order.id) {
+      throw new Error(order.message || 'Creation de commande PayPal echouee');
+    }
+
+    res.json({ ok: true, id: order.id });
+  } catch (err) {
+    console.error('Erreur create-order PayPal:', err.message);
+    res.status(500).json({ ok: false, error: 'Impossible de creer la commande.' });
+  }
+});
+
+app.post('/api/paypal/capture-order', async (req, res) => {
+  if (!paypalEnabled) {
+    return res.status(503).json({ ok: false, error: 'Paiement en ligne non configure.' });
+  }
+
+  const { orderId } = req.body || {};
+  if (!orderId) {
+    return res.status(400).json({ ok: false, error: 'Identifiant de commande manquant.' });
+  }
+
+  try {
+    const accessToken = await getPayPalAccessToken();
+
+    const captureRes = await fetch(`${PAYPAL_API_BASE}/v2/checkout/orders/${orderId}/capture`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const capture = await captureRes.json();
+    const status = capture.status;
+
+    if (!captureRes.ok || status !== 'COMPLETED') {
+      throw new Error(capture.message || `Statut de capture inattendu: ${status}`);
+    }
+
+    const purchaseUnit = capture.purchase_units && capture.purchase_units[0];
+    const capturedAmount = purchaseUnit
+      && purchaseUnit.payments
+      && purchaseUnit.payments.captures
+      && purchaseUnit.payments.captures[0]
+      && purchaseUnit.payments.captures[0].amount;
+    const payer = capture.payer || {};
+
+    const order = {
+      orderId,
+      status,
+      amount: capturedAmount ? capturedAmount.value : null,
+      currency: capturedAmount ? capturedAmount.currency_code : null,
+      payerEmail: payer.email_address || '',
+      payerName: payer.name ? `${payer.name.given_name || ''} ${payer.name.surname || ''}`.trim() : '',
+      capturedAt: new Date().toISOString(),
+    };
+
+    appendToJsonArray(ORDERS_FILE, order);
+
+    await sendNotificationEmail(
+      `Nouveau paiement Essoria - ${order.amount} ${order.currency}`,
+      `Commande: ${order.orderId}\nMontant: ${order.amount} ${order.currency}\nClient: ${order.payerName || 'non fourni'} (${order.payerEmail || 'email non fourni'})\nDate: ${order.capturedAt}`
+    );
+
+    res.json({ ok: true, order });
+  } catch (err) {
+    console.error('Erreur capture-order PayPal:', err.message);
+    res.status(500).json({ ok: false, error: 'Impossible de finaliser le paiement.' });
+  }
 });
 
 app.listen(PORT, () => {
   console.log(`Essoria en ligne sur http://localhost:${PORT}`);
   if (!emailEnabled) {
     console.warn('Attention : SMTP_USER/SMTP_PASS absents du .env - les emails ne seront pas envoyes (les donnees seront quand meme sauvegardees).');
+  }
+  if (!paypalEnabled) {
+    console.warn('Attention : PAYPAL_CLIENT_ID/PAYPAL_CLIENT_SECRET absents du .env - le paiement en ligne est desactive (message "indisponible" affiche aux visiteurs).');
   }
 });

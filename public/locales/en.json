@@ -6,7 +6,8 @@
     "about": "About",
     "blog": "Blog",
     "contact": "Contact",
-    "newsletter": "Newsletter"
+    "newsletter": "Newsletter",
+    "site": "Your website"
   },
   "hero": {
     "eyebrow": "Your AI Growth Partner",
@@ -42,7 +43,7 @@
     "title": "Plans aligned with the market",
     "perMonth": "/month",
     "mostPopular": "Most popular",
-    "cta": "Choose this plan",
+    "cta": "Pay now",
     "starter": {
       "title": "Starter",
       "f1": "Basic CRM setup",
@@ -63,7 +64,8 @@
       "f2": "Custom CRM",
       "f3": "Real-time reporting dashboard",
       "f4": "Dedicated strategic support"
-    }
+    },
+    "callFirst": "Questions before you commit? Book a free call."
   },
   "about": {
     "eyebrow": "About",
@@ -161,5 +163,113 @@
   "legal": {
     "languageNote": "This legal document is written in French, the reference language for any interpretation. Contact us with any questions.",
     "backHome": "Back to home"
+  },
+  "checkout": {
+    "eyebrow": "Secure payment",
+    "secureNote": "Payment processed by PayPal. Your card details never touch our servers.",
+    "unavailable": "Online payment isn't set up for your region yet. Contact us to finalize your order.",
+    "success": "Payment confirmed! We'll be in touch within 24h to get started.",
+    "error": "Payment could not be completed. Please try again or contact us.",
+    "perMonthShort": "/mo",
+    "perOnceShort": " (one-time)"
+  },
+  "sitePage": {
+    "hero": {
+      "eyebrow": "Your website",
+      "title": "Your business exists. On Google, it's invisible.",
+      "subtitle": "A professional website, delivered in 48 hours, that gives your prospects a reason to trust you before the first call.",
+      "cta": "Explore our plans",
+      "badge": "Delivered in 48 hours. No delays."
+    },
+    "agitation": {
+      "eyebrow": "The problem",
+      "title": "Every week without a website is one less client",
+      "text": "A potential client searches for your name on Google before calling you. If they find nothing, or land on a site that looks years out of date, they move on to the next competitor — the one with an up-to-date site. You lose that client without ever knowing they existed. Meanwhile, you keep relying on word of mouth, a channel you don't control and that's no longer enough to fill your order book."
+    },
+    "solution": {
+      "eyebrow": "Our answer",
+      "title": "A website delivered, not a project that drags on",
+      "text": "We design and deliver your professional website in 48 hours: a clear presentation of your business, proof of credibility, visible contact details, and a structure built to turn a visitor into a call or a message. You approve the content, we deliver the site, it goes live."
+    },
+    "benefits": {
+      "eyebrow": "Why Essoria",
+      "title": "Three reasons to trust us with your website",
+      "b1": {
+        "title": "A website ready in 48 hours, not 3 months",
+        "desc": "You place the order, approve one of three mockups, your site goes live — no endless back-and-forth dragging the project out for weeks."
+      },
+      "b2": {
+        "title": "A fixed price, announced before we start",
+        "desc": "You know exactly what you're paying from the first conversation; no surprise invoice mid-project, no hidden line at delivery."
+      },
+      "b3": {
+        "title": "Included assistance for your updates",
+        "desc": "Need to change your hours, photos, or prices? Our team handles it for you, included in your plan."
+      }
+    },
+    "pricing": {
+      "eyebrow": "Plans",
+      "title": "Three plans, one fixed price announced before we start",
+      "perOnce": "one-time payment",
+      "mostPopular": "Most popular",
+      "cta": "Pay now",
+      "essentiel": {
+        "title": "Essentiel",
+        "desc": "To get online fast, with the essentials done right.",
+        "f1": "Up to 4 pages (home, services, about, contact)",
+        "f2": "Design matched to your business",
+        "f3": "Contact form",
+        "f4": "Delivered in 48 hours"
+      },
+      "pro": {
+        "title": "Professional",
+        "desc": "For a structured site that turns visitors into clients.",
+        "f1": "5 to 8 pages, copywriting included",
+        "f2": "Basic search engine optimization (SEO)",
+        "f3": "Google Maps and social media integration",
+        "f4": "Delivered in 72 hours"
+      },
+      "surmesure": {
+        "title": "Custom",
+        "desc": "For a more complete site, built around your specific needs. Price and timeline set after reviewing your project.",
+        "f1": "Unlimited pages based on your needs",
+        "f2": "Fully custom design",
+        "f3": "Built-in blog and advanced SEO",
+        "f4": "Price and timeline provided with the quote"
+      },
+      "quoteLabel": "Custom quote",
+      "quoteCta": "Request a quote"
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "title": "What our clients ask us most",
+      "q1": {
+        "q": "How long until my site is live?",
+        "a": "48 hours for the Essentiel plan, 72 hours for the Professional plan, starting once you send us your content (text, photos, logo). The timeline for the Custom plan is provided with your quote, depending on the project's complexity."
+      },
+      "q2": {
+        "q": "I don't have professional copy or photos, is that a problem?",
+        "a": "No. Copywriting is included in the Professional and Custom plans, based on a short interview with you. We can also source professional visuals if you don't have any."
+      },
+      "q3": {
+        "q": "How do I make a change to my site after delivery?",
+        "a": "Just contact us: minor updates (hours, photos, prices) are included in your plan and handled by our team, no technical skills required on your end."
+      },
+      "q4": {
+        "q": "Will my site show up on Google?",
+        "a": "The Professional and Custom plans include basic SEO (structure, speed, keywords for your business), giving you a solid foundation. Ranking well on specific searches then requires ongoing SEO work, which we can also handle."
+      },
+      "q5": {
+        "q": "What happens if I want to change something after delivery?",
+        "a": "Minor adjustments within 15 days of delivery are included. Beyond that, you can edit the site yourself or ask us for a one-off update."
+      }
+    },
+    "cta": {
+      "eyebrow": "Last step",
+      "title": "Every week without a website is a week of clients finding your competitor instead.",
+      "subtitle": "We take on a limited number of new projects each month to guarantee delivery times for every client. Monthly slots are given on a first-come basis.",
+      "button": "Book my slot — free 20-minute call",
+      "note": "No commitment. We assess your project and confirm the right plan before you make any decision."
+    }
   }
 }

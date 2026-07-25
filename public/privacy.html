@@ -17,6 +17,7 @@
     <nav class="main-nav" id="mainNav">
       <a href="index.html#hero" data-i18n="nav.home">Accueil</a>
       <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <a href="site-vitrine.html" data-i18n="nav.site">Votre site</a>
       <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
       <a href="index.html#about" data-i18n="nav.about">À propos</a>
       <a href="blog.html" data-i18n="nav.blog">Blog</a>
@@ -30,6 +31,13 @@
         <option value="en">EN</option>
         <option value="es">ES</option>
         <option value="ar">AR</option>
+      </select>
+      <select id="countrySwitcher" class="lang-switcher country-switcher" aria-label="Choisir le pays">
+        <option value="MA">🇲🇦 MAD</option>
+        <option value="FR">🇫🇷 EUR</option>
+        <option value="BE">🇧🇪 EUR</option>
+        <option value="CH">🇨🇭 CHF</option>
+        <option value="CA">🇨🇦 CAD</option>
       </select>
       <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
@@ -58,10 +66,19 @@
       <li><strong>Prise de rendez-vous :</strong> lorsque vous réservez un appel via Calendly, ce service
       tiers collecte directement les informations nécessaires à la prise de rendez-vous, selon sa propre
       politique de confidentialité.</li>
-      <li><strong>Préférence de langue :</strong> stockée localement dans votre navigateur (localStorage),
-      non transmise à nos serveurs.</li>
+      <li><strong>Préférence de langue et de pays :</strong> stockées localement dans votre navigateur
+      (localStorage), non transmises à nos serveurs.</li>
+      <li><strong>Paiement en ligne :</strong> si vous réglez une formule par carte bancaire ou compte
+      PayPal, votre numéro de carte et vos identifiants de paiement sont saisis directement sur l'interface
+      de PayPal et ne transitent jamais par nos serveurs. Nous recevons uniquement la confirmation de la
+      transaction (identifiant de commande, montant, devise, nom et email associés au moyen de paiement)
+      afin de traiter votre commande et vous contacter.</li>
+      <li><strong>Pays de connexion :</strong> détecté automatiquement à partir de votre adresse IP, via un
+      service tiers de géolocalisation, uniquement pour afficher les tarifs dans la devise appropriée.
+      Cette information n'est pas conservée sur nos serveurs au-delà de l'affichage de la page.</li>
     </ul>
-    <p>Le Site ne collecte aucun mot de passe ni donnée de paiement.</p>
+    <p>Le Site ne collecte et ne stocke aucun mot de passe ni numéro de carte bancaire ; ces données sont
+    traitées exclusivement par PayPal, notre prestataire de paiement.</p>
 
     <h2>3. Finalités du traitement</h2>
     <ul class="legal-list">
@@ -83,8 +100,9 @@
 
     <h2>6. Destinataires des données</h2>
     <p>Vos données sont accessibles uniquement à l'équipe Essoria et, le cas échéant, à nos prestataires
-    techniques strictement nécessaires au fonctionnement du Site (hébergeur, service d'envoi d'emails).
-    Essoria ne vend ni ne loue vos données personnelles à des tiers.</p>
+    techniques strictement nécessaires au fonctionnement du Site (hébergeur, service d'envoi d'emails,
+    PayPal pour le traitement des paiements). Essoria ne vend ni ne loue vos données personnelles à des
+    tiers.</p>
 
     <h2>7. Cookies et traceurs</h2>
     <p>Le Site n'utilise pas de cookies de suivi publicitaire tiers. Seule votre préférence de langue est
@@ -126,6 +144,7 @@
     <div>
       <p class="footer-title" data-i18n="footer.linksTitle">Navigation</p>
       <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <a href="site-vitrine.html" data-i18n="nav.site">Votre site</a>
       <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
       <a href="blog.html" data-i18n="nav.blog">Blog</a>
     </div>

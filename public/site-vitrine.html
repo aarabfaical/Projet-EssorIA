@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Votre site vitrine — Essoria</title>
+<meta name="description" content="Un site vitrine professionnel livré en 10 jours, avec un prix fixe annoncé avant de commencer. Paiement sécurisé par carte ou PayPal.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="aiBackground" aria-hidden="true"></canvas>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">Essoria</a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#hero" data-i18n="nav.home">Accueil</a>
+      <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <a href="site-vitrine.html" data-i18n="nav.site">Votre site</a>
+      <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
+      <a href="index.html#about" data-i18n="nav.about">À propos</a>
+      <a href="blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+      <a href="index.html#newsletter" class="nav-cta" data-i18n="nav.newsletter">Newsletter</a>
+    </nav>
+
+    <div class="header-actions">
+      <select id="langSwitcher" class="lang-switcher" aria-label="Choisir la langue">
+        <option value="fr">FR</option>
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+        <option value="ar">AR</option>
+      </select>
+      <select id="countrySwitcher" class="lang-switcher country-switcher" aria-label="Choisir le pays">
+        <option value="MA">🇲🇦 MAD</option>
+        <option value="FR">🇫🇷 EUR</option>
+        <option value="BE">🇧🇪 EUR</option>
+        <option value="CH">🇨🇭 CHF</option>
+        <option value="CA">🇨🇦 CAD</option>
+      </select>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="siteHero" class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow" data-i18n="sitePage.hero.eyebrow">Votre site vitrine</p>
+      <h1 class="hero-title" data-i18n="sitePage.hero.title">Votre entreprise existe. Sur Google, elle est invisible.</h1>
+      <p class="hero-subtitle" data-i18n="sitePage.hero.subtitle">Un site vitrine professionnel, livré en 48 heures, qui donne à vos prospects une raison de vous faire confiance avant même le premier appel.</p>
+      <p class="hero-badge" data-i18n="sitePage.hero.badge">Livré en 48 heures. Pas de retard.</p>
+      <div class="hero-cta-group">
+        <a href="#sitePricing" class="btn btn-primary" data-i18n="sitePage.hero.cta">Explorer nos offres</a>
+      </div>
+    </div>
+    <div class="hero-glow" aria-hidden="true"></div>
+  </section>
+
+  <section id="siteAgitation" class="section narrative-section">
+    <div class="container narrative-container">
+      <p class="eyebrow" data-i18n="sitePage.agitation.eyebrow">Le problème</p>
+      <h2 data-i18n="sitePage.agitation.title">Chaque semaine sans site, c'est un client de moins</h2>
+      <p class="narrative-text" data-i18n="sitePage.agitation.text">Un client potentiel cherche votre nom sur Google avant de vous appeler...</p>
+    </div>
+  </section>
+
+  <section id="siteSolution" class="section section-alt narrative-section">
+    <div class="container narrative-container">
+      <p class="eyebrow" data-i18n="sitePage.solution.eyebrow">Notre réponse</p>
+      <h2 data-i18n="sitePage.solution.title">Un site livré, pas un projet qui traîne</h2>
+      <p class="narrative-text" data-i18n="sitePage.solution.text">Nous concevons et livrons votre site vitrine professionnel en 48 heures...</p>
+    </div>
+  </section>
+
+  <section id="siteBenefits" class="section">
+    <div class="container">
+      <p class="eyebrow" data-i18n="sitePage.benefits.eyebrow">Pourquoi Essoria</p>
+      <h2 data-i18n="sitePage.benefits.title">Trois raisons de nous confier votre site</h2>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h3 data-i18n="sitePage.benefits.b1.title">Un site prêt en 48 heures, pas en 3 mois</h3>
+          <p data-i18n="sitePage.benefits.b1.desc">Vous passez commande, vous validez trois maquettes, votre site est en ligne.</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="sitePage.benefits.b2.title">Un prix fixe, annoncé avant de commencer</h3>
+          <p data-i18n="sitePage.benefits.b2.desc">Vous savez exactement ce que vous payez dès le premier échange.</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="sitePage.benefits.b3.title">Assistance incluse pour vos modifications</h3>
+          <p data-i18n="sitePage.benefits.b3.desc">L'assistance pour changer vos horaires, vos photos ou vos tarifs est incluse : vous nous contactez, nous nous en occupons.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sitePricing" class="section section-alt">
+    <div class="container">
+      <p class="eyebrow" data-i18n="sitePage.pricing.eyebrow">Formules</p>
+      <h2 data-i18n="sitePage.pricing.title">Trois formules, un prix fixe annoncé avant de commencer</h2>
+
+      <div class="grid grid-3 pricing-grid">
+        <div class="card pricing-card">
+          <h3 data-i18n="sitePage.pricing.essentiel.title">Essentiel</h3>
+          <p class="pricing-desc" data-i18n="sitePage.pricing.essentiel.desc">Pour exister en ligne rapidement, avec l'essentiel bien fait.</p>
+          <p class="price"><span class="price-amount" id="priceSiteEssentiel">6 900 DH</span><span data-i18n="sitePage.pricing.perOnce">paiement unique</span></p>
+          <ul class="feature-list">
+            <li data-i18n="sitePage.pricing.essentiel.f1">Jusqu'à 4 pages (accueil, services, à propos, contact)</li>
+            <li data-i18n="sitePage.pricing.essentiel.f2">Design adapté à votre activité</li>
+            <li data-i18n="sitePage.pricing.essentiel.f3">Formulaire de contact</li>
+            <li data-i18n="sitePage.pricing.essentiel.f4">Livraison en 48 heures</li>
+          </ul>
+          <button type="button" class="btn btn-ghost btn-block checkout-btn" data-plan="essentiel" data-i18n="sitePage.pricing.cta">Payer maintenant</button>
+        </div>
+
+        <div class="card pricing-card pricing-featured">
+          <span class="badge" data-i18n="sitePage.pricing.mostPopular">Le plus choisi</span>
+          <h3 data-i18n="sitePage.pricing.pro.title">Professionnel</h3>
+          <p class="pricing-desc" data-i18n="sitePage.pricing.pro.desc">Pour un site structuré qui transforme un visiteur en client.</p>
+          <p class="price"><span class="price-amount" id="priceSitePro">13 900 DH</span><span data-i18n="sitePage.pricing.perOnce">paiement unique</span></p>
+          <ul class="feature-list">
+            <li data-i18n="sitePage.pricing.pro.f1">5 à 8 pages, textes rédigés inclus</li>
+            <li data-i18n="sitePage.pricing.pro.f2">Référencement de base (SEO)</li>
+            <li data-i18n="sitePage.pricing.pro.f3">Intégration Google Maps et réseaux sociaux</li>
+            <li data-i18n="sitePage.pricing.pro.f4">Livraison en 72 heures</li>
+          </ul>
+          <button type="button" class="btn btn-primary btn-block checkout-btn" data-plan="pro" data-i18n="sitePage.pricing.cta">Payer maintenant</button>
+        </div>
+
+        <div class="card pricing-card">
+          <h3 data-i18n="sitePage.pricing.surmesure.title">Sur-mesure</h3>
+          <p class="pricing-desc" data-i18n="sitePage.pricing.surmesure.desc">Pour un site plus complet, avec des besoins spécifiques à votre activité. Prix et délai définis après étude de votre projet.</p>
+          <p class="price quote-price" data-i18n="sitePage.pricing.quoteLabel">Sur devis</p>
+          <ul class="feature-list">
+            <li data-i18n="sitePage.pricing.surmesure.f1">Pages illimitées selon vos besoins</li>
+            <li data-i18n="sitePage.pricing.surmesure.f2">Design entièrement personnalisé</li>
+            <li data-i18n="sitePage.pricing.surmesure.f3">Blog intégré et SEO avancé</li>
+            <li data-i18n="sitePage.pricing.surmesure.f4">Prix et délai communiqués avec le devis</li>
+          </ul>
+          <a id="surmesureQuoteBtn" href="https://calendly.com/consultation-gratuite-marketing-digital/diagnostic-ia-croissance-30-min" target="_blank" rel="noopener" class="btn btn-ghost btn-block" data-i18n="sitePage.pricing.quoteCta">Demander un devis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="checkoutModal" class="modal-overlay" hidden>
+    <div class="modal-box card" role="dialog" aria-modal="true" aria-labelledby="checkoutModalTitle">
+      <button type="button" class="modal-close" id="checkoutModalClose" aria-label="Fermer">✕</button>
+      <p class="eyebrow" data-i18n="checkout.eyebrow">Paiement sécurisé</p>
+      <h3 id="checkoutModalTitle"></h3>
+      <p class="checkout-price" id="checkoutModalPrice"></p>
+      <p class="muted-note" data-i18n="checkout.secureNote">Paiement traité par PayPal. Vos données bancaires ne transitent jamais par nos serveurs.</p>
+      <div id="paypalButtonContainer"></div>
+      <p class="form-feedback" id="checkoutFeedback" hidden></p>
+      <p class="checkout-unavailable muted-note" id="checkoutUnavailable" data-i18n="checkout.unavailable" hidden>Le paiement en ligne n'est pas encore configuré. Contactez-nous pour finaliser votre commande.</p>
+    </div>
+  </div>
+
+  <section id="siteFaq" class="section">
+    <div class="container narrative-container">
+      <p class="eyebrow" data-i18n="sitePage.faq.eyebrow">Questions fréquentes</p>
+      <h2 data-i18n="sitePage.faq.title">Ce que nos clients nous demandent le plus</h2>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary data-i18n="sitePage.faq.q1.q">Combien de temps faut-il pour avoir mon site en ligne ?</summary>
+          <p data-i18n="sitePage.faq.q1.a">48 heures pour la formule Essentiel, 72 heures pour la formule Professionnelle. Le délai de la formule Sur-mesure vous est communiqué avec le devis.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="sitePage.faq.q2.q">Je n'ai ni textes ni photos professionnelles, est-ce un problème ?</summary>
+          <p data-i18n="sitePage.faq.q2.a">Non. La rédaction des textes est incluse dans les formules Professionnel et Sur-mesure.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="sitePage.faq.q3.q">Comment faire une modification sur mon site après la livraison ?</summary>
+          <p data-i18n="sitePage.faq.q3.a">Contactez-nous simplement : les modifications mineures sont incluses dans votre formule.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="sitePage.faq.q4.q">Mon site apparaîtra-t-il sur Google ?</summary>
+          <p data-i18n="sitePage.faq.q4.a">Les formules Professionnel et Sur-mesure incluent un référencement de base.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="sitePage.faq.q5.q">Que se passe-t-il si je veux changer quelque chose après la livraison ?</summary>
+          <p data-i18n="sitePage.faq.q5.a">Les ajustements mineurs des 15 jours suivant la livraison sont inclus.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="siteCta" class="final-cta">
+    <div class="container final-cta-inner">
+      <p class="eyebrow" data-i18n="sitePage.cta.eyebrow">Dernière étape</p>
+      <h2 data-i18n="sitePage.cta.title">Chaque semaine sans site est une semaine de clients qui vous trouvent chez le concurrent.</h2>
+      <p class="section-subtitle" data-i18n="sitePage.cta.subtitle">Nous prenons un nombre limité de nouveaux projets chaque mois pour garantir le délai de livraison à chaque client.</p>
+      <a id="siteCtaBtn" href="https://calendly.com/consultation-gratuite-marketing-digital/diagnostic-ia-croissance-30-min" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-i18n="sitePage.cta.button">Réserver mon créneau — appel gratuit de 20 minutes</a>
+      <p class="muted-note" data-i18n="sitePage.cta.note">Aucun engagement. Nous évaluons votre projet et vous confirmons la formule adaptée avant toute décision de votre part.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="logo">Essoria</p>
+      <p class="muted-note" data-i18n="footer.tagline">Le système IA complet qui fait décoller la croissance des PME.</p>
+    </div>
+    <div>
+      <p class="footer-title" data-i18n="footer.linksTitle">Navigation</p>
+      <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <a href="site-vitrine.html" data-i18n="nav.site">Votre site</a>
+      <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
+      <a href="blog.html" data-i18n="nav.blog">Blog</a>
+    </div>
+    <div>
+      <p class="footer-title" data-i18n="footer.contactTitle">Contact</p>
+      <a href="mailto:support@essor-ia.com">support@essor-ia.com</a>
+      <a id="footerWhatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div>
+      <p class="footer-title" data-i18n="footer.legalTitle">Légal</p>
+      <a href="terms.html" data-i18n="footer.terms">Conditions Générales d'Utilisation</a>
+      <a href="privacy.html" data-i18n="footer.privacy">Politique de Confidentialité</a>
+    </div>
+  </div>
+  <div class="container">
+    <p class="muted-note">© <span id="year"></span> Essoria — <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+  </div>
+</footer>
+
+<a id="floatingWhatsapp" href="#" target="_blank" rel="noopener" class="floating-whatsapp" data-i18n-aria="floatingWhatsapp.label" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" aria-hidden="true">
+    <path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.23.62 4.32 1.7 6.11L4 29l8.06-1.63a11.98 11.98 0 0 0 3.96.68C22.6 28.05 28 22.65 28 16.02 28 9.4 22.64 3 16.02 3Zm0 21.86c-1.27 0-2.5-.24-3.63-.71l-.26-.11-4.78.97.98-4.66-.17-.27a9.83 9.83 0 0 1-1.53-5.24c0-5.44 4.44-9.87 9.9-9.87 5.44 0 9.87 4.43 9.87 9.87 0 5.45-4.43 9.9-9.88 9.9Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.87 1.21 3.07c.15.2 2.09 3.19 5.06 4.47.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/>
+  </svg>
+</a>
+
+<script src="background.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
