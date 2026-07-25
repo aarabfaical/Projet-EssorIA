@@ -122,10 +122,9 @@ async function initConfig() {
 
 // ---------- Pays / devise / tarifs dynamiques ----------
 
-// Le site n'affiche que 2 devises (USD/EUR) + un tarif dédié Maroc.
-// "country" désigne ici une zone tarifaire : 'MA' (Maroc, dédié), 'EUR' (zone euro),
-// 'USD' (reste du monde + repli par défaut si l'IP n'est pas détectée).
-const SUPPORTED_COUNTRIES = ['MA', 'EUR', 'USD'];
+// Le site n'affiche que 2 devises : EUR (zone euro) et USD (reste du monde,
+// y compris le Maroc, + repli par défaut si l'IP n'est pas détectée).
+const SUPPORTED_COUNTRIES = ['EUR', 'USD'];
 const DEFAULT_COUNTRY = 'USD';
 const EUROZONE_COUNTRIES = [
   'AT', 'BE', 'HR', 'CY', 'EE', 'FI', 'FR', 'DE', 'GR', 'IE',
@@ -164,9 +163,8 @@ async function detectCountryByIP() {
     if (!res.ok) throw new Error('geo-IP indisponible');
     const data = await res.json();
     const code = (data.country_code || '').toUpperCase();
-    if (code === 'MA') return 'MA';
     if (EUROZONE_COUNTRIES.includes(code)) return 'EUR';
-    // Pays non reconnu comme zone euro (ou tout le reste du monde) : prix moyen en USD.
+    // Pays non reconnu comme zone euro (Maroc inclus, ou tout le reste du monde) : prix en USD.
     return 'USD';
   } catch (err) {
     // IP non détectée : prix moyen en USD par défaut.

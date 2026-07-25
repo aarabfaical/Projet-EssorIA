@@ -1,5 +1,4 @@
 {
-    "MA": { "label": "Maroc", "currency": "USD", "symbol": "$", "symbolPosition": "before", "starter": 420, "growth": 960, "scale": 1810 },
-    "EUR": { "label": "Europe", "currency": "EUR", "symbol": "€", "symbolPosition": "after", "starter": 490, "growth": 990, "scale": 1990 },
-    "USD": { "label": "International", "currency": "USD", "symbol": "$", "symbolPosition": "before", "starter": 490, "growth": 990, "scale": 1990 }
+  "EUR": { "label": "Europe", "currency": "EUR", "symbol": "€", "symbolPosition": "after", "starter": 490, "growth": 990, "scale": 1490 },
+  "USD": { "label": "International", "currency": "USD", "symbol": "$", "symbolPosition": "before", "starter": 490, "growth": 990, "scale": 1490 }
 }
