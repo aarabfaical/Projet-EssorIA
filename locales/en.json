@@ -1,0 +1,276 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "newsletter": "Newsletter",
+    "site": "Your website"
+  },
+  "hero": {
+    "eyebrow": "Your AI Growth Partner",
+    "title": "Essoria",
+    "tagline": "The complete AI system that launches SME growth.",
+    "subtitle": "Growth Marketing, Automation, CRM and AI WhatsApp Agents combined into one complete system to acquire, qualify and convert your prospects.",
+    "ctaPrimary": "Book a call",
+    "ctaSecondary": "See our services"
+  },
+  "services": {
+    "eyebrow": "Our services",
+    "title": "A complete system, not simple gigs",
+    "subtitle": "Four pillars working together to turn your visitors into customers.",
+    "growth": {
+      "title": "Growth Marketing",
+      "desc": "Qualified traffic acquisition through online advertising, SEO and conversion-focused content strategies."
+    },
+    "automation": {
+      "title": "Marketing Automation",
+      "desc": "Email/SMS sequences, lead scoring and automated journeys that work for you around the clock."
+    },
+    "crm": {
+      "title": "Tailored CRM",
+      "desc": "CRM setup tailored to your sales process, so you never lose track of a prospect again."
+    },
+    "ai": {
+      "title": "WhatsApp AI Agents",
+      "desc": "A conversational agent that answers, qualifies and hands off your hot prospects to your sales team."
+    }
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Plans aligned with the market",
+    "perMonth": "/month",
+    "mostPopular": "Most popular",
+    "cta": "Pay now",
+    "starter": {
+      "title": "Starter",
+      "f1": "Basic CRM setup",
+      "f2": "Simple WhatsApp automation (FAQ)",
+      "f3": "1 monthly performance report",
+      "f4": "Email support"
+    },
+    "growth": {
+      "title": "Growth",
+      "f1": "Advanced CRM + multi-channel automations",
+      "f2": "WhatsApp AI qualification agent",
+      "f3": "Bi-monthly reporting",
+      "f4": "1 strategy call per month"
+    },
+    "scale": {
+      "title": "Scale",
+      "f1": "Full-funnel multilingual WhatsApp AI",
+      "f2": "Custom CRM",
+      "f3": "Real-time reporting dashboard",
+      "f4": "Dedicated strategic support"
+    },
+    "callFirst": "Questions before you commit? Book a free call."
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Your growth, engineered as a system",
+    "text": "Essoria was born from a simple observation: most Moroccan SMEs endure their customer acquisition instead of steering it. Too many leads lost in spreadsheets, too many campaigns launched without tracking, too many WhatsApp messages left unanswered after 6pm.",
+    "text2": "We build a system for you where growth marketing, automation, CRM and artificial intelligence work together — not as separate services, but as a single machine designed to convert your visitors into customers, day and night.",
+    "process": {
+      "title": "Our 4-step method",
+      "s1": {
+        "title": "Free audit",
+        "desc": "30 minutes to assess your current acquisition and identify the leaks."
+      },
+      "s2": {
+        "title": "Fast deployment",
+        "desc": "CRM, automations and AI agent set up within one to two weeks."
+      },
+      "s3": {
+        "title": "Continuous qualification",
+        "desc": "Your prospects are automatically qualified, day and night, without any effort on your part."
+      },
+      "s4": {
+        "title": "Monthly optimization",
+        "desc": "Clear reporting and adjustments based on data, not guesswork."
+      }
+    }
+  },
+  "values": {
+    "title": "Our 5 non-negotiable values",
+    "v1": {
+      "title": "Measurable impact",
+      "desc": "Every action translates into measurable results: leads, sales, ROI."
+    },
+    "v2": {
+      "title": "Speed of execution",
+      "desc": "Fast deployment, without drawn-out project cycles."
+    },
+    "v3": {
+      "title": "Augmented intelligence",
+      "desc": "AI in service of human decisions, never as a replacement."
+    },
+    "v4": {
+      "title": "Total transparency",
+      "desc": "Clear reporting, no black box."
+    },
+    "v5": {
+      "title": "Long-term partnership",
+      "desc": "We commit to your growth, not to a one-off assignment."
+    },
+    "hint": "Click on a value to learn more"
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Resources & insights",
+    "subtitle": "Our thoughts on growth marketing, automation and AI for SMEs.",
+    "readMore": "Read article",
+    "back": "Back to blog",
+    "empty": "No articles available yet."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's talk about your growth",
+    "subtitle": "Book a 30-minute video call with our team directly.",
+    "calendlyCta": "Book a video call (Google Meet)"
+  },
+  "footer": {
+    "tagline": "The complete AI system that launches SME growth.",
+    "rights": "All rights reserved.",
+    "linksTitle": "Navigation",
+    "contactTitle": "Contact",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "legalTitle": "Legal"
+  },
+  "finalCta": {
+    "eyebrow": "Take action",
+    "title": "Ready to turn your SME into a growth machine?",
+    "subtitle": "A first 30-minute call is all it takes to assess your growth potential.",
+    "button": "Book my free audit"
+  },
+  "floatingWhatsapp": {
+    "label": "Chat on WhatsApp"
+  },
+  "newsletter": {
+    "eyebrow": "Newsletter",
+    "title": "Get our growth & AI insights",
+    "subtitle": "One email a month, zero spam: growth marketing, automation and AI tips for your SME.",
+    "name": "Name (optional)",
+    "email": "Business email",
+    "submit": "Subscribe to the newsletter",
+    "disclaimer": "Unsubscribe anytime. See our Privacy Policy.",
+    "success": "Thank you! You're now subscribed to the Essoria newsletter.",
+    "errorGeneric": "Something went wrong. Please check your email and try again.",
+    "errorExists": "This email is already subscribed to the newsletter."
+  },
+  "legal": {
+    "languageNote": "This legal document is written in French, the reference language for any interpretation. Contact us with any questions.",
+    "backHome": "Back to home"
+  },
+  "checkout": {
+    "eyebrow": "Secure payment",
+    "secureNote": "Payment processed by PayPal. Your card details never touch our servers.",
+    "unavailable": "Online payment isn't set up for your region yet. Contact us to finalize your order.",
+    "success": "Payment confirmed! We'll be in touch within 24h to get started.",
+    "error": "Payment could not be completed. Please try again or contact us.",
+    "perMonthShort": "/mo",
+    "perOnceShort": " (one-time)",
+    "currencyNote": "Charged {amount} {currency} via PayPal: your local currency isn't directly supported by PayPal."
+  },
+  "sitePage": {
+    "hero": {
+      "eyebrow": "Your website",
+      "title": "Your business exists. On Google, it's invisible.",
+      "subtitle": "A professional website, delivered in 48 hours, that gives your prospects a reason to trust you before the first call.",
+      "cta": "Explore our plans",
+      "badge": "Delivered in 48 hours. No delays."
+    },
+    "agitation": {
+      "eyebrow": "The problem",
+      "title": "Every week without a website is one less client",
+      "text": "A potential client searches for your name on Google before calling you. If they find nothing, or land on a site that looks years out of date, they move on to the next competitor — the one with an up-to-date site. You lose that client without ever knowing they existed. Meanwhile, you keep relying on word of mouth, a channel you don't control and that's no longer enough to fill your order book."
+    },
+    "solution": {
+      "eyebrow": "Our answer",
+      "title": "A website delivered, not a project that drags on",
+      "text": "We design and deliver your professional website in 48 hours: a clear presentation of your business, proof of credibility, visible contact details, and a structure built to turn a visitor into a call or a message. You approve the content, we deliver the site, it goes live."
+    },
+    "benefits": {
+      "eyebrow": "Why Essoria",
+      "title": "Three reasons to trust us with your website",
+      "b1": {
+        "title": "A website ready in 48 hours, not 3 months",
+        "desc": "You place the order, approve one of three mockups, your site goes live — no endless back-and-forth dragging the project out for weeks."
+      },
+      "b2": {
+        "title": "A fixed price, announced before we start",
+        "desc": "You know exactly what you're paying from the first conversation; no surprise invoice mid-project, no hidden line at delivery."
+      },
+      "b3": {
+        "title": "Included assistance for your updates",
+        "desc": "Need to change your hours, photos, or prices? Our team handles it for you, included in your plan."
+      }
+    },
+    "pricing": {
+      "eyebrow": "Plans",
+      "title": "Three plans, one fixed price announced before we start",
+      "perOnce": "one-time payment",
+      "mostPopular": "Most popular",
+      "cta": "Pay now",
+      "essentiel": {
+        "title": "Essentiel",
+        "desc": "To get online fast, with the essentials done right.",
+        "f1": "Up to 4 pages (home, services, about, contact)",
+        "f2": "Design matched to your business",
+        "f3": "Contact form",
+        "f4": "Delivered in 48 hours"
+      },
+      "pro": {
+        "title": "Professional",
+        "desc": "For a structured site that turns visitors into clients.",
+        "f1": "5 to 8 pages, copywriting included",
+        "f2": "Basic search engine optimization (SEO)",
+        "f3": "Google Maps and social media integration",
+        "f4": "Delivered in 72 hours"
+      },
+      "surmesure": {
+        "title": "Custom",
+        "desc": "For a more complete site, built around your specific needs. Price and timeline set after reviewing your project.",
+        "f1": "Unlimited pages based on your needs",
+        "f2": "Fully custom design",
+        "f3": "Built-in blog and advanced SEO",
+        "f4": "Price and timeline provided with the quote"
+      },
+      "quoteLabel": "Custom quote",
+      "quoteCta": "Request a quote"
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "title": "What our clients ask us most",
+      "q1": {
+        "q": "How long until my site is live?",
+        "a": "48 hours for the Essentiel plan, 72 hours for the Professional plan, starting once you send us your content (text, photos, logo). The timeline for the Custom plan is provided with your quote, depending on the project's complexity."
+      },
+      "q2": {
+        "q": "I don't have professional copy or photos, is that a problem?",
+        "a": "No. Copywriting is included in the Professional and Custom plans, based on a short interview with you. We can also source professional visuals if you don't have any."
+      },
+      "q3": {
+        "q": "How do I make a change to my site after delivery?",
+        "a": "Just contact us: minor updates (hours, photos, prices) are included in your plan and handled by our team, no technical skills required on your end."
+      },
+      "q4": {
+        "q": "Will my site show up on Google?",
+        "a": "The Professional and Custom plans include basic SEO (structure, speed, keywords for your business), giving you a solid foundation. Ranking well on specific searches then requires ongoing SEO work, which we can also handle."
+      },
+      "q5": {
+        "q": "What happens if I want to change something after delivery?",
+        "a": "Minor adjustments within 15 days of delivery are included. Beyond that, you can edit the site yourself or ask us for a one-off update."
+      }
+    },
+    "cta": {
+      "eyebrow": "Last step",
+      "title": "Every week without a website is a week of clients finding your competitor instead.",
+      "subtitle": "We take on a limited number of new projects each month to guarantee delivery times for every client. Monthly slots are given on a first-come basis.",
+      "button": "Book my slot — free 20-minute call",
+      "note": "No commitment. We assess your project and confirm the right plan before you make any decision."
+    }
+  }
+}

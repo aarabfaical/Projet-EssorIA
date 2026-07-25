@@ -1,0 +1,7 @@
+{
+  "MA": { "label": "Maroc", "currency": "USD", "symbol": "$", "symbolPosition": "before", "starter": 420, "growth": 960, "scale": 1810 },
+  "FR": { "label": "France", "currency": "EUR", "symbol": "€", "symbolPosition": "after", "starter": 490, "growth": 990, "scale": 1990 },
+  "BE": { "label": "Belgique", "currency": "EUR", "symbol": "€", "symbolPosition": "after", "starter": 450, "growth": 890, "scale": 1790 },
+  "CH": { "label": "Suisse", "currency": "EUR", "symbol": "€", "symbolPosition": "after", "starter": 690, "growth": 1390, "scale": 2690 },
+  "CA": { "label": "Canada", "currency": "USD", "symbol": "$", "symbolPosition": "before", "starter": 490, "growth": 990, "scale": 1990 }
+}

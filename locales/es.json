@@ -1,0 +1,276 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "pricing": "Precios",
+    "about": "Nosotros",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "newsletter": "Newsletter",
+    "site": "Tu sitio web"
+  },
+  "hero": {
+    "eyebrow": "Su socio de crecimiento con IA",
+    "title": "Essoria",
+    "tagline": "El sistema de IA completo que impulsa el crecimiento de las PYMES.",
+    "subtitle": "Growth Marketing, Automatización, CRM y Agentes de IA en WhatsApp reunidos en un sistema completo de captación, calificación y conversión de sus prospectos.",
+    "ctaPrimary": "Reservar una llamada",
+    "ctaSecondary": "Ver nuestros servicios"
+  },
+  "services": {
+    "eyebrow": "Nuestros servicios",
+    "title": "Un sistema completo, no simples servicios sueltos",
+    "subtitle": "Cuatro pilares que funcionan juntos para convertir a sus visitantes en clientes.",
+    "growth": {
+      "title": "Growth Marketing",
+      "desc": "Adquisición de tráfico calificado mediante publicidad online, SEO y estrategias de contenido orientadas a la conversión."
+    },
+    "automation": {
+      "title": "Marketing Automation",
+      "desc": "Secuencias de email/SMS, scoring de leads y recorridos automatizados que trabajan para usted las 24 horas."
+    },
+    "crm": {
+      "title": "CRM a medida",
+      "desc": "Configuración de un CRM adaptado a su proceso de ventas, para no perder nunca más un prospecto."
+    },
+    "ai": {
+      "title": "Agentes de IA en WhatsApp",
+      "desc": "Un agente conversacional que responde, califica y transfiere sus prospectos calificados a su equipo comercial."
+    }
+  },
+  "pricing": {
+    "eyebrow": "Precios",
+    "title": "Planes alineados con el mercado",
+    "perMonth": "/mes",
+    "mostPopular": "El más elegido",
+    "cta": "Pagar ahora",
+    "starter": {
+      "title": "Starter",
+      "f1": "CRM básico configurado",
+      "f2": "Automatización simple de WhatsApp (FAQ)",
+      "f3": "1 informe de rendimiento mensual",
+      "f4": "Soporte por email"
+    },
+    "growth": {
+      "title": "Growth",
+      "f1": "CRM avanzado + automatizaciones multicanal",
+      "f2": "Agente de IA de WhatsApp para calificación",
+      "f3": "Informes quincenales",
+      "f4": "1 llamada estratégica al mes"
+    },
+    "scale": {
+      "title": "Scale",
+      "f1": "IA de WhatsApp multilingüe de embudo completo",
+      "f2": "CRM a medida",
+      "f3": "Panel de informes en tiempo real",
+      "f4": "Acompañamiento estratégico dedicado"
+    },
+    "callFirst": "¿Preguntas antes de comprometerte? Reserva una llamada gratuita."
+  },
+  "about": {
+    "eyebrow": "Nosotros",
+    "title": "Su crecimiento, diseñado como un sistema",
+    "text": "Essoria nació de una constatación simple: la mayoría de las PYMES marroquíes sufren su captación de clientes en lugar de dirigirla. Demasiados leads perdidos en hojas de cálculo, demasiadas campañas lanzadas sin seguimiento, demasiados mensajes de WhatsApp sin respuesta después de las 18h.",
+    "text2": "Construimos para usted un sistema en el que growth marketing, automatización, CRM e inteligencia artificial trabajan juntos — no como servicios separados, sino como una única máquina diseñada para convertir a sus visitantes en clientes, día y noche.",
+    "process": {
+      "title": "Nuestro método en 4 pasos",
+      "s1": {
+        "title": "Auditoría gratuita",
+        "desc": "30 minutos para evaluar su captación actual e identificar las fugas."
+      },
+      "s2": {
+        "title": "Implementación rápida",
+        "desc": "CRM, automatizaciones y agente de IA configurados en una a dos semanas."
+      },
+      "s3": {
+        "title": "Calificación continua",
+        "desc": "Sus prospectos se califican automáticamente, día y noche, sin esfuerzo de su parte."
+      },
+      "s4": {
+        "title": "Optimización mensual",
+        "desc": "Informes claros y ajustes basados en datos, no en intuición."
+      }
+    }
+  },
+  "values": {
+    "title": "Nuestros 5 valores innegociables",
+    "v1": {
+      "title": "Impacto medible",
+      "desc": "Cada acción se traduce en resultados medibles: leads, ventas, ROI."
+    },
+    "v2": {
+      "title": "Velocidad de ejecución",
+      "desc": "Implementación rápida, sin ciclos de proyecto interminables."
+    },
+    "v3": {
+      "title": "Inteligencia aumentada",
+      "desc": "La IA al servicio de la decisión humana, nunca como reemplazo."
+    },
+    "v4": {
+      "title": "Transparencia total",
+      "desc": "Informes claros, sin cajas negras."
+    },
+    "v5": {
+      "title": "Asociación a largo plazo",
+      "desc": "Nos comprometemos con su crecimiento, no con una misión puntual."
+    },
+    "hint": "Haga clic en un valor para saber más"
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Recursos y análisis",
+    "subtitle": "Nuestras reflexiones sobre growth marketing, automatización e IA para PYMES.",
+    "readMore": "Leer artículo",
+    "back": "Volver al blog",
+    "empty": "Aún no hay artículos disponibles."
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "Hablemos de su crecimiento",
+    "subtitle": "Reserve directamente una videollamada de 30 minutos con nuestro equipo.",
+    "calendlyCta": "Reservar una videollamada (Google Meet)"
+  },
+  "footer": {
+    "tagline": "El sistema de IA completo que impulsa el crecimiento de las PYMES.",
+    "rights": "Todos los derechos reservados.",
+    "linksTitle": "Navegación",
+    "contactTitle": "Contacto",
+    "terms": "Términos de Uso",
+    "privacy": "Política de Privacidad",
+    "legalTitle": "Legal"
+  },
+  "finalCta": {
+    "eyebrow": "Pase a la acción",
+    "title": "¿Listo para convertir su PYME en una máquina de crecimiento?",
+    "subtitle": "Una primera llamada de 30 minutos basta para evaluar su potencial de crecimiento.",
+    "button": "Reservar mi auditoría gratuita"
+  },
+  "floatingWhatsapp": {
+    "label": "Chatear por WhatsApp"
+  },
+  "newsletter": {
+    "eyebrow": "Newsletter",
+    "title": "Reciba nuestros análisis de growth e IA",
+    "subtitle": "Un email al mes, cero spam: consejos de growth marketing, automatización e IA para su PYME.",
+    "name": "Nombre (opcional)",
+    "email": "Email profesional",
+    "submit": "Suscribirme a la newsletter",
+    "disclaimer": "Puede darse de baja en cualquier momento. Consulte nuestra Política de Privacidad.",
+    "success": "¡Gracias! Se ha suscrito a la newsletter de Essoria.",
+    "errorGeneric": "Ocurrió un error. Verifique su email e intente de nuevo.",
+    "errorExists": "Este email ya está suscrito a la newsletter."
+  },
+  "legal": {
+    "languageNote": "Este documento legal está redactado en francés, idioma de referencia para cualquier interpretación. Contáctenos si tiene alguna pregunta.",
+    "backHome": "Volver al inicio"
+  },
+  "checkout": {
+    "eyebrow": "Pago seguro",
+    "secureNote": "Pago procesado por PayPal. Tus datos bancarios nunca pasan por nuestros servidores.",
+    "unavailable": "El pago en línea aún no está disponible para tu región. Contáctanos para finalizar tu pedido.",
+    "success": "¡Pago confirmado! Nos pondremos en contacto en 24h para empezar.",
+    "error": "No se pudo completar el pago. Inténtalo de nuevo o contáctanos.",
+    "perMonthShort": "/mes",
+    "perOnceShort": " (pago único)",
+    "currencyNote": "Cobrado {amount} {currency} a través de PayPal: tu moneda local no es compatible directamente con PayPal."
+  },
+  "sitePage": {
+    "hero": {
+      "eyebrow": "Tu sitio web",
+      "title": "Tu empresa existe. En Google, es invisible.",
+      "subtitle": "Un sitio web profesional, entregado en 48 horas, que da a tus clientes potenciales una razón para confiar en ti antes incluso de la primera llamada.",
+      "cta": "Explorar nuestros planes",
+      "badge": "Entregado en 48 horas. Sin retrasos."
+    },
+    "agitation": {
+      "eyebrow": "El problema",
+      "title": "Cada semana sin sitio web es un cliente menos",
+      "text": "Un cliente potencial busca tu nombre en Google antes de llamarte. Si no encuentra nada, o llega a un sitio que parece de hace años, pasa al siguiente competidor — el que sí tiene un sitio actualizado. Pierdes a ese cliente sin siquiera saber que existió. Mientras tanto, sigues dependiendo del boca a boca, un canal que no controlas y que ya no basta para llenar tu agenda."
+    },
+    "solution": {
+      "eyebrow": "Nuestra respuesta",
+      "title": "Un sitio entregado, no un proyecto que se alarga",
+      "text": "Diseñamos y entregamos tu sitio web profesional en 48 horas: presentación clara de tu actividad, prueba de seriedad, datos de contacto visibles, y una estructura pensada para convertir a un visitante en una llamada o un mensaje. Apruebas el contenido, entregamos el sitio, queda en línea."
+    },
+    "benefits": {
+      "eyebrow": "Por qué Essoria",
+      "title": "Tres razones para confiarnos tu sitio",
+      "b1": {
+        "title": "Un sitio listo en 48 horas, no en 3 meses",
+        "desc": "Haces el pedido, apruebas una de tres maquetas, tu sitio queda en línea — sin idas y vueltas interminables que alargan el proyecto durante semanas."
+      },
+      "b2": {
+        "title": "Un precio fijo, anunciado antes de empezar",
+        "desc": "Sabes exactamente cuánto pagas desde la primera conversación; ninguna factura sorpresa durante el proyecto, ninguna línea oculta al entregar."
+      },
+      "b3": {
+        "title": "Asistencia incluida para tus cambios",
+        "desc": "¿Necesitas cambiar tus horarios, fotos o precios? Nuestro equipo se encarga por ti, incluido en tu plan."
+      }
+    },
+    "pricing": {
+      "eyebrow": "Planes",
+      "title": "Tres planes, un precio fijo anunciado antes de empezar",
+      "perOnce": "pago único",
+      "mostPopular": "El más elegido",
+      "cta": "Pagar ahora",
+      "essentiel": {
+        "title": "Esencial",
+        "desc": "Para existir en línea rápidamente, con lo esencial bien hecho.",
+        "f1": "Hasta 4 páginas (inicio, servicios, sobre nosotros, contacto)",
+        "f2": "Diseño adaptado a tu actividad",
+        "f3": "Formulario de contacto",
+        "f4": "Entrega en 48 horas"
+      },
+      "pro": {
+        "title": "Profesional",
+        "desc": "Para un sitio estructurado que convierte visitantes en clientes.",
+        "f1": "5 a 8 páginas, redacción de textos incluida",
+        "f2": "Optimización SEO básica",
+        "f3": "Integración con Google Maps y redes sociales",
+        "f4": "Entrega en 72 horas"
+      },
+      "surmesure": {
+        "title": "A medida",
+        "desc": "Para un sitio más completo, con necesidades específicas de tu actividad. Precio y plazo definidos tras estudiar tu proyecto.",
+        "f1": "Páginas ilimitadas según tus necesidades",
+        "f2": "Diseño totalmente personalizado",
+        "f3": "Blog integrado y SEO avanzado",
+        "f4": "Precio y plazo comunicados con el presupuesto"
+      },
+      "quoteLabel": "Bajo presupuesto",
+      "quoteCta": "Solicitar presupuesto"
+    },
+    "faq": {
+      "eyebrow": "Preguntas frecuentes",
+      "title": "Lo que más nos preguntan nuestros clientes",
+      "q1": {
+        "q": "¿Cuánto tiempo tarda en estar en línea mi sitio?",
+        "a": "48 horas para el plan Esencial, 72 horas para el plan Profesional, a partir del momento en que nos envías tus contenidos (textos, fotos, logo). El plazo del plan A medida se comunica junto con el presupuesto, según la complejidad del proyecto."
+      },
+      "q2": {
+        "q": "No tengo textos ni fotos profesionales, ¿es un problema?",
+        "a": "No. La redacción de textos está incluida en los planes Profesional y A medida, a partir de una breve entrevista contigo. También podemos incorporar imágenes profesionales si no tienes."
+      },
+      "q3": {
+        "q": "¿Cómo hago un cambio en mi sitio después de la entrega?",
+        "a": "Solo contáctanos: los cambios menores (horarios, fotos, precios) están incluidos en tu plan y los gestiona nuestro equipo, sin necesidad de conocimientos técnicos por tu parte."
+      },
+      "q4": {
+        "q": "¿Mi sitio aparecerá en Google?",
+        "a": "Los planes Profesional y A medida incluyen una optimización SEO básica (estructura, velocidad, palabras clave de tu actividad), lo que te da una buena base. Posicionarte bien en búsquedas específicas requiere después un trabajo de SEO continuo, que también podemos encargarnos de hacer."
+      },
+      "q5": {
+        "q": "¿Qué pasa si quiero cambiar algo después de la entrega?",
+        "a": "Los ajustes menores dentro de los 15 días posteriores a la entrega están incluidos. Después, puedes modificar el sitio tú mismo o encargarnos una intervención puntual."
+      }
+    },
+    "cta": {
+      "eyebrow": "Último paso",
+      "title": "Cada semana sin sitio web es una semana de clientes que te encuentran en la competencia.",
+      "subtitle": "Aceptamos un número limitado de proyectos nuevos cada mes para garantizar el plazo de entrega a cada cliente. Los cupos del mes se asignan por orden de inscripción.",
+      "button": "Reservar mi cita — llamada gratuita de 20 minutos",
+      "note": "Sin compromiso. Evaluamos tu proyecto y te confirmamos el plan adecuado antes de que tomes cualquier decisión."
+    }
+  }
+}
