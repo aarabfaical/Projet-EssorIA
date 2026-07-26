@@ -108,6 +108,7 @@ async function syncSubscriberToSheet(subscriber) {
         email: subscriber.email,
         date: subscriber.subscribedAt,
       }),
+      signal: AbortSignal.timeout(8000),
     });
   } catch (err) {
     console.error('Erreur synchronisation Google Sheet (newsletter):', err.message);
@@ -142,7 +143,8 @@ app.post('/api/newsletter', async (req, res) => {
     `Nom: ${subscriber.name || 'non fourni'}\nEmail: ${subscriber.email}\nDate: ${subscriber.subscribedAt}`
   );
 
-  await syncSubscriberToSheet(subscriber);
+  // Ne bloque pas la reponse HTTP : la synchronisation Sheet se fait en arriere-plan.
+  syncSubscriberToSheet(subscriber);
 
   res.json({ ok: true });
 });
