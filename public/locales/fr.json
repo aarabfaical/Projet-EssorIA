@@ -285,5 +285,17 @@
       "button": "Réserver mon créneau — appel gratuit de 20 minutes",
       "note": "Aucun engagement. Nous évaluons votre projet et vous confirmons la formule adaptée avant toute décision de votre part."
     }
+  },
+  "cookies": {
+    "text": "Nous utilisons des cookies pour mesurer l'audience du site et améliorer votre expérience. Vous pouvez accepter ou refuser ce suivi à tout moment.",
+    "accept": "Accepter",
+    "decline": "Refuser"
+  },
+  "thankyou": {
+    "eyebrow": "Paiement confirmé",
+    "title": "Merci ! Votre paiement a bien été reçu.",
+    "subtitle": "Dernière étape : contactez-nous sur WhatsApp pour démarrer votre projet. Nous vous répondons généralement en quelques minutes.",
+    "whatsappCta": "Démarrer mon projet sur WhatsApp",
+    "backHome": "Retour à l'accueil"
   }
 }

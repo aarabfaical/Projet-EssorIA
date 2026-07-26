@@ -285,5 +285,17 @@
       "button": "Book my slot — free 20-minute call",
       "note": "No commitment. We assess your project and confirm the right plan before you make any decision."
     }
+  },
+  "cookies": {
+    "text": "We use cookies to measure site traffic and improve your experience. You can accept or decline this tracking at any time.",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "thankyou": {
+    "eyebrow": "Payment confirmed",
+    "title": "Thank you! Your payment has been received.",
+    "subtitle": "Last step: contact us on WhatsApp to start your project. We usually reply within minutes.",
+    "whatsappCta": "Start my project on WhatsApp",
+    "backHome": "Back to homepage"
   }
 }

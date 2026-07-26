@@ -285,5 +285,17 @@
       "button": "Reservar mi cita — llamada gratuita de 20 minutos",
       "note": "Sin compromiso. Evaluamos tu proyecto y te confirmamos el plan adecuado antes de que tomes cualquier decisión."
     }
+  },
+  "cookies": {
+    "text": "Usamos cookies para medir el tráfico del sitio y mejorar tu experiencia. Puedes aceptar o rechazar este seguimiento en cualquier momento.",
+    "accept": "Aceptar",
+    "decline": "Rechazar"
+  },
+  "thankyou": {
+    "eyebrow": "Pago confirmado",
+    "title": "¡Gracias! Tu pago ha sido recibido.",
+    "subtitle": "Último paso: contáctanos por WhatsApp para comenzar tu proyecto. Solemos responder en pocos minutos.",
+    "whatsappCta": "Comenzar mi proyecto por WhatsApp",
+    "backHome": "Volver al inicio"
   }
 }
