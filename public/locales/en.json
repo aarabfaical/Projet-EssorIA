@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Your AI Growth Partner",
     "title": "Essoria",
-    "tagline": "The complete AI system that launches SME growth.",
+    "tagline": "The complete AI system that launches business growth.",
     "subtitle": "Growth Marketing, Automation, CRM and AI WhatsApp Agents combined into one complete system to acquire, qualify and convert your prospects.",
     "ctaPrimary": "Book a call",
     "ctaSecondary": "See our services"
@@ -40,7 +40,7 @@
   },
   "pricing": {
     "eyebrow": "Pricing",
-    "title": "Plans aligned with the market",
+    "title": "Plans designed around your needs",
     "perMonth": "/month",
     "mostPopular": "Most popular",
     "cta": "Pay now",
@@ -65,12 +65,15 @@
       "f3": "Real-time reporting dashboard",
       "f4": "Dedicated strategic support"
     },
-    "callFirst": "Questions before you commit?"
+    "callFirst": "Questions before you commit?",
+    "promoPrefix": "Audit worth",
+    "promoAmount": "200 USD",
+    "promoSuffix": "FREE"
   },
   "about": {
     "eyebrow": "About",
     "title": "Your growth, engineered as a system",
-    "text": "Essoria was born from a simple observation: most Moroccan SMEs endure their customer acquisition instead of steering it. Too many leads lost in spreadsheets, too many campaigns launched without tracking, too many WhatsApp messages left unanswered after 6pm.",
+    "text": "Essoria was born from a simple observation: most Moroccan businesses endure their customer acquisition instead of steering it. Too many leads lost in spreadsheets, too many campaigns launched without tracking, too many WhatsApp messages left unanswered after 6pm.",
     "text2": "We build a system for you where growth marketing, automation, CRM and artificial intelligence work together — not as separate services, but as a single machine designed to convert your visitors into customers, day and night.",
     "process": {
       "title": "Our 4-step method",
@@ -119,7 +122,7 @@
   "blog": {
     "eyebrow": "Blog",
     "title": "Resources & insights",
-    "subtitle": "Our thoughts on growth marketing, automation and AI for SMEs.",
+    "subtitle": "Our thoughts on growth marketing, automation and AI for businesses.",
     "readMore": "Read article",
     "back": "Back to blog",
     "empty": "No articles available yet."
@@ -131,7 +134,7 @@
     "calendlyCta": "Book a video call (Google Meet)"
   },
   "footer": {
-    "tagline": "The complete AI system that launches SME growth.",
+    "tagline": "The complete AI system that launches business growth.",
     "rights": "All rights reserved.",
     "linksTitle": "Navigation",
     "contactTitle": "Contact",
@@ -141,7 +144,7 @@
   },
   "finalCta": {
     "eyebrow": "Take action",
-    "title": "Ready to turn your SME into a growth machine?",
+    "title": "Ready to turn your business into a growth machine?",
     "subtitle": "A first 30-minute call is all it takes to assess your growth potential.",
     "button": "Book my free audit"
   },
@@ -151,7 +154,7 @@
   "newsletter": {
     "eyebrow": "Newsletter",
     "title": "Get our growth & AI insights",
-    "subtitle": "One email a month, zero spam: growth marketing, automation and AI tips for your SME.",
+    "subtitle": "One email a month, zero spam: growth marketing, automation and AI tips for your business.",
     "name": "Name (optional)",
     "email": "Business email",
     "submit": "Subscribe to the newsletter",
@@ -178,7 +181,7 @@
     "hero": {
       "eyebrow": "Your website",
       "title": "Your business exists. On Google, it's invisible.",
-      "subtitle": "A professional website, delivered in 48 hours, that gives your prospects a reason to trust you before the first call.",
+      "subtitle": "A professional, turnkey website, delivered in 48 hours, that gives your prospects a reason to trust you before the first call.",
       "cta": "Explore our plans",
       "badge": "Delivered in 48 hours. No delays."
     },
@@ -190,7 +193,7 @@
     "solution": {
       "eyebrow": "Our answer",
       "title": "A website delivered, not a project that drags on",
-      "text": "We design and deliver your professional website in 48 hours: a clear presentation of your business, proof of credibility, visible contact details, and a structure built to turn a visitor into a call or a message. You approve the content, we deliver the site, it goes live."
+      "text": "We design and deliver your professional, turnkey website in 48 hours: a clear presentation of your business, proof of credibility, visible contact details, and a structure built to turn a visitor into a call or a message. You approve the content, we deliver the site, it goes live."
     },
     "benefits": {
       "eyebrow": "Why Essoria",
@@ -210,25 +213,28 @@
     },
     "pricing": {
       "eyebrow": "Plans",
-      "title": "Three plans, one fixed price announced before we start",
+      "title": "Three turnkey plans, one fixed price announced before we start",
       "perOnce": "one-time payment",
       "mostPopular": "Most popular",
       "cta": "Pay now",
       "essentiel": {
         "title": "Essentiel",
         "desc": "To get online fast, with the essentials done right.",
-        "f1": "Up to 4 pages (home, services, about, contact)",
+        "f1": "Up to 5 pages (home, services, about, contact, legal pages)",
         "f2": "Design matched to your business",
         "f3": "Contact form",
-        "f4": "Delivered in 48 hours"
+        "f4": "Delivered in 48 hours",
+        "f5": "Copywriting included",
+        "f6": "WhatsApp button or direct call"
       },
       "pro": {
         "title": "Professional",
-        "desc": "For a structured site that turns visitors into clients.",
-        "f1": "5 to 8 pages, copywriting included",
+        "desc": "For a turnkey site that turns visitors into clients.",
+        "f1": "Up to 8 pages, copywriting included",
         "f2": "Basic search engine optimization (SEO)",
         "f3": "Google Maps and social media integration",
-        "f4": "Delivered in 72 hours"
+        "f4": "Delivered in 72 hours",
+        "f5": "WhatsApp button or direct call"
       },
       "surmesure": {
         "title": "Custom",
@@ -239,7 +245,10 @@
         "f4": "Price and timeline provided with the quote"
       },
       "quoteLabel": "Custom quote",
-      "quoteCta": "Request a quote"
+      "quoteCta": "Request a quote",
+      "promoPrefix": "Audit worth",
+      "promoAmount": "200 USD",
+      "promoSuffix": "FREE"
     },
     "faq": {
       "eyebrow": "Frequently asked questions",
@@ -263,6 +272,10 @@
       "q5": {
         "q": "What happens if I want to change something after delivery?",
         "a": "Minor adjustments within 15 days of delivery are included. Beyond that, you can edit the site yourself or ask us for a one-off update."
+      },
+      "q6": {
+        "q": "Is hosting and a domain name included?",
+        "a": "Yes, shared hosting and a domain name are included with every plan for 1 year."
       }
     },
     "cta": {

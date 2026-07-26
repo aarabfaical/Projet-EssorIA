@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Votre partenaire de croissance IA",
     "title": "Essoria",
-    "tagline": "Le système IA complet qui fait décoller la croissance des PME.",
+    "tagline": "Le système IA complet qui fait décoller la croissance des entreprises.",
     "subtitle": "Growth Marketing, Automatisation, CRM et Agents IA WhatsApp réunis dans un système complet d'acquisition, de qualification et de conversion de vos prospects.",
     "ctaPrimary": "Réserver un appel",
     "ctaSecondary": "Voir nos services"
@@ -40,7 +40,7 @@
   },
   "pricing": {
     "eyebrow": "Tarifs",
-    "title": "Des formules alignées sur le marché",
+    "title": "Des formules conçues selon vos besoins",
     "perMonth": "/mois",
     "mostPopular": "Le plus choisi",
     "cta": "Payer maintenant",
@@ -65,12 +65,15 @@
       "f3": "Dashboard de reporting temps réel",
       "f4": "Accompagnement stratégique dédié"
     },
-    "callFirst": "Des questions avant de vous engager ?"
+    "callFirst": "Des questions avant de vous engager ?",
+    "promoPrefix": "Audit d'une valeur de",
+    "promoAmount": "200 USD",
+    "promoSuffix": "OFFERT"
   },
   "about": {
     "eyebrow": "À propos",
     "title": "Votre croissance, pensée comme un système",
-    "text": "Essoria est né d'un constat simple : la plupart des PME marocaines subissent leur acquisition client au lieu de la piloter. Trop de leads perdus dans des tableurs, trop de campagnes lancées sans suivi, trop de messages WhatsApp laissés sans réponse après 18h.",
+    "text": "Essoria est né d'un constat simple : la plupart des entreprises marocaines subissent leur acquisition client au lieu de la piloter. Trop de leads perdus dans des tableurs, trop de campagnes lancées sans suivi, trop de messages WhatsApp laissés sans réponse après 18h.",
     "text2": "Nous construisons pour vous un système où growth marketing, automatisation, CRM et intelligence artificielle travaillent ensemble — pas comme des prestations séparées, mais comme une machine unique conçue pour convertir vos visiteurs en clients, jour et nuit.",
     "process": {
       "title": "Notre méthode en 4 étapes",
@@ -119,7 +122,7 @@
   "blog": {
     "eyebrow": "Blog",
     "title": "Ressources & analyses",
-    "subtitle": "Nos réflexions sur le growth marketing, l'automatisation et l'IA pour les PME.",
+    "subtitle": "Nos réflexions sur le growth marketing, l'automatisation et l'IA pour les entreprises.",
     "readMore": "Lire l'article",
     "back": "Retour au blog",
     "empty": "Aucun article disponible pour le moment."
@@ -131,7 +134,7 @@
     "calendlyCta": "Réserver un appel visio (Google Meet)"
   },
   "footer": {
-    "tagline": "Le système IA complet qui fait décoller la croissance des PME.",
+    "tagline": "Le système IA complet qui fait décoller la croissance des entreprises.",
     "rights": "Tous droits réservés.",
     "linksTitle": "Navigation",
     "contactTitle": "Contact",
@@ -141,7 +144,7 @@
   },
   "finalCta": {
     "eyebrow": "Passez à l'action",
-    "title": "Prêt à transformer votre PME en machine à croissance ?",
+    "title": "Prêt à transformer votre entreprise en machine à croissance ?",
     "subtitle": "Un premier appel de 30 minutes suffit pour évaluer votre potentiel de croissance.",
     "button": "Réserver mon audit gratuit"
   },
@@ -151,7 +154,7 @@
   "newsletter": {
     "eyebrow": "Newsletter",
     "title": "Recevez nos analyses growth & IA",
-    "subtitle": "Un email par mois, zéro spam : conseils growth marketing, automatisation et IA pour votre PME.",
+    "subtitle": "Un email par mois, zéro spam : conseils growth marketing, automatisation et IA pour votre entreprise.",
     "name": "Nom (optionnel)",
     "email": "Email professionnel",
     "submit": "M'inscrire à la newsletter",
@@ -178,7 +181,7 @@
     "hero": {
       "eyebrow": "Votre site vitrine",
       "title": "Votre entreprise existe. Sur Google, elle est invisible.",
-      "subtitle": "Un site vitrine professionnel, livré en 48 heures, qui donne à vos prospects une raison de vous faire confiance avant même le premier appel.",
+      "subtitle": "Un site vitrine professionnel et clé en main, livré en 48 heures, qui donne à vos prospects une raison de vous faire confiance avant même le premier appel.",
       "cta": "Explorer nos offres",
       "badge": "Livré en 48 heures. Pas de retard."
     },
@@ -190,7 +193,7 @@
     "solution": {
       "eyebrow": "Notre réponse",
       "title": "Un site livré, pas un projet qui traîne",
-      "text": "Nous concevons et livrons votre site vitrine professionnel en 48 heures : présentation claire de votre activité, preuve de sérieux, coordonnées visibles, et une structure pensée pour convertir un visiteur en appel ou en message. Vous validez le contenu, nous livrons le site, il est en ligne."
+      "text": "Nous concevons et livrons votre site vitrine professionnel et clé en main en 48 heures : présentation claire de votre activité, preuve de sérieux, coordonnées visibles, et une structure pensée pour convertir un visiteur en appel ou en message. Vous validez le contenu, nous livrons le site, il est en ligne."
     },
     "benefits": {
       "eyebrow": "Pourquoi Essoria",
@@ -210,25 +213,28 @@
     },
     "pricing": {
       "eyebrow": "Formules",
-      "title": "Trois formules, un prix fixe annoncé avant de commencer",
+      "title": "Trois formules clé en main, un prix fixe annoncé avant de commencer",
       "perOnce": "paiement unique",
       "mostPopular": "Le plus choisi",
       "cta": "Payer maintenant",
       "essentiel": {
         "title": "Essentiel",
         "desc": "Pour exister en ligne rapidement, avec l'essentiel bien fait.",
-        "f1": "Jusqu'à 4 pages (accueil, services, à propos, contact)",
+        "f1": "Jusqu'à 5 pages (accueil, services, à propos, contact, pages légales)",
         "f2": "Design adapté à votre activité",
         "f3": "Formulaire de contact",
-        "f4": "Livraison en 48 heures"
+        "f4": "Livraison en 48 heures",
+        "f5": "Textes rédigés inclus",
+        "f6": "Bouton WhatsApp ou appel direct"
       },
       "pro": {
         "title": "Professionnel",
-        "desc": "Pour un site structuré qui transforme un visiteur en client.",
-        "f1": "5 à 8 pages, textes rédigés inclus",
+        "desc": "Pour un site clé en main qui transforme un visiteur en client.",
+        "f1": "Jusqu'à 8 pages, textes rédigés inclus",
         "f2": "Référencement de base (SEO)",
         "f3": "Intégration Google Maps et réseaux sociaux",
-        "f4": "Livraison en 72 heures"
+        "f4": "Livraison en 72 heures",
+        "f5": "Bouton WhatsApp ou appel direct"
       },
       "surmesure": {
         "title": "Sur-mesure",
@@ -239,7 +245,10 @@
         "f4": "Prix et délai communiqués avec le devis"
       },
       "quoteLabel": "Sur devis",
-      "quoteCta": "Demander un devis"
+      "quoteCta": "Demander un devis",
+      "promoPrefix": "Audit d'une valeur de",
+      "promoAmount": "200 USD",
+      "promoSuffix": "OFFERT"
     },
     "faq": {
       "eyebrow": "Questions fréquentes",
@@ -263,6 +272,10 @@
       "q5": {
         "q": "Que se passe-t-il si je veux changer quelque chose après la livraison ?",
         "a": "Les ajustements mineurs des 15 jours suivant la livraison sont inclus. Au-delà, vous pouvez modifier le site vous-même ou nous confier une intervention ponctuelle."
+      },
+      "q6": {
+        "q": "L'hébergement et le nom de domaine sont-ils inclus ?",
+        "a": "Oui, l'hébergement groupé et un nom de domaine sont inclus avec toutes nos formules pendant 1 an."
       }
     },
     "cta": {

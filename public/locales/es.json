@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Su socio de crecimiento con IA",
     "title": "Essoria",
-    "tagline": "El sistema de IA completo que impulsa el crecimiento de las PYMES.",
+    "tagline": "El sistema de IA completo que impulsa el crecimiento de las empresas.",
     "subtitle": "Growth Marketing, Automatización, CRM y Agentes de IA en WhatsApp reunidos en un sistema completo de captación, calificación y conversión de sus prospectos.",
     "ctaPrimary": "Reservar una llamada",
     "ctaSecondary": "Ver nuestros servicios"
@@ -40,7 +40,7 @@
   },
   "pricing": {
     "eyebrow": "Precios",
-    "title": "Planes alineados con el mercado",
+    "title": "Planes diseñados según tus necesidades",
     "perMonth": "/mes",
     "mostPopular": "El más elegido",
     "cta": "Pagar ahora",
@@ -65,12 +65,15 @@
       "f3": "Panel de informes en tiempo real",
       "f4": "Acompañamiento estratégico dedicado"
     },
-    "callFirst": "¿Preguntas antes de comprometerte?"
+    "callFirst": "¿Preguntas antes de comprometerte?",
+    "promoPrefix": "Auditoría valorada en",
+    "promoAmount": "200 USD",
+    "promoSuffix": "GRATIS"
   },
   "about": {
     "eyebrow": "Nosotros",
     "title": "Su crecimiento, diseñado como un sistema",
-    "text": "Essoria nació de una constatación simple: la mayoría de las PYMES marroquíes sufren su captación de clientes en lugar de dirigirla. Demasiados leads perdidos en hojas de cálculo, demasiadas campañas lanzadas sin seguimiento, demasiados mensajes de WhatsApp sin respuesta después de las 18h.",
+    "text": "Essoria nació de una constatación simple: la mayoría de las empresas marroquíes sufren su captación de clientes en lugar de dirigirla. Demasiados leads perdidos en hojas de cálculo, demasiadas campañas lanzadas sin seguimiento, demasiados mensajes de WhatsApp sin respuesta después de las 18h.",
     "text2": "Construimos para usted un sistema en el que growth marketing, automatización, CRM e inteligencia artificial trabajan juntos — no como servicios separados, sino como una única máquina diseñada para convertir a sus visitantes en clientes, día y noche.",
     "process": {
       "title": "Nuestro método en 4 pasos",
@@ -119,7 +122,7 @@
   "blog": {
     "eyebrow": "Blog",
     "title": "Recursos y análisis",
-    "subtitle": "Nuestras reflexiones sobre growth marketing, automatización e IA para PYMES.",
+    "subtitle": "Nuestras reflexiones sobre growth marketing, automatización e IA para empresas.",
     "readMore": "Leer artículo",
     "back": "Volver al blog",
     "empty": "Aún no hay artículos disponibles."
@@ -131,7 +134,7 @@
     "calendlyCta": "Reservar una videollamada (Google Meet)"
   },
   "footer": {
-    "tagline": "El sistema de IA completo que impulsa el crecimiento de las PYMES.",
+    "tagline": "El sistema de IA completo que impulsa el crecimiento de las empresas.",
     "rights": "Todos los derechos reservados.",
     "linksTitle": "Navegación",
     "contactTitle": "Contacto",
@@ -141,7 +144,7 @@
   },
   "finalCta": {
     "eyebrow": "Pase a la acción",
-    "title": "¿Listo para convertir su PYME en una máquina de crecimiento?",
+    "title": "¿Listo para convertir su empresa en una máquina de crecimiento?",
     "subtitle": "Una primera llamada de 30 minutos basta para evaluar su potencial de crecimiento.",
     "button": "Reservar mi auditoría gratuita"
   },
@@ -151,7 +154,7 @@
   "newsletter": {
     "eyebrow": "Newsletter",
     "title": "Reciba nuestros análisis de growth e IA",
-    "subtitle": "Un email al mes, cero spam: consejos de growth marketing, automatización e IA para su PYME.",
+    "subtitle": "Un email al mes, cero spam: consejos de growth marketing, automatización e IA para su empresa.",
     "name": "Nombre (opcional)",
     "email": "Email profesional",
     "submit": "Suscribirme a la newsletter",
@@ -178,7 +181,7 @@
     "hero": {
       "eyebrow": "Tu sitio web",
       "title": "Tu empresa existe. En Google, es invisible.",
-      "subtitle": "Un sitio web profesional, entregado en 48 horas, que da a tus clientes potenciales una razón para confiar en ti antes incluso de la primera llamada.",
+      "subtitle": "Un sitio web profesional y llave en mano, entregado en 48 horas, que da a tus clientes potenciales una razón para confiar en ti antes incluso de la primera llamada.",
       "cta": "Explorar nuestros planes",
       "badge": "Entregado en 48 horas. Sin retrasos."
     },
@@ -190,7 +193,7 @@
     "solution": {
       "eyebrow": "Nuestra respuesta",
       "title": "Un sitio entregado, no un proyecto que se alarga",
-      "text": "Diseñamos y entregamos tu sitio web profesional en 48 horas: presentación clara de tu actividad, prueba de seriedad, datos de contacto visibles, y una estructura pensada para convertir a un visitante en una llamada o un mensaje. Apruebas el contenido, entregamos el sitio, queda en línea."
+      "text": "Diseñamos y entregamos tu sitio web profesional y llave en mano en 48 horas: presentación clara de tu actividad, prueba de seriedad, datos de contacto visibles, y una estructura pensada para convertir a un visitante en una llamada o un mensaje. Apruebas el contenido, entregamos el sitio, queda en línea."
     },
     "benefits": {
       "eyebrow": "Por qué Essoria",
@@ -210,25 +213,28 @@
     },
     "pricing": {
       "eyebrow": "Planes",
-      "title": "Tres planes, un precio fijo anunciado antes de empezar",
+      "title": "Tres planes llave en mano, un precio fijo anunciado antes de empezar",
       "perOnce": "pago único",
       "mostPopular": "El más elegido",
       "cta": "Pagar ahora",
       "essentiel": {
         "title": "Esencial",
         "desc": "Para existir en línea rápidamente, con lo esencial bien hecho.",
-        "f1": "Hasta 4 páginas (inicio, servicios, sobre nosotros, contacto)",
+        "f1": "Hasta 5 páginas (inicio, servicios, sobre nosotros, contacto, páginas legales)",
         "f2": "Diseño adaptado a tu actividad",
         "f3": "Formulario de contacto",
-        "f4": "Entrega en 48 horas"
+        "f4": "Entrega en 48 horas",
+        "f5": "Redacción de textos incluida",
+        "f6": "Botón de WhatsApp o llamada directa"
       },
       "pro": {
         "title": "Profesional",
-        "desc": "Para un sitio estructurado que convierte visitantes en clientes.",
-        "f1": "5 a 8 páginas, redacción de textos incluida",
+        "desc": "Para un sitio llave en mano que convierte visitantes en clientes.",
+        "f1": "Hasta 8 páginas, redacción de textos incluida",
         "f2": "Optimización SEO básica",
         "f3": "Integración con Google Maps y redes sociales",
-        "f4": "Entrega en 72 horas"
+        "f4": "Entrega en 72 horas",
+        "f5": "Botón de WhatsApp o llamada directa"
       },
       "surmesure": {
         "title": "A medida",
@@ -239,7 +245,10 @@
         "f4": "Precio y plazo comunicados con el presupuesto"
       },
       "quoteLabel": "Bajo presupuesto",
-      "quoteCta": "Solicitar presupuesto"
+      "quoteCta": "Solicitar presupuesto",
+      "promoPrefix": "Auditoría valorada en",
+      "promoAmount": "200 USD",
+      "promoSuffix": "GRATIS"
     },
     "faq": {
       "eyebrow": "Preguntas frecuentes",
@@ -263,6 +272,10 @@
       "q5": {
         "q": "¿Qué pasa si quiero cambiar algo después de la entrega?",
         "a": "Los ajustes menores dentro de los 15 días posteriores a la entrega están incluidos. Después, puedes modificar el sitio tú mismo o encargarnos una intervención puntual."
+      },
+      "q6": {
+        "q": "¿El hosting y el dominio están incluidos?",
+        "a": "Sí, el hosting compartido y un nombre de dominio están incluidos en todos los planes durante 1 año."
       }
     },
     "cta": {
