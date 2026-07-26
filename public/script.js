@@ -90,6 +90,13 @@ async function initConfig() {
       calendlyBtn.href = config.calendlyUrl;
     }
 
+    // Le bouton "Réserver un appel" du hero ouvre directement Calendly
+    // (au lieu de faire défiler jusqu'à la section Contact).
+    const heroCalendlyBtn = document.getElementById('heroCalendlyBtn');
+    if (heroCalendlyBtn && config.calendlyUrl) {
+      heroCalendlyBtn.href = config.calendlyUrl;
+    }
+
     const finalCtaBtn = document.getElementById('finalCtaBtn');
     if (finalCtaBtn && config.calendlyUrl) {
       finalCtaBtn.href = config.calendlyUrl;

@@ -301,6 +301,42 @@ h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
 
 html[dir="rtl"] .badge { right: auto; left: 24px; }
 
+/* ===== Ligne promo (audit offert) ===== */
+.promo-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: -6px 0 18px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff5f6d, #ffc371, #f5b93e, #ff5f6d);
+  background-size: 300% auto;
+  color: #08080f;
+  font-weight: 800;
+  font-size: 0.78rem;
+  text-align: center;
+  border: none;
+  animation: promoShine 4s linear infinite;
+  box-shadow: 0 0 16px rgba(255, 95, 109, 0.35);
+}
+.promo-strike {
+  text-decoration: line-through;
+  text-decoration-color: #c81e1e;
+  text-decoration-thickness: 2px;
+  opacity: 0.8;
+  font-weight: 600;
+}
+.promo-offer {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+@keyframes promoShine {
+  0% { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
 /* ===== About ===== */
 .about-grid {
   display: grid;
