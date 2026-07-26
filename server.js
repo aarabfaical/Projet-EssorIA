@@ -90,6 +90,30 @@ function isValidEmail(email) {
   return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+// ---------- Synchronisation Google Sheet (newsletter) ----------
+// Chaque nouvel inscrit est ajoute en temps reel au Google Sheet "Inscription
+// Newsletter EssorIA" via un webhook Google Apps Script. Best-effort : si la
+// synchronisation echoue, l'inscription locale (fichier JSON + email) reste valide.
+
+const sheetWebhookEnabled = !!(process.env.GOOGLE_SHEET_WEBHOOK_URL && process.env.GOOGLE_SHEET_WEBHOOK_TOKEN);
+
+async function syncSubscriberToSheet(subscriber) {
+  if (!sheetWebhookEnabled) return;
+  try {
+    const url = `${process.env.GOOGLE_SHEET_WEBHOOK_URL}?token=${encodeURIComponent(process.env.GOOGLE_SHEET_WEBHOOK_TOKEN)}`;
+    await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        name: subscriber.name,
+        email: subscriber.email,
+        date: subscriber.subscribedAt,
+      }),
+    });
+  } catch (err) {
+    console.error('Erreur synchronisation Google Sheet (newsletter):', err.message);
+  }
+}
+
 // ---------- Route : inscription newsletter (collecte d'emails professionnels) ----------
 
 app.post('/api/newsletter', async (req, res) => {
@@ -117,6 +141,8 @@ app.post('/api/newsletter', async (req, res) => {
     `Nouvel inscrit newsletter Essoria`,
     `Nom: ${subscriber.name || 'non fourni'}\nEmail: ${subscriber.email}\nDate: ${subscriber.subscribedAt}`
   );
+
+  await syncSubscriberToSheet(subscriber);
 
   res.json({ ok: true });
 });
