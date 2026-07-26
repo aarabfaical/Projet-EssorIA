@@ -3,8 +3,10 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const { marked } = require('marked');
+const { convertAmounts } = require('./currency');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 const DATA_DIR = path.join(__dirname, 'data');
 const NEWSLETTER_FILE = path.join(DATA_DIR, 'newsletter.json');
 const ORDERS_FILE = path.join(DATA_DIR, 'orders.json');
+const CARTS_FILE = path.join(DATA_DIR, 'carts.json');
 const BLOG_DIR = path.join(__dirname, 'content', 'blog');
 const PRICING_FILE = path.join(__dirname, 'public', 'pricing.json');
 const SITE_PRICING_FILE = path.join(__dirname, 'public', 'site-pricing.json');
@@ -47,6 +50,17 @@ function appendToJsonArray(filePath, entry) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, JSON.stringify(items, null, 2), 'utf-8');
   return items;
+}
+
+// Met a jour un element existant (recherche par predicat) sans casser les autres
+// entrees. Utilise pour marquer un panier comme "completed" une fois le paiement capture.
+function updateJsonArrayItem(filePath, matchFn, updates) {
+  const items = readJsonArray(filePath);
+  const idx = items.findIndex(matchFn);
+  if (idx === -1) return null;
+  items[idx] = { ...items[idx], ...updates };
+  fs.writeFileSync(filePath, JSON.stringify(items, null, 2), 'utf-8');
+  return items[idx];
 }
 
 // ---------- Email ----------
@@ -238,23 +252,29 @@ app.get('/api/blog/:slug', (req, res) => {
   });
 });
 
-// ---------- Config publique (pour le bouton Calendly + le SDK PayPal) ----------
+// ---------- Config publique (Calendly, SDK PayPal, identifiants de tracking) ----------
+//
+// Les identifiants de tracking (GTM/GA4/Meta/LinkedIn/Pinterest) sont optionnels et lus
+// depuis des variables d'environnement : tant qu'ils ne sont pas definis, le frontend ne
+// charge simplement aucun script de tracking correspondant (aucun code a redeployer pour
+// activer un outil plus tard, il suffit d'ajouter la variable d'environnement sur Railway).
 
 app.get('/api/config', (req, res) => {
   res.json({
     calendlyUrl: process.env.CALENDLY_URL || '',
     whatsappNumber: '212669069127',
     paypalClientId: paypalEnabled ? process.env.PAYPAL_CLIENT_ID : '',
+    tracking: {
+      gtmId: process.env.GTM_ID || '',
+      ga4Id: process.env.GA4_ID || '',
+      metaPixelId: process.env.META_PIXEL_ID || '',
+      linkedinPartnerId: process.env.LINKEDIN_PARTNER_ID || '',
+      pinterestTagId: process.env.PINTEREST_TAG_ID || '',
+    },
   });
 });
 
-// ---------- Paiement PayPal (cartes bancaires + compte PayPal) ----------
-
-const paypalEnabled = !!(process.env.PAYPAL_CLIENT_ID && process.env.PAYPAL_CLIENT_SECRET);
-const PAYPAL_MODE = process.env.PAYPAL_MODE === 'live' ? 'live' : 'sandbox';
-const PAYPAL_API_BASE = PAYPAL_MODE === 'live'
-  ? 'https://api-m.paypal.com'
-  : 'https://api-m.sandbox.paypal.com';
+// ---------- Tarifs (affichage + conversion devise locale) ----------
 
 function loadPricingTable(filePath) {
   try {
@@ -266,24 +286,113 @@ function loadPricingTable(filePath) {
   }
 }
 
-// Chaque produit vendable sur le site a son propre fichier de tarifs et ses
-// propres identifiants de formule, pour pouvoir ajouter d'autres offres sans
-// toucher a la logique de paiement existante.
+// Chaque produit vendable sur le site a son propre fichier de tarifs (toujours en USD,
+// source unique de verite) et ses propres identifiants de formule.
 const CHECKOUT_PRODUCTS = {
   main: {
     file: PRICING_FILE,
     plans: ['starter', 'growth', 'scale'],
-    describe: (plan, entry) => `Essoria - Formule ${plan} (${entry.label})`,
+    billing: 'monthly',
+    describe: (plan) => `Essoria - Formule ${plan} (abonnement mensuel)`,
   },
   site: {
     file: SITE_PRICING_FILE,
     // "surmesure" est une formule sur devis (pas de prix fixe) : volontairement exclue du checkout.
     plans: ['essentiel', 'pro'],
-    // Prix unique en USD pour tout le monde (pas de zone tarifaire par pays).
-    flat: true,
+    billing: 'once',
     describe: (plan) => `Essoria - Site vitrine, formule ${plan}`,
   },
 };
+
+function extractUsdAmounts(productKey) {
+  const productConfig = CHECKOUT_PRODUCTS[productKey];
+  const table = loadPricingTable(productConfig.file);
+  const amounts = {};
+  productConfig.plans.forEach((plan) => {
+    if (typeof table[plan] === 'number') amounts[plan] = table[plan];
+  });
+  return amounts;
+}
+
+// GET /api/pricing?product=main|site&country=FR
+// Renvoie les prix (converti en devise locale si possible et accepte par PayPal, sinon
+// USD) pour toutes les formules d'un produit en un seul appel.
+app.get('/api/pricing', async (req, res) => {
+  const productKey = CHECKOUT_PRODUCTS[req.query.product] ? req.query.product : 'main';
+  const country = req.query.country || '';
+
+  try {
+    const usdAmounts = extractUsdAmounts(productKey);
+    const result = await convertAmounts(usdAmounts, country);
+    res.json({ ok: true, ...result });
+  } catch (err) {
+    console.error('Erreur /api/pricing:', err.message);
+    const usdAmounts = extractUsdAmounts(productKey);
+    res.json({ ok: true, currency: 'USD', symbol: '$', symbolPosition: 'before', converted: false, amounts: usdAmounts });
+  }
+});
+
+// ---------- Panier (creation avant paiement, pour tracer les paniers abandonnes) ----------
+
+// Un panier est cree des le clic sur "Payer maintenant" (avant meme l'ouverture du
+// bouton PayPal). Il reste "pending" s'il n'est jamais suivi d'un paiement capture,
+// ce qui permet de retrouver les paniers abandonnes dans data/carts.json.
+app.post('/api/cart', async (req, res) => {
+  const { product, plan, country } = req.body || {};
+  const productConfig = CHECKOUT_PRODUCTS[product];
+
+  if (!productConfig || !productConfig.plans.includes(plan)) {
+    return res.status(400).json({ ok: false, error: 'Produit ou formule invalide.' });
+  }
+
+  try {
+    const usdAmounts = extractUsdAmounts(product);
+    const usdAmount = usdAmounts[plan];
+    if (typeof usdAmount !== 'number') {
+      return res.status(400).json({ ok: false, error: 'Tarif introuvable pour cette formule.' });
+    }
+
+    const priced = await convertAmounts({ [plan]: usdAmount }, country || '');
+
+    const cart = {
+      id: crypto.randomUUID(),
+      product,
+      plan,
+      country: country || '',
+      usdAmount,
+      currency: priced.currency,
+      amount: priced.amounts[plan],
+      converted: priced.converted,
+      status: 'pending',
+      orderId: null,
+      createdAt: new Date().toISOString(),
+    };
+
+    appendToJsonArray(CARTS_FILE, cart);
+
+    res.json({
+      ok: true,
+      cart: {
+        id: cart.id,
+        currency: cart.currency,
+        symbol: priced.symbol,
+        symbolPosition: priced.symbolPosition,
+        amount: cart.amount,
+      },
+    });
+  } catch (err) {
+    console.error('Erreur creation panier:', err.message);
+    res.status(500).json({ ok: false, error: 'Impossible de creer le panier.' });
+  }
+});
+
+// ---------- Paiement PayPal (cartes bancaires + compte PayPal) ----------
+
+const paypalEnabled = !!(process.env.PAYPAL_CLIENT_ID && process.env.PAYPAL_CLIENT_SECRET);
+const PAYPAL_MODE = process.env.PAYPAL_MODE === 'live' ? 'live' : 'sandbox';
+const PAYPAL_API_BASE = PAYPAL_MODE === 'live'
+  ? 'https://api-m.paypal.com'
+  : 'https://api-m.sandbox.paypal.com';
 
 async function getPayPalAccessToken() {
   const credentials = Buffer.from(
@@ -312,26 +421,18 @@ app.post('/api/paypal/create-order', async (req, res) => {
     return res.status(503).json({ ok: false, error: 'Paiement en ligne non configure.' });
   }
 
-  const { plan, country, product } = req.body || {};
-  const productConfig = CHECKOUT_PRODUCTS[product] || CHECKOUT_PRODUCTS.main;
-  const pricing = loadPricingTable(productConfig.file);
-  const entry = productConfig.flat ? pricing : pricing[country];
+  const { cartId } = req.body || {};
+  const carts = readJsonArray(CARTS_FILE);
+  const cart = carts.find((c) => c.id === cartId);
 
-  if (!entry || !productConfig.plans.includes(plan) || typeof entry[plan] !== 'number') {
-    return res.status(400).json({ ok: false, error: 'Formule ou pays invalide.' });
+  if (!cart || cart.status !== 'pending') {
+    return res.status(400).json({ ok: false, error: 'Panier introuvable ou deja traite.' });
   }
 
-  const amount = entry[plan];
-
-  // PayPal ne traite pas toutes les devises locales (ex: MAD n'est pas supporte par
-  // l'API PayPal). Quand un "override" est defini pour le pays, la commande PayPal
-  // reelle est creee dans cette devise/montant, meme si le prix affiche au visiteur
-  // reste dans sa devise locale.
-  const paypalOverride = entry.paypal && entry.paypal.amounts && typeof entry.paypal.amounts[plan] === 'number'
-    ? entry.paypal
-    : null;
-  const chargeCurrency = paypalOverride ? paypalOverride.currency : entry.currency;
-  const chargeAmount = paypalOverride ? paypalOverride.amounts[plan] : amount;
+  const productConfig = CHECKOUT_PRODUCTS[cart.product];
+  if (!productConfig) {
+    return res.status(400).json({ ok: false, error: 'Produit invalide.' });
+  }
 
   try {
     const accessToken = await getPayPalAccessToken();
@@ -346,10 +447,11 @@ app.post('/api/paypal/create-order', async (req, res) => {
         intent: 'CAPTURE',
         purchase_units: [
           {
-            description: productConfig.describe(plan, entry),
+            description: productConfig.describe(cart.plan),
+            custom_id: cart.id,
             amount: {
-              currency_code: chargeCurrency,
-              value: chargeAmount.toFixed(2),
+              currency_code: cart.currency,
+              value: Number(cart.amount).toFixed(2),
             },
           },
         ],
@@ -360,6 +462,8 @@ app.post('/api/paypal/create-order', async (req, res) => {
     if (!orderRes.ok || !order.id) {
       throw new Error(order.message || 'Creation de commande PayPal echouee');
     }
+
+    updateJsonArrayItem(CARTS_FILE, (c) => c.id === cartId, { status: 'awaiting_payment', paypalOrderId: order.id });
 
     res.json({ ok: true, id: order.id });
   } catch (err) {
@@ -373,7 +477,7 @@ app.post('/api/paypal/capture-order', async (req, res) => {
     return res.status(503).json({ ok: false, error: 'Paiement en ligne non configure.' });
   }
 
-  const { orderId } = req.body || {};
+  const { orderId, cartId } = req.body || {};
   if (!orderId) {
     return res.status(400).json({ ok: false, error: 'Identifiant de commande manquant.' });
   }
@@ -404,8 +508,14 @@ app.post('/api/paypal/capture-order', async (req, res) => {
       && purchaseUnit.payments.captures[0].amount;
     const payer = capture.payer || {};
 
+    const carts = readJsonArray(CARTS_FILE);
+    const cart = carts.find((c) => c.id === cartId) || carts.find((c) => c.paypalOrderId === orderId);
+
     const order = {
       orderId,
+      cartId: cart ? cart.id : cartId || null,
+      product: cart ? cart.product : null,
+      plan: cart ? cart.plan : null,
       status,
       amount: capturedAmount ? capturedAmount.value : null,
       currency: capturedAmount ? capturedAmount.currency_code : null,
@@ -416,9 +526,13 @@ app.post('/api/paypal/capture-order', async (req, res) => {
 
     appendToJsonArray(ORDERS_FILE, order);
 
+    if (cart) {
+      updateJsonArrayItem(CARTS_FILE, (c) => c.id === cart.id, { status: 'completed', orderId });
+    }
+
     await sendNotificationEmail(
       `Nouveau paiement Essoria - ${order.amount} ${order.currency}`,
-      `Commande: ${order.orderId}\nMontant: ${order.amount} ${order.currency}\nClient: ${order.payerName || 'non fourni'} (${order.payerEmail || 'email non fourni'})\nDate: ${order.capturedAt}`
+      `Commande: ${order.orderId}\nFormule: ${order.plan || 'non identifiee'}\nMontant: ${order.amount} ${order.currency}\nClient: ${order.payerName || 'non fourni'} (${order.payerEmail || 'email non fourni'})\nDate: ${order.capturedAt}`
     );
 
     res.json({ ok: true, order });
