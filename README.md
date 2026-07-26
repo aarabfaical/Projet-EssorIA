@@ -1,6 +1,6 @@
 # Essoria — Site vitrine
 
-Site vitrine multilingue (FR/EN/ES/AR) pour présenter et commercialiser les services Growth Marketing, Marketing Automation, CRM et Agents IA WhatsApp d'Essoria auprès des PME.
+Site vitrine multilingue (FR/EN/ES/AR) pour présenter et commercialiser les services Growth Marketing, Marketing Automation, CRM et Agents IA WhatsApp d'Essoria auprès des entreprises.
 
 ## Fonctionnalités
 

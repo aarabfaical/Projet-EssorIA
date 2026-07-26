@@ -1,7 +1,7 @@
 {
   "name": "essoria",
   "version": "1.0.0",
-  "description": "Site vitrine Essoria - Growth Marketing, Automation, CRM & IA pour PME",
+  "description": "Site vitrine Essoria - Growth Marketing, Automation, CRM & IA pour les entreprises",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
