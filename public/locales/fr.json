@@ -10,32 +10,32 @@
     "site": "Votre site"
   },
   "hero": {
-    "eyebrow": "Votre partenaire de croissance IA",
+    "eyebrow": "Pour dirigeants qui veulent arrêter de perdre des prospects",
     "title": "Essoria",
-    "tagline": "Le système IA complet qui fait décoller la croissance des entreprises.",
-    "subtitle": "Growth Marketing, Automatisation, CRM et Agents IA WhatsApp réunis dans un système complet d'acquisition, de qualification et de conversion de vos prospects.",
-    "ctaPrimary": "Réserver un appel",
-    "ctaSecondary": "Voir nos services"
+    "tagline": "Vos prospects ne partent pas chez vos concurrents. Ils se perdent dans vos outils.",
+    "subtitle": "Essoria remplace vos outils déconnectés, vos leads oubliés dans un tableur et vos messages WhatsApp sans réponse après 18h par un seul système qui capte, qualifie et relance vos prospects — même quand votre équipe est hors ligne.",
+    "ctaPrimary": "Recevoir mon audit gratuit (30 min)",
+    "ctaSecondary": "Voir comment ça fonctionne"
   },
   "services": {
     "eyebrow": "Nos services",
     "title": "Un système complet, pas de simples prestations",
     "subtitle": "Quatre piliers qui fonctionnent ensemble pour transformer vos visiteurs en clients.",
     "growth": {
-      "title": "Growth Marketing",
-      "desc": "Acquisition de trafic qualifié via publicité en ligne, SEO et stratégies de contenu orientées conversion."
+      "title": "Un pipeline qui se remplit sans multiplier les prestataires",
+      "desc": "Acquisition, automatisation et CRM pilotés par une seule équipe, un seul reporting — pas quatre factures et zéro coordination."
     },
     "automation": {
-      "title": "Marketing Automation",
-      "desc": "Séquences email/SMS, scoring de leads et parcours automatisés qui travaillent pour vous 24h/24."
+      "title": "Vous savez enfin d'où viennent vos clients",
+      "desc": "Reporting clair sur ce qui convertit réellement, pas des dashboards de vanité."
     },
     "crm": {
-      "title": "CRM sur mesure",
-      "desc": "Configuration d'un CRM adapté à votre process de vente, pour ne plus jamais perdre un prospect."
+      "title": "Plus un seul prospect perdu",
+      "desc": "Chaque lead entre dans un pipeline structuré et suivi — fini les leads oubliés dans un fichier Excel."
     },
     "ai": {
-      "title": "Agents IA WhatsApp",
-      "desc": "Un agent conversationnel qui répond, qualifie et transmet vos prospects chauds à votre équipe commerciale."
+      "title": "Une réponse en moins de 5 minutes, 24h/24",
+      "desc": "Votre agent IA WhatsApp qualifie et relance pendant que votre équipe dort — le prospect qui écrit à 22h n'attend plus le lendemain."
     }
   },
   "pricing": {
@@ -131,7 +131,7 @@
     "eyebrow": "Contact",
     "title": "Discutons de votre croissance",
     "subtitle": "Réservez directement un appel visio de 30 minutes avec notre équipe.",
-    "calendlyCta": "Réserver un appel visio (Google Meet)"
+    "calendlyCta": "Recevoir mon audit gratuit (30 min)"
   },
   "footer": {
     "tagline": "Le système IA complet qui fait décoller la croissance des entreprises.",
@@ -146,7 +146,7 @@
     "eyebrow": "Passez à l'action",
     "title": "Prêt à transformer votre entreprise en machine à croissance ?",
     "subtitle": "Un premier appel de 30 minutes suffit pour évaluer votre potentiel de croissance.",
-    "button": "Réserver mon audit gratuit"
+    "button": "Recevoir mon audit gratuit (30 min)"
   },
   "floatingWhatsapp": {
     "label": "Discuter sur WhatsApp"
