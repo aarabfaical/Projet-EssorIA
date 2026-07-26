@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merci pour votre paiement — Essoria</title>
+<meta name="description" content="Paiement confirme. Prochaine etape : demarrer votre projet avec Essoria.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="aiBackground" aria-hidden="true"></canvas>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">Essoria</a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#hero" data-i18n="nav.home">Accueil</a>
+      <a href="index.html#services" data-i18n="nav.services">Services</a>
+      <a href="site-vitrine.html" data-i18n="nav.site">Votre site</a>
+      <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
+      <a href="index.html#about" data-i18n="nav.about">À propos</a>
+      <a href="blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <select id="langSwitcher" class="lang-switcher" aria-label="Choisir la langue">
+        <option value="fr">FR</option>
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+        <option value="ar">AR</option>
+      </select>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container thank-you-section">
+    <p class="thank-you-icon" aria-hidden="true">🎉</p>
+    <p class="eyebrow" data-i18n="thankyou.eyebrow">Paiement confirmé</p>
+    <h1 data-i18n="thankyou.title">Merci ! Votre paiement a bien été reçu.</h1>
+    <p class="section-subtitle" data-i18n="thankyou.subtitle" style="margin-left:auto;margin-right:auto;">
+      Dernière étape : contactez-nous sur WhatsApp pour démarrer votre projet. Nous vous répondons généralement en quelques minutes.
+    </p>
+
+    <div class="thank-you-summary" id="thankYouSummary"></div>
+
+    <a id="thankYouWhatsapp" href="#" target="_blank" rel="noopener" class="whatsapp-cta">
+      <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor" aria-hidden="true">
+        <path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.23.62 4.32 1.7 6.11L4 29l8.06-1.63a11.98 11.98 0 0 0 3.96.68C22.6 28.05 28 22.65 28 16.02 28 9.4 22.64 3 16.02 3Zm0 21.86c-1.27 0-2.5-.24-3.63-.71l-.26-.11-4.78.97.98-4.66-.17-.27a9.83 9.83 0 0 1-1.53-5.24c0-5.44 4.44-9.87 9.9-9.87 5.44 0 9.87 4.43 9.87 9.87 0 5.45-4.43 9.9-9.88 9.9Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.87 1.21 3.07c.15.2 2.09 3.19 5.06 4.47.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/>
+      </svg>
+      <span data-i18n="thankyou.whatsappCta">Démarrer mon projet sur WhatsApp</span>
+    </a>
+
+    <p class="muted-note" style="margin-top:28px;">
+      <a href="index.html" data-i18n="thankyou.backHome" style="text-decoration:underline;">Retour à l'accueil</a>
+    </p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="muted-note">© <span id="year"></span> Essoria — <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+  </div>
+</footer>
+
+<script src="background.js"></script>
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const params = new URLSearchParams(window.location.search);
+    const plan = params.get('plan') || '';
+    const order = params.get('order') || '';
+    const amount = params.get('amount') || '';
+    const currency = params.get('currency') || '';
+
+    const planLabels = {
+      starter: 'Starter', growth: 'Growth', scale: 'Scale',
+      essentiel: 'Essentiel', pro: 'Professionnel',
+    };
+    const planLabel = planLabels[plan] || plan || '—';
+
+    const summaryEl = document.getElementById('thankYouSummary');
+    if (summaryEl) {
+      let html = `Formule : <strong>${planLabel}</strong>`;
+      if (order) html += `<br>Référence de commande : <strong>${order}</strong>`;
+      if (amount && currency) html += `<br>Montant réglé : <strong>${amount} ${currency}</strong>`;
+      summaryEl.innerHTML = html;
+    }
+
+    try {
+      const config = await fetch('/api/config').then((r) => r.json());
+      const waBtn = document.getElementById('thankYouWhatsapp');
+      if (waBtn && config.whatsappNumber) {
+        const message = encodeURIComponent(
+          `Bonjour, je viens de payer l'offre ${planLabel} (commande ${order}). Je souhaite démarrer mon projet, voici mes informations : `
+        );
+        waBtn.href = `https://wa.me/${config.whatsappNumber}?text=${message}`;
+      }
+    } catch (err) {
+      console.error('Impossible de charger la config WhatsApp:', err);
+    }
+  });
+</script>
+</body>
+</html>

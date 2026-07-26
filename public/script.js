@@ -88,6 +88,7 @@ async function initConfig() {
     const calendlyBtn = document.getElementById('calendlyBtn');
     if (calendlyBtn && config.calendlyUrl) {
       calendlyBtn.href = config.calendlyUrl;
+      calendlyBtn.addEventListener('click', () => track('generate_lead', { method: 'calendly' }));
     }
 
     // Le bouton "Réserver un appel" du hero ouvre directement Calendly
@@ -95,16 +96,19 @@ async function initConfig() {
     const heroCalendlyBtn = document.getElementById('heroCalendlyBtn');
     if (heroCalendlyBtn && config.calendlyUrl) {
       heroCalendlyBtn.href = config.calendlyUrl;
+      heroCalendlyBtn.addEventListener('click', () => track('generate_lead', { method: 'calendly_hero' }));
     }
 
     const finalCtaBtn = document.getElementById('finalCtaBtn');
     if (finalCtaBtn && config.calendlyUrl) {
       finalCtaBtn.href = config.calendlyUrl;
+      finalCtaBtn.addEventListener('click', () => track('generate_lead', { method: 'calendly_final_cta' }));
     }
 
     const siteCtaBtn = document.getElementById('siteCtaBtn');
     if (siteCtaBtn && config.calendlyUrl) {
       siteCtaBtn.href = config.calendlyUrl;
+      siteCtaBtn.addEventListener('click', () => track('generate_lead', { method: 'calendly_site' }));
     }
 
     // Le bouton "Demander un devis" (offre Sur-mesure) ouvre une discussion WhatsApp
@@ -115,6 +119,7 @@ async function initConfig() {
       quoteBtn.href = `https://wa.me/${config.whatsappNumber}?text=${quoteMessage}`;
       quoteBtn.target = '_blank';
       quoteBtn.rel = 'noopener';
+      quoteBtn.addEventListener('click', () => track('whatsapp_click', { method: 'quote_surmesure' }));
     }
 
     // Le lien "Des questions avant de vous engager ?" sous la grille de tarifs
@@ -123,137 +128,293 @@ async function initConfig() {
     if (pricingWhatsappBtn && config.whatsappNumber) {
       const pricingMessage = encodeURIComponent("Bonjour, j'ai une question avant de m'engager sur une offre Essoria.");
       pricingWhatsappBtn.href = `https://wa.me/${config.whatsappNumber}?text=${pricingMessage}`;
+      pricingWhatsappBtn.addEventListener('click', () => track('whatsapp_click', { method: 'pricing_question' }));
     }
 
     const footerWhatsapp = document.getElementById('footerWhatsapp');
-    if (footerWhatsapp) footerWhatsapp.href = waLink;
+    if (footerWhatsapp) {
+      footerWhatsapp.href = waLink;
+      footerWhatsapp.addEventListener('click', () => track('whatsapp_click', { method: 'footer' }));
+    }
 
     const floatingWhatsapp = document.getElementById('floatingWhatsapp');
-    if (floatingWhatsapp) floatingWhatsapp.href = waLink;
+    if (floatingWhatsapp) {
+      floatingWhatsapp.href = waLink;
+      floatingWhatsapp.addEventListener('click', () => track('whatsapp_click', { method: 'floating_button' }));
+    }
   } catch (err) {
     console.error('Impossible de charger la config:', err);
   }
 }
 
+// ---------- Tracking (GTM / GA4 / Meta / LinkedIn / Pinterest) + consentement cookies ----------
+//
+// Architecture : chaque outil de tracking est optionnel et pilote par variable
+// d'environnement cote serveur (voir /api/config -> tracking.*). Tant qu'un identifiant
+// n'est pas configure, le script correspondant n'est jamais charge. Aucun script de
+// tracking n'est charge tant que le visiteur n'a pas explicitement accepte les cookies
+// via le bandeau (pas de "consentement par defaut" a la Google Consent Mode : ici, rien
+// ne se charge du tout avant acceptation, ce qui est plus protecteur).
+//
+// window.dataLayer recoit systematiquement tous les evenements (compatible GTM + GA4
+// configures directement dans l'interface Google Tag Manager, sans code supplementaire
+// a ecrire ici a chaque nouvel outil ajoute cote GTM).
+
+const CONSENT_KEY = 'essoria-consent';
+let trackingConfig = null;
+let trackingLoaded = false;
+
+window.dataLayer = window.dataLayer || [];
+
+function getConsent() {
+  return localStorage.getItem(CONSENT_KEY);
+}
+
+function setConsent(value) {
+  localStorage.setItem(CONSENT_KEY, value);
+}
+
+// Point d'entree unique pour tout evenement de conversion/interaction. Alimente le
+// dataLayer (GTM/GA4) et, si les pixels directs sont charges, les evenements standard
+// correspondants (Meta / LinkedIn / Pinterest).
+function track(eventName, params) {
+  window.dataLayer.push({ event: eventName, ...params });
+
+  if (window.fbq) {
+    const metaEventMap = {
+      purchase: 'Purchase',
+      begin_checkout: 'InitiateCheckout',
+      add_to_cart: 'AddToCart',
+      generate_lead: 'Lead',
+      whatsapp_click: 'Contact',
+      newsletter_signup: 'Lead',
+    };
+    if (metaEventMap[eventName]) {
+      window.fbq('track', metaEventMap[eventName], params);
+    }
+  }
+
+  if (window.lintrk && eventName === 'purchase') {
+    window.lintrk('track', { conversion_id: trackingConfig && trackingConfig.linkedinPartnerId });
+  }
+
+  if (window.pintrk) {
+    const pinterestEventMap = {
+      purchase: 'checkout',
+      add_to_cart: 'addtocart',
+      begin_checkout: 'checkout',
+      generate_lead: 'lead',
+    };
+    if (pinterestEventMap[eventName]) {
+      window.pintrk('track', pinterestEventMap[eventName], params);
+    }
+  }
+}
+
+function injectScript({ src, id, innerHTML, attrs }) {
+  if (id && document.getElementById(id)) return;
+  const script = document.createElement('script');
+  if (id) script.id = id;
+  if (src) script.src = src;
+  if (innerHTML) script.innerHTML = innerHTML;
+  if (attrs) Object.keys(attrs).forEach((key) => script.setAttribute(key, attrs[key]));
+  document.head.appendChild(script);
+}
+
+function loadTrackingScripts(config) {
+  if (trackingLoaded) return;
+  trackingLoaded = true;
+  const t = config.tracking || {};
+
+  // Google Tag Manager (peut lui-meme piloter GA4 + d'autres pixels configures dans
+  // l'interface GTM, sans code supplementaire ici).
+  if (t.gtmId) {
+    injectScript({
+      id: 'gtmScript',
+      innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${t.gtmId}');`,
+    });
+    if (!document.getElementById('gtmNoscript')) {
+      const noscript = document.createElement('noscript');
+      noscript.id = 'gtmNoscript';
+      noscript.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=${t.gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
+      document.body.insertBefore(noscript, document.body.firstChild);
+    }
+  }
+
+  // GA4 direct (optionnel : a laisser vide si GA4 est deja configure via GTM, pour
+  // eviter un double comptage des pages vues et evenements).
+  if (t.ga4Id) {
+    injectScript({ id: 'ga4Lib', src: `https://www.googletagmanager.com/gtag/js?id=${t.ga4Id}` });
+    injectScript({
+      id: 'ga4Init',
+      innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${t.ga4Id}');`,
+    });
+  }
+
+  // Meta Pixel (optionnel : a laisser vide si le pixel Meta est deja configure via GTM).
+  if (t.metaPixelId) {
+    injectScript({
+      id: 'metaPixel',
+      innerHTML: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${t.metaPixelId}');fbq('track','PageView');`,
+    });
+  }
+
+  // LinkedIn Insight Tag (optionnel).
+  if (t.linkedinPartnerId) {
+    injectScript({
+      id: 'linkedinInsight',
+      innerHTML: `_linkedin_partner_id = "${t.linkedinPartnerId}";window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];window._linkedin_data_partner_ids.push(_linkedin_partner_id);(function(l){if(!l){window.lintrk=function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]}var s=document.getElementsByTagName("script")[0];var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src="https://snap.licdn.com/li.lms-analytics/insight.min.js";s.parentNode.insertBefore(b,s);})(window.lintrk);`,
+    });
+  }
+
+  // Pinterest Tag (optionnel).
+  if (t.pinterestTagId) {
+    injectScript({
+      id: 'pinterestTag',
+      innerHTML: `!function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");pintrk('load', '${t.pinterestTagId}');pintrk('page');`,
+    });
+  }
+
+  window.dataLayer.push({ event: 'tracking_ready' });
+}
+
+function showConsentBanner() {
+  if (document.getElementById('cookieConsent')) return;
+  const banner = document.createElement('div');
+  banner.id = 'cookieConsent';
+  banner.className = 'cookie-consent';
+  banner.innerHTML = `
+    <p class="cookie-consent-text" data-i18n="cookies.text">Nous utilisons des cookies pour mesurer l'audience du site et améliorer votre expérience. Vous pouvez accepter ou refuser ce suivi à tout moment.</p>
+    <div class="cookie-consent-actions">
+      <button type="button" class="btn btn-ghost" id="cookieDecline" data-i18n="cookies.decline">Refuser</button>
+      <button type="button" class="btn btn-primary" id="cookieAccept" data-i18n="cookies.accept">Accepter</button>
+    </div>
+  `;
+  document.body.appendChild(banner);
+
+  loadLang(getSavedLang()).then((dict) => {
+    banner.querySelectorAll('[data-i18n]').forEach((el) => {
+      const value = getNested(dict, el.getAttribute('data-i18n'));
+      if (value) el.textContent = value;
+    });
+  }).catch(() => {});
+
+  document.getElementById('cookieAccept').addEventListener('click', async () => {
+    setConsent('granted');
+    banner.remove();
+    if (trackingConfig) loadTrackingScripts(trackingConfig);
+  });
+  document.getElementById('cookieDecline').addEventListener('click', () => {
+    setConsent('denied');
+    banner.remove();
+  });
+}
+
+async function initTracking() {
+  try {
+    const res = await fetch('/api/config');
+    const config = await res.json();
+    trackingConfig = config;
+
+    const consent = getConsent();
+    if (consent === 'granted') {
+      loadTrackingScripts(config);
+    } else if (consent !== 'denied') {
+      showConsentBanner();
+    }
+  } catch (err) {
+    console.error('Impossible de charger la config de tracking:', err);
+  }
+}
+
 // ---------- Pays / devise / tarifs dynamiques ----------
+//
+// Le site affiche les prix en USD par defaut (devise unique et source de verite).
+// La devise locale du visiteur n'est utilisee pour l'AFFICHAGE (et le paiement reel)
+// que si le backend confirme (1) une correspondance pays -> devise connue et (2) que
+// cette devise est acceptee par PayPal ET qu'un taux de change est disponible. Sinon
+// tout reste en USD, sans aucun selecteur manuel de devise sur le site.
 
-// Le site n'affiche que 2 devises : EUR (zone euro) et USD (reste du monde,
-// y compris le Maroc, + repli par défaut si l'IP n'est pas détectée).
-const SUPPORTED_COUNTRIES = ['EUR', 'USD'];
-const DEFAULT_COUNTRY = 'USD';
-const EUROZONE_COUNTRIES = [
-  'AT', 'BE', 'HR', 'CY', 'EE', 'FI', 'FR', 'DE', 'GR', 'IE',
-  'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PT', 'SK', 'SI', 'ES',
-  'CH', 'AD', 'MC', 'SM', 'VA', 'ME', 'XK',
-];
-const pricingFileCache = {};
-
-function getSavedCountry() {
-  return localStorage.getItem('essoria-country');
-}
-
-function formatPrice(amount, entry) {
-  const formatted = new Intl.NumberFormat('fr-FR').format(amount);
-  return entry.symbolPosition === 'before'
-    ? `${entry.symbol} ${formatted}`
-    : `${formatted} ${entry.symbol}`;
-}
-
-async function loadPricingFile(file) {
-  if (pricingFileCache[file]) return pricingFileCache[file];
-  const res = await fetch(file);
-  if (!res.ok) throw new Error(`Impossible de charger ${file}`);
-  pricingFileCache[file] = await res.json();
-  return pricingFileCache[file];
-}
-
-function setPriceText(id, amount, entry) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = formatPrice(amount, entry);
-}
+let detectedCountryCode = '';
+const pricingResultCache = {};
 
 async function detectCountryByIP() {
   try {
     const res = await fetch('https://ipapi.co/json/');
     if (!res.ok) throw new Error('geo-IP indisponible');
     const data = await res.json();
-    const code = (data.country_code || '').toUpperCase();
-    if (EUROZONE_COUNTRIES.includes(code)) return 'EUR';
-    // Pays non reconnu comme zone euro (Maroc inclus, ou tout le reste du monde) : prix en USD.
-    return 'USD';
+    return (data.country_code || '').toUpperCase();
   } catch (err) {
-    // IP non détectée : prix moyen en USD par défaut.
-    console.warn('Détection pays par IP échouée, repli sur', DEFAULT_COUNTRY, err);
-    return DEFAULT_COUNTRY;
+    console.warn('Détection pays par IP échouée, prix en USD par défaut.', err);
+    return '';
   }
+}
+
+function formatPrice(amount, priced) {
+  const formatted = new Intl.NumberFormat(priced.currency === 'USD' ? 'en-US' : 'fr-FR', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(amount);
+  return priced.symbolPosition === 'before'
+    ? `${priced.symbol} ${formatted}`
+    : `${formatted} ${priced.symbol}`;
+}
+
+function setPriceText(id, amount, priced) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = formatPrice(amount, priced);
+}
+
+async function fetchPricing(product, country) {
+  const cacheKey = `${product}:${country}`;
+  if (pricingResultCache[cacheKey]) return pricingResultCache[cacheKey];
+  const res = await fetch(`/api/pricing?product=${encodeURIComponent(product)}&country=${encodeURIComponent(country || '')}`);
+  if (!res.ok) throw new Error(`Impossible de charger les tarifs (${product})`);
+  const data = await res.json();
+  pricingResultCache[cacheKey] = data;
+  return data;
 }
 
 async function renderPricing(country) {
   if (!document.getElementById('priceStarter')) return;
   try {
-    const pricing = await loadPricingFile('pricing.json');
-    const entry = pricing[country] || pricing[DEFAULT_COUNTRY];
-    setPriceText('priceStarter', entry.starter, entry);
-    setPriceText('priceGrowth', entry.growth, entry);
-    setPriceText('priceScale', entry.scale, entry);
+    const priced = await fetchPricing('main', country);
+    setPriceText('priceStarter', priced.amounts.starter, priced);
+    setPriceText('priceGrowth', priced.amounts.growth, priced);
+    setPriceText('priceScale', priced.amounts.scale, priced);
   } catch (err) {
-    console.error('Impossible d\'afficher les tarifs localisés:', err);
+    console.error('Impossible d\'afficher les tarifs:', err);
   }
 }
 
-async function renderSitePricing() {
-  // "Votre site" affiche un prix fixe en USD pour tout le monde (pas de zone tarifaire),
-  // pour eviter d'avoir plusieurs offres differentes selon le pays sur cette rubrique.
+async function renderSitePricing(country) {
   if (!document.getElementById('priceSiteEssentiel')) return;
   try {
-    const entry = await loadPricingFile('site-pricing.json');
-    setPriceText('priceSiteEssentiel', entry.essentiel, entry);
-    setPriceText('priceSitePro', entry.pro, entry);
+    const priced = await fetchPricing('site', country);
+    setPriceText('priceSiteEssentiel', priced.amounts.essentiel, priced);
+    setPriceText('priceSitePro', priced.amounts.pro, priced);
     // "surmesure" est affiché "Sur devis" (texte statique traduit), pas de montant a injecter.
   } catch (err) {
     console.error('Impossible d\'afficher les tarifs "Votre site":', err);
   }
 }
 
-async function setCountry(country) {
-  if (!SUPPORTED_COUNTRIES.includes(country)) country = DEFAULT_COUNTRY;
-  localStorage.setItem('essoria-country', country);
-
-  const switcher = document.getElementById('countrySwitcher');
-  if (switcher) switcher.value = country;
-
-  await Promise.all([renderPricing(country), renderSitePricing()]);
-  document.dispatchEvent(new CustomEvent('essoria:countrychange', { detail: { country } }));
+async function initPricingDisplay() {
+  detectedCountryCode = await detectCountryByIP();
+  await Promise.all([renderPricing(detectedCountryCode), renderSitePricing(detectedCountryCode)]);
 }
 
-function initCountrySwitcher() {
-  const switcher = document.getElementById('countrySwitcher');
-  if (!switcher) return;
-  switcher.addEventListener('change', (e) => setCountry(e.target.value));
-}
+// ---------- Checkout PayPal (panier -> commande -> capture -> page merci) ----------
 
-async function initCountryDetection() {
-  const saved = getSavedCountry();
-  if (saved && SUPPORTED_COUNTRIES.includes(saved)) {
-    await setCountry(saved);
-    return;
-  }
-  const detected = await detectCountryByIP();
-  await setCountry(detected);
-}
-
-// ---------- Checkout PayPal ----------
-
-// Chaque plan est rattaché à son produit (fichier de tarifs, cle de traduction,
-// type de facturation) pour permettre plusieurs offres payantes sur le site.
+// Chaque plan est rattaché à son produit (backend) et a sa cle de traduction pour le
+// libelle affiche dans la modale de paiement.
 const CHECKOUT_PRODUCTS = {
-  starter: { product: 'main', file: 'pricing.json', labelKey: 'pricing.starter.title', billing: 'monthly' },
-  growth: { product: 'main', file: 'pricing.json', labelKey: 'pricing.growth.title', billing: 'monthly' },
-  scale: { product: 'main', file: 'pricing.json', labelKey: 'pricing.scale.title', billing: 'monthly' },
-  // "flat: true" = prix unique en USD, sans variation par pays/zone.
-  essentiel: { product: 'site', file: 'site-pricing.json', labelKey: 'sitePage.pricing.essentiel.title', billing: 'once', flat: true },
-  pro: { product: 'site', file: 'site-pricing.json', labelKey: 'sitePage.pricing.pro.title', billing: 'once', flat: true },
-  // "surmesure" n'a pas de prix fixe (sur devis) : pas de checkout, bouton "Demander un devis" -> Calendly.
+  starter: { product: 'main', labelKey: 'pricing.starter.title', billing: 'monthly' },
+  growth: { product: 'main', labelKey: 'pricing.growth.title', billing: 'monthly' },
+  scale: { product: 'main', labelKey: 'pricing.scale.title', billing: 'monthly' },
+  essentiel: { product: 'site', labelKey: 'sitePage.pricing.essentiel.title', billing: 'once' },
+  pro: { product: 'site', labelKey: 'sitePage.pricing.pro.title', billing: 'once' },
+  // "surmesure" n'a pas de prix fixe (sur devis) : pas de checkout, bouton "Demander un devis" -> WhatsApp.
 };
 
 let paypalSdkCurrency = null;
@@ -289,41 +450,37 @@ async function openCheckout(planId) {
   if (!modal || !buttonContainer || !productConfig) return;
 
   const dict = await loadLang(getSavedLang());
-  const country = getSavedCountry() || DEFAULT_COUNTRY;
-  const pricing = await loadPricingFile(productConfig.file);
-  const entry = productConfig.flat ? pricing : (pricing[country] || pricing[DEFAULT_COUNTRY]);
-  const amount = entry[planId];
   const perUnitKey = productConfig.billing === 'once' ? 'checkout.perOnceShort' : 'checkout.perMonthShort';
-
-  // PayPal ne traite pas toutes les devises locales (ex: MAD). Si un "override" existe
-  // pour ce pays, la commande PayPal reelle se fait dans cette devise/montant.
-  const paypalOverride = entry.paypal && typeof entry.paypal.amounts[planId] === 'number'
-    ? entry.paypal
-    : null;
-  const sdkCurrency = paypalOverride ? paypalOverride.currency : entry.currency;
-
-  document.getElementById('checkoutModalTitle').textContent = getNested(dict, productConfig.labelKey) || planId;
-  document.getElementById('checkoutModalPrice').textContent =
-    `${formatPrice(amount, entry)}${getNested(dict, perUnitKey) || ''}`;
-
-  if (currencyNote) {
-    if (paypalOverride) {
-      currencyNote.textContent = formatTemplate(getNested(dict, 'checkout.currencyNote'), {
-        amount: paypalOverride.amounts[planId],
-        currency: paypalOverride.currency,
-      });
-      currencyNote.hidden = false;
-    } else {
-      currencyNote.hidden = true;
-    }
-  }
 
   feedback.hidden = true;
   unavailable.hidden = true;
+  if (currencyNote) currencyNote.hidden = true;
   buttonContainer.innerHTML = '';
+  buttonContainer.dataset.loading = 'true';
   modal.hidden = false;
 
   try {
+    // 1) Creation du panier cote serveur (avant meme d'ouvrir le bouton PayPal) : permet
+    // de tracer les paniers abandonnes et fige le prix/devise pour toute la suite du flux.
+    const cartRes = await fetch('/api/cart', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ product: productConfig.product, plan: planId, country: detectedCountryCode }),
+    });
+    const cartData = await cartRes.json();
+    if (!cartData.ok) throw new Error(cartData.error || 'Panier non créé');
+    const cart = cartData.cart;
+
+    track('add_to_cart', {
+      currency: cart.currency,
+      value: cart.amount,
+      items: [{ item_id: planId, item_name: getNested(dict, productConfig.labelKey) || planId, price: cart.amount }],
+    });
+
+    document.getElementById('checkoutModalTitle').textContent = getNested(dict, productConfig.labelKey) || planId;
+    document.getElementById('checkoutModalPrice').textContent =
+      `${formatPrice(cart.amount, cart)}${getNested(dict, perUnitKey) || ''}`;
+
     const configRes = await fetch('/api/config');
     const config = await configRes.json();
 
@@ -332,12 +489,18 @@ async function openCheckout(planId) {
       return;
     }
 
-    await loadPayPalSdk(config.paypalClientId, sdkCurrency);
+    await loadPayPalSdk(config.paypalClientId, cart.currency);
 
     if (!window.paypal) {
       unavailable.hidden = false;
       return;
     }
+
+    track('begin_checkout', {
+      currency: cart.currency,
+      value: cart.amount,
+      items: [{ item_id: planId, item_name: getNested(dict, productConfig.labelKey) || planId, price: cart.amount }],
+    });
 
     window.paypal.Buttons({
       style: { layout: 'vertical', color: 'blue', shape: 'pill', label: 'pay' },
@@ -345,7 +508,7 @@ async function openCheckout(planId) {
         const res = await fetch('/api/paypal/create-order', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ plan: planId, country, product: productConfig.product }),
+          body: JSON.stringify({ cartId: cart.id }),
         });
         const data = await res.json();
         if (!data.id) throw new Error('Commande PayPal non créée');
@@ -355,15 +518,25 @@ async function openCheckout(planId) {
         const res = await fetch('/api/paypal/capture-order', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ orderId: data.orderID }),
+          body: JSON.stringify({ orderId: data.orderID, cartId: cart.id }),
         });
         const result = await res.json();
-        feedback.hidden = false;
         if (result.ok) {
-          feedback.textContent = getNested(dict, 'checkout.success');
-          feedback.className = 'form-feedback success';
-          buttonContainer.innerHTML = '';
+          track('purchase', {
+            transaction_id: result.order.orderId,
+            currency: result.order.currency,
+            value: Number(result.order.amount),
+            items: [{ item_id: planId, item_name: getNested(dict, productConfig.labelKey) || planId, price: Number(result.order.amount) }],
+          });
+          const params = new URLSearchParams({
+            plan: planId,
+            order: result.order.orderId,
+            amount: result.order.amount || '',
+            currency: result.order.currency || '',
+          });
+          window.location.href = `merci.html?${params.toString()}`;
         } else {
+          feedback.hidden = false;
           feedback.textContent = getNested(dict, 'checkout.error');
           feedback.className = 'form-feedback error';
         }
@@ -377,6 +550,8 @@ async function openCheckout(planId) {
   } catch (err) {
     console.error('Checkout PayPal indisponible:', err);
     unavailable.hidden = false;
+  } finally {
+    delete buttonContainer.dataset.loading;
   }
 }
 
@@ -462,6 +637,7 @@ function initNewsletterForm() {
       if (data.ok) {
         feedback.textContent = getNested(dict, 'newsletter.success');
         feedback.className = 'form-feedback success';
+        track('newsletter_signup', { method: 'website_form' });
         form.reset();
       } else if (res.status === 409) {
         feedback.textContent = getNested(dict, 'newsletter.errorExists');
@@ -489,8 +665,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initConfig();
   initNewsletterForm();
   initValuesMenu();
-  initCountrySwitcher();
   initCheckoutModal();
   setLanguage(getSavedLang());
-  initCountryDetection();
+  initPricingDisplay();
+  initTracking();
+  window.dataLayer.push({ event: 'page_view', page_path: window.location.pathname });
 });

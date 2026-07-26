@@ -1,4 +1,8 @@
 {
-  "EUR": { "label": "Europe", "currency": "EUR", "symbol": "€", "symbolPosition": "after", "starter": 490, "growth": 990, "scale": 1490 },
-  "USD": { "label": "International", "currency": "USD", "symbol": "$", "symbolPosition": "before", "starter": 490, "growth": 990, "scale": 1490 }
+  "currency": "USD",
+  "symbol": "$",
+  "symbolPosition": "before",
+  "starter": 490,
+  "growth": 990,
+  "scale": 1490
 }
