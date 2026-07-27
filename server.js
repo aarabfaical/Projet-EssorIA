@@ -76,9 +76,21 @@ const transporter = emailEnabled
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      // Sans ces timeouts, une connexion SMTP qui ne repond pas (reseau qui bloque
+      // le port sortant, Gmail qui ne repond pas, etc.) bloque la promesse
+      // indefiniment. On borne chaque phase a 8s pour ne jamais laisser une requete
+      // HTTP en attente a cause de l'envoi d'email.
+      connectionTimeout: 8000,
+      greetingTimeout: 8000,
+      socketTimeout: 8000,
     })
   : null;
 
+// IMPORTANT : cette fonction ne doit JAMAIS etre "await" dans le chemin de reponse
+// d'une route HTTP (inscription newsletter, paiement, etc.). L'envoi d'email est une
+// notification interne pour l'equipe Essoria, pas une etape necessaire pour repondre
+// au visiteur. Meme avec les timeouts ci-dessus, on appelle cette fonction en
+// "fire-and-forget" (sans await) partout ou elle est utilisee dans une route.
 async function sendNotificationEmail(subject, text) {
   if (!emailEnabled) {
     console.warn('SMTP non configure : email non envoye (verifiez le fichier .env). Contenu :', subject);
@@ -152,12 +164,12 @@ app.post('/api/newsletter', async (req, res) => {
 
   appendToJsonArray(NEWSLETTER_FILE, subscriber);
 
-  await sendNotificationEmail(
+  // Ne bloquent pas la reponse HTTP : l'email de notification et la synchronisation
+  // Sheet se font en arriere-plan (voir le commentaire sur sendNotificationEmail).
+  sendNotificationEmail(
     `Nouvel inscrit newsletter Essoria`,
     `Nom: ${subscriber.name || 'non fourni'}\nEmail: ${subscriber.email}\nDate: ${subscriber.subscribedAt}`
-  );
-
-  // Ne bloque pas la reponse HTTP : la synchronisation Sheet se fait en arriere-plan.
+  ).catch((err) => console.error('Notification email newsletter echouee:', err.message));
   syncSubscriberToSheet(subscriber);
 
   res.json({ ok: true });
@@ -530,10 +542,11 @@ app.post('/api/paypal/capture-order', async (req, res) => {
       updateJsonArrayItem(CARTS_FILE, (c) => c.id === cart.id, { status: 'completed', orderId });
     }
 
-    await sendNotificationEmail(
+    // Ne bloque pas la confirmation de paiement : notification envoyee en arriere-plan.
+    sendNotificationEmail(
       `Nouveau paiement Essoria - ${order.amount} ${order.currency}`,
       `Commande: ${order.orderId}\nFormule: ${order.plan || 'non identifiee'}\nMontant: ${order.amount} ${order.currency}\nClient: ${order.payerName || 'non fourni'} (${order.payerEmail || 'email non fourni'})\nDate: ${order.capturedAt}`
-    );
+    ).catch((err) => console.error('Notification email paiement echouee:', err.message));
 
     res.json({ ok: true, order });
   } catch (err) {
