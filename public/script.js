@@ -345,7 +345,7 @@ async function detectCountryByIP() {
     const data = await res.json();
     return (data.country_code || '').toUpperCase();
   } catch (err) {
-    console.warn('Détection pays par IP échouée, prix en USD par défaut.', err);
+    console.warn('Détection pays par IP échouée, prix en EUR par défaut.', err);
     return '';
   }
 }

@@ -1,7 +1,7 @@
 {
-  "currency": "USD",
-  "symbol": "$",
-  "symbolPosition": "before",
+  "currency": "EUR",
+  "symbol": "€",
+  "symbolPosition": "after",
   "essentiel": 199,
   "pro": 399
 }

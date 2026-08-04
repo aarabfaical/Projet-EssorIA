@@ -1,7 +1,7 @@
 {
-  "currency": "USD",
-  "symbol": "$",
-  "symbolPosition": "before",
+  "currency": "EUR",
+  "symbol": "€",
+  "symbolPosition": "after",
   "starter": 490,
   "growth": 990,
   "scale": 1490
