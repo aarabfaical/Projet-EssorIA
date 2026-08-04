@@ -67,7 +67,7 @@
     },
     "callFirst": "Des questions avant de vous engager ?",
     "promoPrefix": "Audit d'une valeur de",
-    "promoAmount": "200 USD",
+    "promoAmount": "200 €",
     "promoSuffix": "OFFERT"
   },
   "about": {
@@ -247,7 +247,7 @@
       "quoteLabel": "Sur devis",
       "quoteCta": "Demander un devis",
       "promoPrefix": "Audit d'une valeur de",
-      "promoAmount": "200 USD",
+      "promoAmount": "200 €",
       "promoSuffix": "OFFERT"
     },
     "faq": {

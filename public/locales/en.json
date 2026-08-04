@@ -67,7 +67,7 @@
     },
     "callFirst": "Questions before you commit?",
     "promoPrefix": "Audit worth",
-    "promoAmount": "200 USD",
+    "promoAmount": "€200",
     "promoSuffix": "FREE"
   },
   "about": {
@@ -247,7 +247,7 @@
       "quoteLabel": "Custom quote",
       "quoteCta": "Request a quote",
       "promoPrefix": "Audit worth",
-      "promoAmount": "200 USD",
+      "promoAmount": "€200",
       "promoSuffix": "FREE"
     },
     "faq": {

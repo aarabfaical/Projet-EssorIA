@@ -67,7 +67,7 @@
     },
     "callFirst": "¿Preguntas antes de comprometerte?",
     "promoPrefix": "Auditoría valorada en",
-    "promoAmount": "200 USD",
+    "promoAmount": "200 €",
     "promoSuffix": "GRATIS"
   },
   "about": {
@@ -247,7 +247,7 @@
       "quoteLabel": "Bajo presupuesto",
       "quoteCta": "Solicitar presupuesto",
       "promoPrefix": "Auditoría valorada en",
-      "promoAmount": "200 USD",
+      "promoAmount": "200 €",
       "promoSuffix": "GRATIS"
     },
     "faq": {

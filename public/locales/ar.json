@@ -67,7 +67,7 @@
     },
     "callFirst": "أسئلة قبل الالتزام؟",
     "promoPrefix": "تدقيق بقيمة",
-    "promoAmount": "200 USD",
+    "promoAmount": "200 €",
     "promoSuffix": "مجانًا"
   },
   "about": {
@@ -247,7 +247,7 @@
       "quoteLabel": "حسب الطلب",
       "quoteCta": "اطلب عرض سعر",
       "promoPrefix": "تدقيق بقيمة",
-      "promoAmount": "200 USD",
+      "promoAmount": "200 €",
       "promoSuffix": "مجانًا"
     },
     "faq": {
