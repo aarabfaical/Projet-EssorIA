@@ -298,7 +298,7 @@ function loadPricingTable(filePath) {
   }
 }
 
-// Chaque produit vendable sur le site a son propre fichier de tarifs (toujours en USD,
+// Chaque produit vendable sur le site a son propre fichier de tarifs (toujours en EUR,
 // source unique de verite) et ses propres identifiants de formule.
 const CHECKOUT_PRODUCTS = {
   main: {
@@ -316,7 +316,7 @@ const CHECKOUT_PRODUCTS = {
   },
 };
 
-function extractUsdAmounts(productKey) {
+function extractBaseAmounts(productKey) {
   const productConfig = CHECKOUT_PRODUCTS[productKey];
   const table = loadPricingTable(productConfig.file);
   const amounts = {};
@@ -327,20 +327,20 @@ function extractUsdAmounts(productKey) {
 }
 
 // GET /api/pricing?product=main|site&country=FR
-// Renvoie les prix (converti en devise locale si possible et accepte par PayPal, sinon
-// USD) pour toutes les formules d'un produit en un seul appel.
+// Renvoie les prix (convertis en devise locale si possible et acceptee par PayPal,
+// sinon en EUR) pour toutes les formules d'un produit en un seul appel.
 app.get('/api/pricing', async (req, res) => {
   const productKey = CHECKOUT_PRODUCTS[req.query.product] ? req.query.product : 'main';
   const country = req.query.country || '';
 
   try {
-    const usdAmounts = extractUsdAmounts(productKey);
-    const result = await convertAmounts(usdAmounts, country);
+    const baseAmounts = extractBaseAmounts(productKey);
+    const result = await convertAmounts(baseAmounts, country);
     res.json({ ok: true, ...result });
   } catch (err) {
     console.error('Erreur /api/pricing:', err.message);
-    const usdAmounts = extractUsdAmounts(productKey);
-    res.json({ ok: true, currency: 'USD', symbol: '$', symbolPosition: 'before', converted: false, amounts: usdAmounts });
+    const baseAmounts = extractBaseAmounts(productKey);
+    res.json({ ok: true, currency: 'EUR', symbol: '€', symbolPosition: 'after', converted: false, amounts: baseAmounts });
   }
 });
 
@@ -358,20 +358,20 @@ app.post('/api/cart', async (req, res) => {
   }
 
   try {
-    const usdAmounts = extractUsdAmounts(product);
-    const usdAmount = usdAmounts[plan];
-    if (typeof usdAmount !== 'number') {
+    const baseAmounts = extractBaseAmounts(product);
+    const baseAmount = baseAmounts[plan];
+    if (typeof baseAmount !== 'number') {
       return res.status(400).json({ ok: false, error: 'Tarif introuvable pour cette formule.' });
     }
 
-    const priced = await convertAmounts({ [plan]: usdAmount }, country || '');
+    const priced = await convertAmounts({ [plan]: baseAmount }, country || '');
 
     const cart = {
       id: crypto.randomUUID(),
       product,
       plan,
       country: country || '',
-      usdAmount,
+      baseAmount,
       currency: priced.currency,
       amount: priced.amounts[plan],
       converted: priced.converted,
